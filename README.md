@@ -152,3 +152,8 @@ After getting all green specs, use TDD (referring to the previous specs) to deve
 ### **When sending an email**
 
 - The email should be sent using a background working and Delayed Job
+
+### Other considerations
+
+- Shoot for > 90% test coverage
+- Have at least 50 total spec (including the provided specs)
