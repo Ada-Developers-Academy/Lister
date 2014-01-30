@@ -3,7 +3,7 @@
 Lister will be an application where users can sign up, create new lists, and add items to those lists. Additionally Lister will have the ability to send emails using Delayed Job.
 
 ## Goals
-+ Build a basice rails app.
++ Build a basic rails app.
 + Gain experience with ActionMailer
 + Implement a background job service
 + Use Javascript to manipulate objects on the page
@@ -13,10 +13,10 @@ Lister will be an application where users can sign up, create new lists, and add
 
 ## Guidelines
 
-+ Each student will work indivudually, but submit code to github daily for project owner (Bookis) to review
++ Each student will work individually, but submit code to Github daily for project owner (Bookis) to review
 + Practice TDD (rspec) to lead the development process of Models and Controllers
 + Build a logical user-flow that moves across multiple controllers and models
-+ Use any combination of javascript, jQuery, and coffeescript for dynamic content
++ Use any combination of javascript, jQuery, and coffee script for dynamic content
 + Use HTML/CSS to style your website.
 
 ## Expectations
@@ -48,7 +48,7 @@ To pass the specs you will need to use the same class names and attributes that 
     - `email`
     - `password_digest`
     
-If you want to use differnt attributes and you feel comfortable with the specs, you can change the specs to reflect the naming choices of your own.
+If you want to use different attributes and you feel comfortable with the specs, you can change the specs to reflect the naming choices of your own.
     
 -----
 
@@ -60,7 +60,7 @@ Type `n` for no.
 
 ## Requirements
 
-After getting all green specs, start implementing the following user stories:
+After getting all green specs, use TDD (referring to the previous specs) to develop the following user stories:
 
 ### **As a signed in user**
 
@@ -89,7 +89,7 @@ After getting all green specs, start implementing the following user stories:
 
 ----
 
-- When viewing someone elses list
+- When viewing someone else's list
 - I should not be able to edit or add items to the list
 
 ----
