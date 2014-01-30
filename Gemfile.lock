@@ -27,6 +27,7 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.1)
     atomic (1.1.14)
+    bcrypt-ruby (3.1.2)
     builder (3.1.4)
     celluloid (0.15.2)
       timers (~> 1.1.0)
@@ -41,6 +42,11 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
+    factory_girl (4.3.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.3.0)
+      factory_girl (~> 4.3.0)
+      railties (>= 3.0.0)
     ffi (1.9.3)
     formatador (0.2.4)
     guard (2.3.0)
@@ -148,7 +154,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt-ruby
   coffee-rails (~> 4.0.0)
+  factory_girl_rails
   guard-rspec
   jbuilder (~> 1.2)
   jquery-rails
