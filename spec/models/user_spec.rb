@@ -22,6 +22,18 @@ describe User do
       expect(user.errors[:email]).to include "is not a valid address"
     end
     
+    it "email is unique" do
+      user2 = build(:user, email: user.email)
+      user2.valid?
+      expect(user2.errors[:email]).to include "has already been taken"
+    end
+
+    it "username is unique" do
+      user2 = build(:user, username: user.username)
+      user2.valid?
+      expect(user2.errors[:username]).to include "has already been taken"
+    end
+    
     # ADA-NOTE: In Rails a virtual attribute refers to an attr
     # that is not in the DB. See:
     # http://railscasts.com/episodes/16-virtual-attributes
