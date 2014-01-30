@@ -38,4 +38,12 @@ describe UsersController do
       end
     end
   end
+  
+  describe "GET 'show'" do
+    let(:user) { create(:user) }
+    it "is successful" do
+      get :show, id: user.id
+      expect(response).to be_successful
+    end
+  end
 end
