@@ -47,10 +47,13 @@ begin
       end
     end
   end
+  
+# Ignore this stuff, it's just something to 
+# make the beginning tests more clear to follow
 rescue
   describe "UsersController" do
    it "has a UsersController" do
-     expect(nil).to eq "UsersController"
+     expect(UsersController).to_not be_nil
    end
   end
 end

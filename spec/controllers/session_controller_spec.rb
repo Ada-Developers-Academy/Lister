@@ -64,10 +64,13 @@ begin
       end
     end
   end
+  
+# Ignore this stuff, it's just something to 
+# make the beginning tests more clear to follow
 rescue
   describe "SessionController" do
    it "has a SessionController" do
-     expect(nil).to eq "SessionController"
+     expect(SessionController).to_not be_nil
    end
   end
 end
