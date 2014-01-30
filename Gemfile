@@ -14,4 +14,5 @@ group :development, :test do
   gem "guard-rspec"
   gem "terminal-notifier-guard"
   gem "factory_girl_rails"
+  gem 'simplecov', :require => false
 end
