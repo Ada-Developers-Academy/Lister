@@ -1,6 +1,7 @@
 require 'spec_helper'
 
-describe UsersController do
+describe "UsersController" do
+  before { @controller = UsersController if defined? UsersController}
 
   describe "GET 'new'" do
     it "is successful" do

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe User do
+describe "User" do
   let(:user) { create(:user) }
   describe "validates" do
     it "is valid" do

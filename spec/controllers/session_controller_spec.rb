@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe SessionController do
-
+describe "SessionController" do
+  before { @controller = SessionController if defined? SessionController}
   describe "GET 'new'" do
     
     it "is successful" do
