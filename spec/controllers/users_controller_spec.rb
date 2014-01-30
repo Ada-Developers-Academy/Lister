@@ -10,7 +10,7 @@ describe UsersController do
   end
   
   describe "POST 'create'" do
-    context "success" do
+    context "with valid attributes" do
       let(:valid_attributes) { {username: "bookis", email: "b@c.com", password: "gogo1234", password_confirmation: "gogo1234"} }
       it "is a redirect" do
         post :create, user: valid_attributes
@@ -27,7 +27,7 @@ describe UsersController do
       end
     end
     
-    context "fail" do
+    context "with invalid attributes" do
       it "renders the new template" do
         post :create, user: {username: "b"}
         expect(response).to render_template :new
