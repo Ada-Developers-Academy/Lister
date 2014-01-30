@@ -118,6 +118,16 @@ After getting all green specs, start implementing the following user stories:
 - When I sign up
 - I should receive an email welcoming me to Lister
 
+### **When adding and removing items**
+
+- When I click the submit button to add an item
+- The item should be saved to the database and added to the page without refreshing
+
+----
+
+- When I click the delete button to remove an item
+- The item should be remove from the database and removed from the page without refreshing
+
 ### **When accessing the site via the JSON API**
 
 - When I GET "/users/:user_id/lists" with the :json format
