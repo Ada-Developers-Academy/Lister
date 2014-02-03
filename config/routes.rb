@@ -1,5 +1,7 @@
 Lister::Application.routes.draw do
   
+  root 'session#new'
+
   get 'session/new'     => 'session#new',    as: 'new_session'
   post 'session/create' => 'session#create', as: 'create_session'
   get 'users/new'       => 'users#new',      as: 'new_user'
