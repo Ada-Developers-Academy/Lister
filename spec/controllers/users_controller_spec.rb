@@ -44,5 +44,10 @@ describe UsersController do
       get :show, id: user.id
       expect(response).to be_successful
     end
+
+    it "shows users' lists" do
+      get :show, id: user.id
+      assigns(:lists).should_not be_nil
+    end
   end
 end
