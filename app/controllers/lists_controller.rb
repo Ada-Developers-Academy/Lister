@@ -8,8 +8,11 @@ class ListsController < ApplicationController
       @list = List.new(list_params)
       if @list.save
         p @list
+        # flash[:notice] = "List has been successfully created!"
         redirect_to user_path(session[:user_id])
       else
+        p @list
+        render :new
 
       end
     else

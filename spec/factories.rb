@@ -12,5 +12,7 @@ FactoryGirl.define do
   end
 
   factory :list do
+    name "cake"
+    user_id 1
   end
 end

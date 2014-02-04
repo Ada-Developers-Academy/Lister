@@ -38,27 +38,37 @@ describe ListsController do
 
   describe 'POST create' do
     context 'with valid user' do
-      # before(:each) do
-      #   user = User.create
-      # end
+      let(:user) { create(:user) }
+      before(:each) do
+        session[:user_id] = user.id
+      end
+
       context 'with valid fields' do
+        let(:valid_attributes) { {name:"cake", user_id: session[:user_id]} }
+        
         it 'redirects to user show' do
+          post :create, list: {name: "cake"}
           expect(response.status).to eq 302
         end
 
         it 'assigns list to current user' do
-          user = create(:user)
-          session[:user_id] = user.id
+          # p User.count
+          # user = create(:user)
+          # session[:user_id] = user.id
           # list = create(:list)
           post :create, list: {name: "cake", user_id: session[:user_id]}
           expect(assigns(:list).user_id).to eq user.id
+        end
+
+        it 'changes list count by 1' do
+          expect {post :create, list: valid_attributes }.to change(List, :count).by(1)
         end
       end
 
     end
 
-    context 'with invalid user' do
-    end
+    # context 'with invalid user' do
+    # end
 
 
   end
