@@ -8,4 +8,6 @@ Lister::Application.routes.draw do
   post 'users/create'   => 'users#create',   as: 'create_user'
   get 'users/show'      => 'users#show',     as: 'show_user'
 
+  resources :lists
+
 end
