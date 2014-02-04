@@ -10,4 +10,8 @@ FactoryGirl.define do
       "#{n}@example.com"
     end
   end
+
+  factory :list do
+    name "dogs"
+  end
 end

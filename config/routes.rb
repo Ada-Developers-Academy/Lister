@@ -1,5 +1,10 @@
 Lister::Application.routes.draw do
   
+  get "/new", to: "sessions#new"
+  get "users/new", to: "sessions#create"
+  get "users/:id", to: "users#show"
+  get "/sign-up", to: "users#new"
+  post "users/new", to: "users#create"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
