@@ -1,6 +1,8 @@
 Lister::Application.routes.draw do
 
 
+  resources :lists
+
   root 'users#index'
   resources :users
   resources :session
