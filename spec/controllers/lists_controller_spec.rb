@@ -20,17 +20,19 @@ describe ListsController do
     end
 
     describe "GET 'show'" do
-      it "is successful" do
-        get :show
-        expect(response).to be_successful
-      end
+      let(:list) { create(:list) }
+        it "is successful" do
+          get :show, id: list.id
+          expect(response).to be_successful
+       end
     end
 
     describe "GET 'edit'" do
-      it "is successful" do
-        get :edit
-        expect(response).to be_successful
-      end
+      let(:list) { create(:list) }
+        it "is successful" do
+          get :edit, id: list.id
+          expect(response).to be_successful
+        end
     end
 
     describe "PATCH 'update'" do
