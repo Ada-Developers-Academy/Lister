@@ -25,6 +25,17 @@ describe ListsController do
         expect(response).to redirect_to sign_in_path
       end
     end
+
+    context "when user is signed in" do
+      before do
+        session[:user_id] = 1
+      end
+      
+      it "creates a list" do
+        post :create, name: "Another List"
+        expect(List.last.name).to eq "Another List"
+      end
+    end
   end
 
   describe "GET 'show'" do
