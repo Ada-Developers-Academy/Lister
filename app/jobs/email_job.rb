@@ -1,8 +1,8 @@
 class EmailJob
 
   @queue = :email
-  def self.perform
-    puts "THIS IS A JOB"
+  def self.perform(user_id)
+    UserMailer.welcome(user_id).deliver
   end
 
 end
