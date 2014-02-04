@@ -1,5 +1,7 @@
 Lister::Application.routes.draw do
 
+  root to: "users#show"
+
   get  "/signin" =>"sessions#new", as: :sign_in
   post "/signin" =>"sessions#create"
 
@@ -8,5 +10,6 @@ Lister::Application.routes.draw do
   get "/users" => "users#show", as: :users
   get "/user/:id" => "users#show", as: :user
 
-  root to: "users#show"
+  resources :lists
+
 end
