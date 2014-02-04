@@ -2,10 +2,10 @@ Lister::Application.routes.draw do
   
   root 'session#new'
 
-  get 'session/new'      => 'session#new',    as: 'new_session'
+  get 'session/new'      => 'session#new',    as: 'sign_in'
   post 'session/create'  => 'session#create', as: 'create_session'
 
-  get 'users/new'        => 'users#new',      as: 'new_user'
+  get 'users/new'        => 'users#new',      as: 'sign_up'
   post 'users/create'    => 'users#create',   as: 'create_user'
   get 'users/show'       => 'users#show',     as: 'show_user'
 

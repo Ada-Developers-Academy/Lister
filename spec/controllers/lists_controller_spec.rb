@@ -19,6 +19,12 @@ describe ListsController do
   end
 
   describe "POST 'create'" do
+    context "when user is not signed in" do
+      it "redirects to sign in page" do
+        post :create
+        expect(response).to redirect_to sign_in_path
+      end
+    end
   end
 
   describe "GET 'show'" do

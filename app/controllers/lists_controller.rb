@@ -7,6 +7,7 @@ class ListsController < ApplicationController
   end
 
   def create
+    redirect_to sign_in_path
   end
 
   def show

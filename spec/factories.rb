@@ -13,11 +13,11 @@ FactoryGirl.define do
 
   factory :list do
     name "My Listy List"
-    user_id 1
+    user
   end
 
   factory :item do
     name "The Spanish Inquisition"
-    list_id 1
+    list
   end
 end
