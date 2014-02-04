@@ -7,13 +7,13 @@ class ListsController < ApplicationController
     if session[:user_id]
       @list = List.new(list_params)
       if @list.save
-        p @list
-        # flash[:notice] = "List has been successfully created!"
+        flash[:notice] = "List has been successfully created!"
+        # p User.find(session[:user_id]).lists
+        # p @list.user
         redirect_to user_path(session[:user_id])
       else
-        p @list
+        flash[:notice] = "There was a problem saving your list."
         render :new
-
       end
     else
       flash[:notice] = "You must be signed in to create a list!"
