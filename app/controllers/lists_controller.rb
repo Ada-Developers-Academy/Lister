@@ -1,5 +1,14 @@
 class ListsController < ApplicationController
   def new
+    @list = List.new
+  end
+
+  def create
+    # list = List.new(list_params)
+    # if list.save
+    # else
+
+    # end
   end
 
   def index
@@ -10,4 +19,8 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
   end
 
+private
+  def list_params
+    params.require(:list).permit(:name, :user_id)
+  end
 end
