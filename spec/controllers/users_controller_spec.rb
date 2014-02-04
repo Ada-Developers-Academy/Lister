@@ -40,9 +40,34 @@ describe UsersController do
 
   describe "GET 'show'" do
     let(:user) { create(:user) }
-    it "is successful" do
-      get :show, id: user.id
-      expect(response).to be_successful
-    end
+    render_views
+      
+      it "is successful" do
+        get :show, id: user.id
+        expect(response).to be_successful
+      end
+
+      it "has an array of the users' lists" do
+        list = create(:list)
+        list2 = create(:list2)
+        get :show, id: user.id
+        expect(assigns(:lists)).to match_array([list])
+      end
+
+      it 'does not show the lists of other users' do
+        list = create(:list)
+        list2 = create(:list2)
+        get :show, id: user.id
+        expect(response.body).to_not include(list2.title)
+        expect(response.body).to_not include(list2.description)
+      end
+
+      it "loads all the users' lists in the view" do
+        list = create(:list)
+        list2 = create(:list2)
+        get :show, id: user.id
+        expect(response.body).to include(list.title)
+        expect(response.body).to include(list.description)
+      end
   end
 end
