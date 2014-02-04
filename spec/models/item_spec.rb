@@ -1,19 +1,20 @@
 require 'spec_helper'
 
-describe "List" do
-  let(:item1) { create(:item1) }
+describe "Item" do
+  let(:item) { create(:item) }
   describe "validates" do
     it "is valid" do
-      expect(item1).to be_valid
+      expect(item).to be_valid
     end
     
     it "name presence" do
-      item1.update(name: nil)
-      expect(item1.errors[:name]).to include "can't be blank"
+      item.update(name: nil)
+      expect(item.errors[:name]).to include "can't be blank"
     end
 
-    it "belongs to a list"
-      item1.update(list_id: nil)
-      expect(item1.errors[:list_id]).to be_invalid
+    it "belongs to a list" do
+      item.update(list_id: nil)
+      expect(item).to be_invalid
     end
+  end
 end

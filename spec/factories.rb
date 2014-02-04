@@ -16,13 +16,8 @@ FactoryGirl.define do
     user_id 1
   end
 
-  factory :item1 do
+  factory :item do
     name "The Spanish Inquisition"
-    list_id 1
-  end
-
-  factory :item2 do
-    name "Fate-free yogurt"
     list_id 1
   end
 end

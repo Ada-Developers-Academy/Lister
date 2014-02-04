@@ -11,9 +11,10 @@ describe "List" do
       list.update(name: nil)
       expect(list.errors[:name]).to include "can't be blank"
     end
-
-    it "belongs to a user"
+ 
+    it "belongs to a user" do
       list.update(user_id: nil)
-      expect(list.errors[:user_id]).to be_invalid
+      expect(list).to be_invalid
     end
+  end
 end
