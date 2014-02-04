@@ -12,11 +12,11 @@ FactoryGirl.define do
   end
 
   factory :list do
-    name "Test List"
+    name "Favorite Items List"
     user_id 1
   end
 
-  factory :item1 do
+  factory :item do
     name "Barf"
     list_id 1
   end

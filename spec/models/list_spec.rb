@@ -14,7 +14,7 @@ describe "List" do
 
     it "must be associated with a user" do
       list.update(user_id: nil)
-      expect(list.errors[:user_id]).to be_invalid
+      expect(list).to be_invalid
     end
 
   end
