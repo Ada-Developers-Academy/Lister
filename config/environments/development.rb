@@ -9,10 +9,10 @@ Lister::Application.configure do
     address:              "smtp.mandrillapp.com",
     port:                 587,
     enable_starttls_auto: true,
-    user_name:            "liz.m.rush@gmail.com", # YOUR MANDRILL USERNAME
-    password:             ENV["MANDRILL_KEY"], # A MANDRILL API KEY
+    user_name:            ENV["MANDRILL_USERNAME"],
+    password:             ENV["MANDRILL_KEY"],
     authentication:       'login',
-    domain:               'yourdomain.com'
+    domain:               'yourdomain.com' #put in wahtever.herokuappcom
   }
 
   config.cache_classes = false

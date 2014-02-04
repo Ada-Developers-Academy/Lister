@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      Resque.enque(EmailJob, @user.id)
+      Resque.enqueue(EmailJob, @user.id)
         redirect_to root_path, notice: "Successfully created new user"
       else
         render :new
