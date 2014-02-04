@@ -13,6 +13,6 @@ Lister::Application.routes.draw do
   get "/user/:id" => "users#show", as: :user
 
 
-  resources :lists
+  resources :lists, :items
 
 end
