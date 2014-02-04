@@ -30,10 +30,11 @@ describe ListsController do
       before do
         session[:user_id] = 1
       end
-      
+
       it "creates a list" do
         post :create, name: "Another List"
         expect(List.last.name).to eq "Another List"
+        expect(response).to redirect_to list_path(List.last.id)
       end
     end
   end
