@@ -33,8 +33,9 @@ describe ListsController do
 
       it "creates a list" do
         post :create, name: "Another List"
-        expect(List.last.name).to eq "Another List"
-        expect(response).to redirect_to list_path(List.last.id)
+        list = List.last
+        expect(list.name).to eq "Another List"
+        expect(response).to redirect_to list_path(list.id)
       end
     end
   end
