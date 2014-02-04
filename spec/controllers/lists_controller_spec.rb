@@ -21,14 +21,14 @@ describe ListsController do
 
     describe "GET 'show'" do
       it "is successful" do
-        get :index
+        get :show
         expect(response).to be_successful
       end
     end
 
     describe "GET 'edit'" do
       it "is successful" do
-        get :index
+        get :edit
         expect(response).to be_successful
       end
     end
