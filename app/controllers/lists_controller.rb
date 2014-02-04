@@ -4,11 +4,18 @@ class ListsController < ApplicationController
   end
 
   def create
-    # list = List.new(list_params)
-    # if list.save
-    # else
+    if session[:user_id]
+      @list = List.new(list_params)
+      if @list.save
+        p @list
+        redirect_to user_path(session[:user_id])
+      else
 
-    # end
+      end
+    else
+      flash[:notice] = "You must be signed in to create a list!"
+      redirect_to lists_path
+    end
   end
 
   def index

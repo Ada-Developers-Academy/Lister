@@ -38,12 +38,23 @@ describe ListsController do
 
   describe 'POST create' do
     context 'with valid user' do
-      user = User.create
-      # session[:user_id] = user.id
-      it 'assigns list to current user' do
-        list = create(:list)
-        expect(list.user_id).to eq session[:user_id]
+      # before(:each) do
+      #   user = User.create
+      # end
+      context 'with valid fields' do
+        it 'redirects to user show' do
+          expect(response.status).to eq 302
+        end
+
+        it 'assigns list to current user' do
+          user = create(:user)
+          session[:user_id] = user.id
+          # list = create(:list)
+          post :create, list: {name: "cake", user_id: session[:user_id]}
+          expect(assigns(:list).user_id).to eq user.id
+        end
       end
+
     end
 
     context 'with invalid user' do
