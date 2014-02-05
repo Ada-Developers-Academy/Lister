@@ -1,11 +1,21 @@
-<br><br><br><br>this is the root path
-khasgkasjh
-<div class="row">
-<% if @current_user.nil? %>
-  <div class="col-md-8" style="border: 1px dashed"> <%= render "users/form" %></div>
-  <div class="col-xs-6 col-sm-3 sidebar-offcanvas" style="border: 1px dashed"> <%= @lists.inspect %></div>
+<br><br><br><br>
+
+<div class="row row-offcanvas row-offcanvas-right">
+  <% if @current_user.nil? %>
+  <div class="col-xs-12 col-sm-9">
+    <div class="jumbotron">
+      <%= "Welcome to Lister!" %>
+      <p>Sign in or sign up for Lister & start making your first lists!</p>
+    </div>
+    </div>
+  <div class="col-xs-4 col-sm-3 sidebar-offcanvas" style="border: 1px dashed"> <%= 'most recent lists here'  %></div>
+
 <% else %>
   <div class="col-md-8" style="border: 1px dashed"> <%= @users_lists.inspect %></div>
-  <div class="col-xs-6 col-sm-3 sidebar-offcanvas" style="border: 1px dashed"><%= @lists.inspect %> </div>
+  <div class="col-xs-4 col-sm-3 sidebar-offcanvas" style="border: 1px dashed"><%= 'most recent lists here' %> </div>
 <%  end %>
 </div>
+
+
+
+ <div class="col-md-8" style="border: 1px dashed"> <%= render "users/form" %></div>

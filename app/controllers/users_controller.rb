@@ -17,14 +17,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    respond_to do |format|
     if @user.save
       Resque.enqueue(EmailJob, @user.id)
         redirect_to root_path, notice: "Successfully created new user"
       else
         render :new
       end
-    end
   end
 
   def edit
