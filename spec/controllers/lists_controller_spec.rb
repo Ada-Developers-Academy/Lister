@@ -7,11 +7,11 @@ describe ListsController do
       expect(response).to be_successful
     end
 
-    #rendering partials?
-    # it 'renders form' do
-    #   get :new
-    #   expect(response).to render_template('form')
-    # end
+    # rendering partials?
+    it 'renders new' do
+      get :new
+      expect(response).to render_template :new
+    end
   end
 
   describe 'GET index' do 
@@ -202,7 +202,6 @@ describe ListsController do
         expect(flash[:notice]).to eq "You are not authorized to update this list!"
       end
     end
-
 
   end
 

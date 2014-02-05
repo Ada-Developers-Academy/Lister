@@ -1,5 +1,7 @@
 class ListsController < ApplicationController
-  
+  # before_action :set_list, only: [:edit, :update ] #:destroy
+  # before_action :current_user, only: [:edit, :update] #:create
+
   def new
     @list = List.new
   end
@@ -58,6 +60,11 @@ class ListsController < ApplicationController
 
   def list_params
     params.require(:list).permit(:name, :user_id)
+  end
+
+  private
+  def set_list
+    @list = List.find(params[:id])
   end
 
 end
