@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<% if signed_in? %>
+  <p>Hello, <%= link_to "#{current_user.username}", users_path(@user) %></p>
+  <p><a href="/signout"><span>Sign Out</span></a></p>
+<% else %>
+  <p><a href="/signup">Sign Up</a> or <a href="/signin">Sign In</a></p>
+<% end %>
 <%= yield %>
 
 </body>

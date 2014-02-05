@@ -16,3 +16,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem 'simplecov', :require => false
 end
+
+group :development do
+  gem "better_errors"
+end
