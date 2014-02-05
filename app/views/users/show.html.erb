@@ -1,10 +1,11 @@
 <br><br><br><br>this is the root path
 khasgkasjh
-
+<div class="row">
 <% if @current_user.nil? %>
-  <div class=".col-md-6"> <%= render "users/form" %></div>
-  <div class = ".col-md-4"> <%= @lists.inspect %></div>
+  <div class="col-md-8" style="border: 1px dashed"> <%= render "users/form" %></div>
+  <div class="col-xs-6 col-sm-3 sidebar-offcanvas" style="border: 1px dashed"> <%= @lists.inspect %></div>
 <% else %>
-  <div class=".col-md-6"> <%= @users_lists.inspect %></div>
-  <div class = ".col-md-4"><%= @lists.inspect %> </div>
+  <div class="col-md-8" style="border: 1px dashed"> <%= @users_lists.inspect %></div>
+  <div class="col-xs-6 col-sm-3 sidebar-offcanvas" style="border: 1px dashed"><%= @lists.inspect %> </div>
 <%  end %>
+</div>
