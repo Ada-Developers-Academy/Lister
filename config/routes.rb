@@ -1,6 +1,9 @@
 Lister::Application.routes.draw do
 
 
+  resources :items
+
+  get "/sigin", to: "sessions#new", as: :sign_in
   resources :lists
 
   root 'users#index'
