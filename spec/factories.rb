@@ -13,5 +13,6 @@ FactoryGirl.define do
 
   factory :list do
     name "dogs"
+    user_id 4
   end
 end

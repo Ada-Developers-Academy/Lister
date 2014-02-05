@@ -5,12 +5,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(
-      username: params[:user][:username], 
-      email: params[:user][:email], 
-      password: params[:user][:password],
-      password_confirmation: params[:user][:password_confirmation])
-    if user.save
+    @user = User.new(user_params)
+    if @user.save
       flash[:notice] = "List a list"
       redirect_to "/"
     else
@@ -20,4 +16,9 @@ class UsersController < ApplicationController
 
   def show
   end
+
+  def user_params
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+  end
 end
+
