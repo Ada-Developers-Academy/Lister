@@ -11,7 +11,7 @@ describe ListsController do
 
   describe "POST create" do
     context "with valid attributes" do
-      let(:valid_attributes) { {title: "Books to Read", user_id: 1} }
+      let(:valid_attributes) { {id: 1, title: "Books to Read", user_id: 1} }
       it "changes count of lists by 1" do
         expect { post :create, list: valid_attributes }.to change(List, :count).by(1)
       end
@@ -23,7 +23,7 @@ describe ListsController do
 
       it "takes user to List show page" do
         post :create, list: valid_attributes
-        expect(response).to render :show
+        expect(response).to redirect_to list_path(assigns(:list).id)
       end
     end
 
