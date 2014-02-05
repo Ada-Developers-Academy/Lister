@@ -5,6 +5,9 @@ Lister::Application.routes.draw do
   get '/signin'     => 'session#new'
   post '/signin'    => 'session#create'
   get '/signout'    => 'session#destroy'
+
+  get '/lists/new'  => 'lists#new'
+  post '/lists/new' => 'lists#create'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

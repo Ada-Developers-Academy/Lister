@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe WelcomeController do
   context "GET 'index'" do
+  render_views
     
       it "is successful" do
         get :index

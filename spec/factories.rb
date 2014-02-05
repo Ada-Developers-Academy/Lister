@@ -19,14 +19,19 @@ FactoryGirl.define do
   end
 
   factory :list1, class: List do
-    title 'Cool Stuff'
+    title 'Cool Stuff1'
     description 'This is a list of things'
     user_id 1
   end
 
   factory :list2, class: List do
-    title 'Cool Stuff'
+    title 'Cool Stuff2'
     description 'This is a list of things'
     user_id 2
+  end
+
+  factory :list_item do
+    description 'I am a thing that is cool.'
+    list_id 1
   end
 end
