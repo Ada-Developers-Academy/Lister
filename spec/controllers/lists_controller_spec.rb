@@ -47,16 +47,4 @@ describe ListsController do
     end
   end
 
-  describe "GET 'edit'" do
-    it 'is successful' do
-      get :edit, id: list.id
-      expect(response).to be_successful
-    end
-  end
-
-  describe "PATCH 'update'" do
-  end
-
-  describe "DELETE 'destroy'" do
-  end
 end

@@ -11,7 +11,6 @@ Lister::Application.routes.draw do
 
   post 'items/new'       => 'items#new',      as: 'new_item'
   patch 'items/update'   => 'items#update',   as: 'update_item'
-  delete 'items/destroy' => 'items#destroy',  as: 'destroy_item'
 
   resources :lists
 
