@@ -1,6 +1,6 @@
 Lister::Application.routes.draw do
   
-  root 'session#new'
+  root 'lists#index'
 
   get 'session/new'      => 'session#new',    as: 'sign_in'
   post 'session/create'  => 'session#create', as: 'create_session'

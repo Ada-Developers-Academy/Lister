@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Lister</title>
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Lister</title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
 
-<%= yield %>
+  <body>
+    <h1>List Yo Lists</h1>
+    <p><%= link_to "Sign In", sign_in_path %></p>
+    <p><%= link_to "Sign Up", sign_up_path %></p>
 
-</body>
+    <%= yield %>
+    
+  </body>
 </html>
