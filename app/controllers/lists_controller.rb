@@ -5,11 +5,12 @@ class ListsController < ApplicationController
   end
 
   def new
+    @list = List.new
   end
 
   def create
     unless session[:user_id].nil?
-      list = List.create(name: params[:name], user_id: session[:user_id])
+      list = List.create(list_params)
       redirect_to list_path(list.id)
     else
       redirect_to sign_in_path, notice: "Sign in to create a list"
@@ -18,6 +19,12 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find_by(id: params[:id])
+  end
+
+  private
+
+  def list_params
+    params.require(:list).permit(:name, :user_id)
   end
 
 end

@@ -1,0 +1,18 @@
+<h2>New List</h2>
+
+<%= form_for(@list) do |f| %>
+  
+  <p>
+    <%= label_tag :name %>
+    <br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.hidden_field :user_id, value: session[:user_id] %>
+  </p>
+
+  <div class="actions">
+    <%= f.submit("Onward, to glory!", :class => "btn btn-default")%>
+  </div>
+<% end %>
