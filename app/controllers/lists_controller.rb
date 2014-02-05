@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
+  before_action :require_login, except: [:show, :index ]
   before_action :set_list, only: [:edit, :update ] #:destroy
-  before_action :require_login, except: [:show ]
   before_action :valid_user, only: [:edit, :update] #:create
 
   def new
@@ -50,6 +50,7 @@ class ListsController < ApplicationController
 
   def require_login
     unless session[:user_id]
+      # p "should be nil", session[:user_id]
       flash[:notice] = "You must be signed in!"
       redirect_to lists_path
     end
