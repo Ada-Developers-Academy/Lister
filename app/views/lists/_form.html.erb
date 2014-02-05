@@ -1,4 +1,19 @@
-<% form_for @list %>
+<h1>Create list</h1>
+<%= form_for @list do |f| %>
+  <% if @list.errors.any? %>
+    <h2>Form is invalid</h2>
+    <% for message in @form.errors.full_messages %>
+      <%= message %>
+    <% end %>
+  <% end %>
 
-
+  <div class = 'field'>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  
+  
+  <%= f.submit 'Create list!' %>
 <% end %>
+
+

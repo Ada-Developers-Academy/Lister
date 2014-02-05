@@ -1,0 +1,13 @@
+<h1>Hello, <%= @user.username%>!</h1>
+
+<% if @lists.empty? %>
+  <div>
+    <h2>You don't have any lists!</h2>
+    <%= link_to "Create list!", new_list_path %>
+  </div>
+<% else %>
+  <% @lists.each do |list| %>
+  <%= list.inspect %>
+  <% end %>
+<% end %>
+
