@@ -1,4 +1,4 @@
-require 'spec_helper' do 
+require 'spec_helper' 
 
 describe 'List' do 
   let(:list) { create(:list)}

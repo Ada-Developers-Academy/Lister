@@ -1,6 +1,6 @@
-require 'spec_helper' do 
+require 'spec_helper' 
 
-describe ListController do
+describe ListsController do
 
   # describe "GET 'index" do
   #   let(:user_all) 
@@ -15,9 +15,10 @@ describe ListController do
     end
   end
 
-  describe "POST 'create' " do 
+  describe "POST 'create' " do
+
     context 'with valid attributes' do 
-      let(:valid_list) { name: 'To do'}
+      let(:valid_list) { List.new(name: 'To do')}
 
       it 'is a redirect' do 
         post :create, list: valid_list
@@ -31,7 +32,8 @@ describe ListController do
     end
 
     context 'with invalid attributes' do
-      let(:invalid_list) {name: }
+      let(:invalid_list) { List.new(name: '')}
+
       it 'renders the new template' do 
         post :create, list: invalid_list
         expect(response).to render_template :new
@@ -44,4 +46,5 @@ describe ListController do
     end
   end
 end
+
 
