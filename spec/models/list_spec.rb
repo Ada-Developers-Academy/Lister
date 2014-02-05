@@ -12,9 +12,9 @@ describe List do
       expect(list).to be_invalid
     end
 
-    it 'should have a description' do
-      list.update(description: nil)
-      expect(list).to be_invalid
+    it 'should have a user_id' do
+      list.update(user_id: nil)
+      expect(list).to be_valid
     end
   end
 end

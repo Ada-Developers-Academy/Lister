@@ -7,7 +7,6 @@ describe SessionController do
       get :new
       expect(response).to be_successful
     end
-  
   end
 
   describe "POST 'create'" do

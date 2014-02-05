@@ -11,6 +11,10 @@ describe UsersController do
   describe "POST 'create'" do
     context "with valid attributes" do
       let(:valid_attributes) { {username: "bookis", email: "b@c.com", password: "gogo1234", password_confirmation: "gogo1234"} }
+      before do 
+        session[:user_id] = nil
+      end
+      
       it "is a redirect" do
         post :create, user: valid_attributes
         expect(response.status).to eq 302 # This is a redirect
@@ -24,7 +28,13 @@ describe UsersController do
         post :create, user: valid_attributes
         expect(flash[:notice]).to_not be_blank
       end
+
+      it 'sets the session[:user_id]' do
+        post :create, user: valid_attributes
+        assigns(:user)
+        expect(session[:user_id]).to_not be_nil
     end
+  end
   
     context "with invalid attributes" do
       it "renders the new template" do
@@ -39,6 +49,8 @@ describe UsersController do
   end
 
   describe "GET 'show'" do
+
+    context 'user is logged in' do
     let(:user) { create(:user) }
     before do 
       session[:user_id] = user.id
@@ -71,5 +83,17 @@ describe UsersController do
         expect(response.body).to include(list.title)
         expect(response.body).to include(list.description)
       end
+    end
+
+    context 'no user is logged in' do
+      before do 
+        session[:user_id] = nil
+      end
+
+      it 'redirects to the root page' do
+        get :show, id: 1
+        expect(response).to redirect_to root_path
+      end
+    end
   end
 end

@@ -10,8 +10,8 @@ describe ListsController do
 
   describe "POST 'create'" do
     context "with valid attributes" do
+      let(:user) { create(:user) }
       before do 
-        user = create(:user)
         session[:user_id] = user.id
       end
       let(:valid_attributes) { {title: "Cool List", description: "A really cool list of stuff."} }
@@ -29,6 +29,12 @@ describe ListsController do
         post :create, list: valid_attributes
         expect(flash[:notice]).to_not be_blank
       end
+
+      it 'should set a user_id' do
+        post :create, list: valid_attributes
+        # list = assigns(:list)
+        expect(assigns(:list).user_id).to eq(user.id)
+      end
     end
   
     context "with invalid attributes" do
@@ -43,4 +49,18 @@ describe ListsController do
     end
   end
 
+  describe "GET 'show'" do
+    let(:list) { create(:list) }
+     it 'should work' do
+      get :show, id: list.id
+      expect(response.status).to eq 200
+     end
+
+     it 'should be that list' do 
+      list1 = create(:list1)
+      list2 = create(:list2)
+      get :show, id: list.id
+      expect(assigns(:list)).to eq list
+   end
+ end
 end

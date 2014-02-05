@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       redirect_to user_path(@user.id), notice: 'Well done, you.'
     else
       render :new
@@ -13,8 +14,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @lists = @user.lists
+    if current_user
+      @user = current_user
+      @lists = @user.lists
+    else
+      redirect_to :root, notice: 'Tsk tsk, log in to look at your user page'
+    end
   end
 
   private
