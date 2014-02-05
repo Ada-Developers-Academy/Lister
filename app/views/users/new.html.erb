@@ -1,19 +1,11 @@
-Sign Up
+<h2>Sign UP</h2>
 
 <%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li> <%= message %> </li>
-      <% end %> 
-    </ul>
-  <% end %>
   
   <p>
     <%= label_tag :username %>
     <br>
-    <%= f.text_field :nsername %>
+    <%= f.text_field :username %>
   </p>
 
   <p>
@@ -35,6 +27,6 @@ Sign Up
   </p>
 
   <div class="actions">
-    <%= f.submit("Onward, to glory!")%>
+    <%= f.submit("Onward, to glory!", :class => "btn btn-default")%>
   </div>
 <% end %>

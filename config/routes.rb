@@ -7,7 +7,7 @@ Lister::Application.routes.draw do
 
   get 'users/new'        => 'users#new',      as: 'sign_up'
   post 'users/create'    => 'users#create',   as: 'create_user'
-  get 'users/show'       => 'users#show',     as: 'show_user'
+  get 'users/show'       => 'users#show',     as: 'users'
 
   post 'items/new'       => 'items#new',      as: 'new_item'
   patch 'items/update'   => 'items#update',   as: 'update_item'

@@ -1,1 +1,5 @@
-Lists go here.
+<h2>Here You Can See All Of The Lists</h2>
+
+<%= @lists.each do |list| %>
+  <p><%= link_to "#{list.name}", list_path(list.id) %></p>
+<% end %>
