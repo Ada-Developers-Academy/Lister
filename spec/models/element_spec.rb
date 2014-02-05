@@ -1,20 +1,18 @@
 require 'spec_helper'
 
-describe "Element" do
-  let(:element) { create(:element) }
-  describe "validates" do
+describe "Element" do  
+  describe "validations" do
     it "is valid" do
-      expect(element).to be_valid
+      expect(Element.new(list_id: 1, body: "test body")).to_not be_valid
     end
 
     it "should have a body"
-      element.update(body: nil)
-      expect(element).to_not be_valid
+      expect(Element.new(list_id: 1, body: nil)).to_not be_valid
     end
 
     it "body has at least one char" do
-      element.update(body: "b.com")
-      expect(element.errors[:body]).to include "must contain at least one character"
+      expect(Element.new(list_id: 1, body: "")).to_not be_valid
+      # expect(element.errors[:body]).to include "must contain at least one character"
     end
   end
-end
+
