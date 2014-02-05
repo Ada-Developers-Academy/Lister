@@ -5,7 +5,7 @@ Lister::Application.routes.draw do
   #resources :session, only: [:new, :create]
   match '/signup',  to: 'users#new',       via: 'get'
   match '/signin',  to: 'session#new',     via: 'get'
-  match '/signin',  to: 'session#create',  via: 'post'
+  match '/session', to: 'session#create',  via: 'post'
   match '/signout', to: 'session#destroy', via: 'get'
   match '/signout', to: 'session#destroy', via: 'delete'
   root 'welcome#index'
