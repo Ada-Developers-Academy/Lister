@@ -1,5 +1,11 @@
 Lister::Application.routes.draw do
 
+  get "lists/new"
+  get "lists/create"
+  get "lists/delete"
+  get "lists/index"
+  get "lists/show"
+  get "lists/update"
   root 'welcome#index'
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
