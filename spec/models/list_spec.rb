@@ -9,4 +9,9 @@ describe List do
      expect(list).to be_valid
     end
   end
+
+  it "should have a title" do
+    list.update(title: nil)
+    expect(list).to_not be_valid
+  end
 end

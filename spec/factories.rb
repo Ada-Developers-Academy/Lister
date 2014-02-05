@@ -12,6 +12,7 @@ FactoryGirl.define do
   end
 
   factory :list do
+    title "Example List"
   end
 
   factory :element do
