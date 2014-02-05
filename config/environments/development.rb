@@ -1,4 +1,15 @@
 Lister::Application.configure do
+  config.action_mailer.raise_delivery_errors = true # gives more info for delivery errors - default is false in development, in production default is true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              "smtp.mandrillapp.com", #'smtp.gmail.com', 
+    port:                 587, #ALSO FROM MANDRILL
+    enable_starttls_auto: true,
+    user_name:            "hhhdeveloper@gmail.com", # YOUR MANDRILL USERNAME
+    password:              Figaro.env.mandrill_key, # A MANDRILL API KEY - USE FIGARO OR SOMETHING TO HIDE THIS!!!
+    authentication:       'login', # MANDRILL ALSO ACCEPTS 'text'
+    domain:               'yourdomain.com' # need to configure DNS?
+  }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
