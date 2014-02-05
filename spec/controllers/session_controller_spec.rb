@@ -66,7 +66,8 @@ describe SessionController do
   describe "#destroy" do
 
     it "should clear the session" do
-      session[:user_id].should_not be_nil
+      user = create(:user)
+      session[:user_id] = user.id
       delete :destroy
       session[:user_id].should be_nil
     end

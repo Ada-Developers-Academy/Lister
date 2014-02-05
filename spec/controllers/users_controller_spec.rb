@@ -40,6 +40,9 @@ describe UsersController do
 
   describe "GET 'show'" do
     let(:user) { create(:user) }
+    before do 
+      session[:user_id] = user.id
+    end
     render_views
       
       it "is successful" do
@@ -54,12 +57,11 @@ describe UsersController do
         expect(assigns(:lists)).to match_array([list])
       end
 
-      it 'does not show the lists of other users' do
+      it "does not have other users' lists in @lists" do
         list = create(:list)
         list2 = create(:list2)
         get :show, id: user.id
-        expect(response.body).to_not include(list2.title)
-        expect(response.body).to_not include(list2.description)
+        expect(assigns(:lists)).to_not match_array([list,list2])
       end
 
       it "loads all the users' lists in the view" do

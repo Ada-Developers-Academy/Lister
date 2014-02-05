@@ -13,4 +13,9 @@ class SessionController < ApplicationController
       flash.now[:notice] = 'Invalid username or password'
     end
   end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to :root
+  end
 end
