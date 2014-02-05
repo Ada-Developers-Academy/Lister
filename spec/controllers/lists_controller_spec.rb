@@ -20,22 +20,34 @@ describe ListsController do
 
   describe "POST 'create'" do
     context "when user is not signed in" do
-      it "redirects to sign in page" do
+
+      before do
         post :create
+      end
+
+      it "redirects to sign in page" do
         expect(response).to redirect_to sign_in_path
+      end
+
+      it "sets a flash notice" do
+        expect(flash[:notice]).to_not be_blank
       end
     end
 
     context "when user is signed in" do
       before do
         session[:user_id] = 1
+        post :create, name: "Another List"
       end
 
+      let(:list) { List.last }
+
       it "creates a list" do
-        post :create, name: "Another List"
-        list = List.last
         expect(list.name).to eq "Another List"
-        expect(response).to redirect_to list_path(list.id)
+      end
+
+      it "redirects to list show page" do
+        expect(response).to redirect_to list_path(List.last.id)
       end
     end
   end

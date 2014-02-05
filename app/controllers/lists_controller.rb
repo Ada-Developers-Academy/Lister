@@ -12,7 +12,7 @@ class ListsController < ApplicationController
       list = List.create(name: params[:name], user_id: session[:user_id])
       redirect_to list_path(list.id)
     else
-      redirect_to sign_in_path
+      redirect_to sign_in_path, notice: "Sign in to create a list"
     end
   end
 
