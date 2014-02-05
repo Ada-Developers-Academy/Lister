@@ -1,11 +1,15 @@
 class ListsController < ApplicationController
   def new
+    @list = List.new
   end
 
   def create
-  end
-
-  def update
+    @list = List.new(params.require(:list).permit(:title))
+    if @list.save
+      redirect_to '/', notice: "Thanks for listing your list!"
+    else
+      render :new, notice: "Something went wrong :("
+    end
   end
 
   def index
@@ -13,5 +17,8 @@ class ListsController < ApplicationController
 
   def show
   end
-  
+
+  def destroy
+  end
+
 end

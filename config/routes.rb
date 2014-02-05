@@ -7,7 +7,8 @@ Lister::Application.routes.draw do
   post '/users/create', to: 'users#create'  
 
   get '/lists/new', to: 'lists#new', as: :new_list
-  
+  post '/lists/create', to: 'lists#create'
+
 
   
 
