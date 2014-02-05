@@ -3,6 +3,14 @@ class ListsController < ApplicationController
     @list = List.new
   end
 
+  def edit
+    @list = List.find(params[:id])
+    if @list.user.id == session[:user_id]
+    else
+      redirect_to list_path(@list)# flash[:notice] = "You are not authorized to edit this list!"
+    end
+  end
+
   def create
     if session[:user_id]
       @list = List.new(list_params)

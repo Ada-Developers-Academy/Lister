@@ -93,7 +93,6 @@ describe ListsController do
     end
 
     context 'with user who is not signed in' do      
-      
       before(:each) do
         session[:user_id] = nil
       end
@@ -107,10 +106,38 @@ describe ListsController do
         post :create
         expect(flash[:notice]).to_not be_blank
       end
+    end
+  end
 
+  describe 'GET edit' do
+    context 'user owns list' do
+      let(:user) { create(:user) }
+      let(:list) { create(:list, user_id: user.id, name: "cake")}
+      
+      before(:each) do
+        session[:user_id] = user.id
+      end
+
+      it 'is successful' do
+        get :edit, id: list.id
+        expect(response).to be_successful
+      end
     end
 
+    context 'user does not own list' do
+      let(:user) { create(:user) }
+      let(:list) { create(:list, user_id: user.id, name: "cake")}
+      
+      before(:each) do
+        session[:user_id] = 1
+      end
 
+      it 'is not successful' do
+        get :edit, id: list.id
+        expect(response).to_not be_successful
+      end
+
+    end
   end
 
 end
