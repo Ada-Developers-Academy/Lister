@@ -179,7 +179,7 @@ describe ListsController do
 
         it 'name cannot be blank' do
           patch :update, id: list.id, list: invalid_attributes
-          expect(list.errors.full_messages).to include "Name can't be blank" #why is this not passing?
+          expect(assigns(:list).errors.full_messages).to include "Name can't be blank" #why is this not passing?
         end
       end
     end
