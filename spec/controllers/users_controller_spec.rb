@@ -10,7 +10,19 @@ describe UsersController do
 
   describe "POST 'create'" do
     context "with valid attributes" do
+
+      before(:each) do
+        ActionMailer::Base.delivery_method = :test
+        ActionMailer::Base.perform_deliveries = true
+        ActionMailer::Base.deliveries = []
+      end
+
+      after(:each) do
+        ActionMailer::Base.deliveries.clear
+      end
+
       let(:valid_attributes) { {username: "bookis", email: "b@c.com", password: "gogo1234", password_confirmation: "gogo1234"} }
+
       it "is a redirect" do
         post :create, user: valid_attributes
         expect(response.status).to eq 302 # This is a redirect
@@ -25,9 +37,14 @@ describe UsersController do
         expect(flash[:notice]).to_not be_blank
       end
 
-      it "sends an email" do
+      it "sends to user's email address" do
         post :create, user: valid_attributes
         ActionMailer::Base.deliveries.last.to.should == [assigns(:user).email]
+      end
+
+      it 'should send an email' do
+        expect { post :create, user: valid_attributes }.to change(ActionMailer::Base.deliveries, :count).by(1)
+        # p ActionMailer::Base.deliveries
       end
     end
   
