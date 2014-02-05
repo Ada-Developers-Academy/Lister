@@ -87,13 +87,27 @@ describe ListsController do
           post :create, list: invalid_attributes
           expect(flash[:notice]).to_not be_blank
         end
-
       end
 
     end
 
-    # context 'with invalid user' do
-    # end
+    context 'with user who is not signed in' do      
+      
+      before(:each) do
+        session[:user_id] = nil
+      end
+
+      it 'redirects to list index' do
+        post :create
+        expect(response.status).to eq 302
+      end
+
+      it 'sets flash message' do
+        post :create
+        expect(flash[:notice]).to_not be_blank
+      end
+
+    end
 
 
   end
