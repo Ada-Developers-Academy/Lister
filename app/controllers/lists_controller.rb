@@ -38,6 +38,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @name = @list.user.username
   end
 
   private

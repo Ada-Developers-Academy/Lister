@@ -3,11 +3,17 @@
 <% if @lists.empty? %>
   <div>
     <h2>You don't have any lists!</h2>
-    <%= link_to "Create list!", new_list_path %>
   </div>
 <% else %>
+  <ul>
   <% @lists.each do |list| %>
-  <%= list.inspect %>
+    <li><%= link_to "#{list.name}", list_path(list) %></li>
   <% end %>
+</ul>
 <% end %>
+
+<div>
+  <%= link_to "Create new list!", new_list_path %>
+</div>
+
 
