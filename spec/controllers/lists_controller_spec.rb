@@ -28,11 +28,12 @@ describe ListsController do
 
     context "when user is signed in" do
       before do
-        session[:user_id] = 1
+        user = create(:user)
+        session[:user_id] = user.id
       end
 
       it "creates new list" do
-        post :create,  name: "Heyho"
+        post :create, name: "Heyho"
         list = List.last
         expect(list.name).to eq "Heyho"
         expect(response).to redirect_to list_path(list.id)
