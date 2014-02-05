@@ -1,1 +1,13 @@
-Find me at new.html.erb
+<h1>List your Login Information</h1>
+
+<%= form_tag sign_in_path do %>
+  <div class= "field">
+    <%= label_tag :username %>
+    <%= text_field_tag :username, params[:username] %>
+  </div>
+  <div class= "field">
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
+  <div class="actions"><%= submit_tag "Start Listing!"%></div>
+<% end %>

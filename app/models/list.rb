@@ -1,4 +1,4 @@
-class List < ActiveRecord::
+class List < ActiveRecord::Base
   belongs_to :user
   has_many :elements
 end
