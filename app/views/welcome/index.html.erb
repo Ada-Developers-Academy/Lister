@@ -1,0 +1,5 @@
+<% unless List.all.length == 0 %>
+  <% List.all.each do |list| %>
+    <%= link_to(list.title, list) %>
+  <% end %>
+<% end %>

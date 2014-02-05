@@ -10,10 +10,10 @@ Lister::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
   resources :lists
-  get  'sessions/new'    => 'sessions#new'
-  post 'sessions/create' => 'sessions#create'
+  get  'sessions/new'    => 'sessions#new',     as: 'new_session'
+  post 'sessions/create' => 'sessions#create',  as: 'create_session'
   get  'users/new'       => 'users#new',        as: 'new_user'
-  post 'users/create'    => 'users#create'
+  post 'users/create'    => 'users#create',     as: 'create_user'
   get  'users/:id'       => 'users#show'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -3,14 +3,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(username: params[:username])
-    if user && user.authenticate(params[:password])
+    user = User.find_by(username: params[:session][:username])
+    if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
       flash[:notice] = "Successfully signed in"
       redirect_to root_path
     else
       flash[:notice] = "Invalid username or password"
-      render new_user_path
+      render new_session_path
     end
   end
 end

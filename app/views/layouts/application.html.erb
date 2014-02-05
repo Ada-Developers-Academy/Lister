@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Lister</title>
+  <title>Llama Lister</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Happy+Monkey|Architects+Daughter' rel='stylesheet' type='text/css'>
 </head>
 <body>
+
+<div id='header'>
+  <%= link_to(image_tag('llama.png', :alt => "a llama i found on google", :title => "llama"),"/") %>
+  <h1 class='ui huge header'><%= link_to('Llama Lister', '/') %></h1>
+  <% if @current_user.nil? %>
+    <h2><%= link_to('Sign Up', new_user_path) %>   <small>or</small>   <%= link_to('Sign In', new_session_path)%></h2>
+  <% end %>
+</div>
 
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "flash_#{name}" %>
