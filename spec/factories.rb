@@ -20,4 +20,7 @@ FactoryGirl.define do
       "n"
     end
   end
+
+  factory :item do  
+  end
 end
