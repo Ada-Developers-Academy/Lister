@@ -2,18 +2,9 @@
 khasgkasjh
 
 <% if @current_user.nil? %>
-<div class=".col-md-8">
-<%= render "users/new" %>
-</div>
-<div class = ".col-md-4">
-all lists here</div>
-
-
+  <div class=".col-md-6"> <%= render "users/form" %></div>
+  <div class = ".col-md-4"> <%= @lists.inspect %></div>
 <% else %>
-<div class=".col-md-8">
-my lists here</div>
-<div class = ".col-md-4">
-all lists here </div>
-
-
+  <div class=".col-md-6"> <%= @users_lists.inspect %></div>
+  <div class = ".col-md-4"><%= @lists.inspect %> </div>
 <%  end %>
