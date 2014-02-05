@@ -19,10 +19,12 @@ class ListsController < ApplicationController
         redirect_to list_path(@list)
       else
         p @list.errors.full_messages
-        p @list.errors.messages
         flash[:notice] = "There was a problem editing this list."
         render :edit
       end
+    else
+      flash[:notice] = "You are not authorized to update this list!"
+      redirect_to list_path(@list)
     end
   end
 

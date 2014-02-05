@@ -181,28 +181,27 @@ describe ListsController do
           patch :update, id: list.id, list: invalid_attributes
           expect(list.errors.full_messages).to include "Name can't be blank" #why is this not passing?
         end
-
       end
     end
 
-    # context 'user does not own list' do
-    #   let(:user) { create(:user) }
-    #   let(:list) { create(:list, user_id: user.id, name: "cake")}
+    context 'user does not own list' do
+      let(:user) { create(:user) }
+      let(:list) { create(:list, user_id: user.id, name: "cake")}
       
-    #   before(:each) do
-    #     session[:user_id] = 1
-    #   end
+      before(:each) do
+        session[:user_id] = 1
+      end
 
-    #   it 'is not successful' do
-    #     patch :update, id: list.id
-    #     expect(response).to_not be_successful
-    #   end
+      it 'is redirects to list show' do
+        patch :update, id: list.id
+        expect(response).to_not be_successful
+      end
 
-    #   it 'sets flash message' do
-    #     patch :update, id: list.id
-    #     expect(flash[:notice]).to eq "You are not authorized to update this list!"
-    #   end
-    # end
+      it 'sets flash message' do
+        patch :update, id: list.id
+        expect(flash[:notice]).to eq "You are not authorized to update this list!"
+      end
+    end
 
 
   end
