@@ -40,7 +40,7 @@ describe ListsController do
 
       it "renders new template" do
         post :create, list: no_title
-        expect(response).to render :new
+        expect(response).to redirect_to new_list_path
       end
     end
   end

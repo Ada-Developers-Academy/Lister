@@ -6,11 +6,17 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
     if @list.save
       redirect_to list_path(@list.id), notice: "List successfully created"
+    else
+      redirect_to new_list_path, notice: "Title can't be blank!"
     end
   end
 
   def show
     @list = List.find_by(params[:id])
+  end
+
+  def index
+    @lists = List.all
   end
 
   private
