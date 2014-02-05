@@ -47,9 +47,10 @@ describe ListsController do
       context 'with valid fields' do
         let(:valid_attributes) { {name:"cake", user_id: session[:user_id]} }
         
-        it 'redirects to user show' do
+        it 'redirects to user show' do #should be list show? how to specify route name?
           post :create, list: valid_attributes
-          expect(response.status).to eq 302
+          # expect(response.status).to eq 302
+          expect(response).to redirect_to list_path(List.last.id)
         end
 
         it 'assigns list to current user' do
