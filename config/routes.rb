@@ -1,5 +1,6 @@
 Lister::Application.routes.draw do
   
+  root "lists#index"
   get "/new", to: "sessions#new"
   get "users/new", to: "sessions#create"
   get "users/current", to: "users#show" #instead of :id?
