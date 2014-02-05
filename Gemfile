@@ -15,6 +15,7 @@ group :development, :test do
   gem "terminal-notifier-guard"
   gem "factory_girl_rails"
   gem 'simplecov', :require => false
+  gem 'capybara'
 end
 
 gem 'resque'

@@ -1,2 +1,4 @@
 <h1>Your Lists</h1>
-<%= @current_user.username %>
+<% @current_user.lists.each do |list| %>
+  <%= link_to(list.title, list) %>
+<% end %>
