@@ -9,6 +9,8 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
+    user = User.find(session[:user_id])
+    user.lists << @list
     if @list.save
       flash[:notice] = "List has been successfully created!"
       redirect_to list_path(@list)
