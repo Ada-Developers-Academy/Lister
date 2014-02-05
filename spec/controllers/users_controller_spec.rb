@@ -6,6 +6,11 @@ describe UsersController do
       get :new
       expect(response).to be_successful
     end
+
+    it "should be an instance of User" do
+      get :new
+      expect(assigns(:user)).to be_a_kind_of(User)
+    end
   end
 
   describe "POST 'create'" do

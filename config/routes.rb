@@ -1,8 +1,10 @@
 Lister::Application.routes.draw do
-  get "/new", to: 'session#new'
-  post '/new', to: 'session#create'
-  get '/user/new', to: 'users#new'
-  post '/user/create', to: 'users#create'
+
+  root to: "welcome#index"
+  get "/session/new", to: 'session#new'
+  post 'session', to: 'session#create'
+  get '/user/new', to: 'users#new', as: :signup
+  post '/user/create', to: 'users#create', as: :create
   get '/user/show', to: 'users#show'
   
   # The priority is based upon order of creation: first created -> highest priority.
