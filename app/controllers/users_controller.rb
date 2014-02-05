@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save!
+    if @user.save
+      session[:user_id] = @user.id
       flash[:notice] = "Welcome #{@user.username}!"
       redirect_to users_path
     else
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :pasword, :password_confirmation)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 
 end

@@ -13,6 +13,10 @@ describe ListsController do
       get :new
       expect(response).to be_successful
     end
+
+    # it 'will only render form for signed in user' do 
+      
+
   end
 
   describe "POST 'create' " do
