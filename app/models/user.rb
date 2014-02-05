@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :lists
   has_secure_password
   validates_confirmation_of :password
   validates :email, format: { with: /\w+@\w+\.\w+/, message: "is not a valid address"}
