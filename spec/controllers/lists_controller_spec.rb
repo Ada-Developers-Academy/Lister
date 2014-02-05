@@ -45,7 +45,7 @@ describe ListsController do
       end
 
       context 'with valid fields' do
-        let(:valid_attributes) { {name:"cake", user_id: session[:user_id]} }
+        let(:valid_attributes) { { name:"cake", user_id: session[:user_id] } }
         
         it 'redirects to user show' do #should be list show? how to specify route name?
           post :create, list: valid_attributes
@@ -137,7 +137,74 @@ describe ListsController do
         expect(response).to_not be_successful
       end
 
+      it 'sets flash message' do
+        get :edit, id: list.id
+        expect(flash[:notice]).to eq "You are not authorized to edit this list!"
+      end
     end
+  end
+
+  describe 'PATCH update' do
+    context 'user owns list' do
+      let(:user) { create(:user) }
+      let(:list) { create(:list, user_id: user.id, name: "cake")}
+      
+      before(:each) do
+        session[:user_id] = user.id
+      end
+
+      context 'with valid attributes' do
+        let(:valid_attributes) { { name:"cake", user_id: session[:user_id] } }
+        
+        it 'redirects to list show page' do
+          patch :update, id: list.id, list: valid_attributes
+          expect(response).to redirect_to list_path(list)
+        end
+
+        #add items to list test would be in item controller?
+      end
+
+      context 'with invalid attributes' do
+        let(:invalid_attributes){ {name: nil} }
+        
+        it 'renders edit page' do
+          patch :update, id: list.id, list: invalid_attributes
+          expect(response).to render_template :edit
+        end
+
+        it 'sets flash message' do
+          patch :update, id: list.id, list: invalid_attributes
+          expect(flash[:notice]).to_not be_blank
+        end
+
+        it 'name cannot be blank' do
+          patch :update, id: list.id, list: invalid_attributes
+          expect(list.errors.full_messages).to include "Name can't be blank" #why is this not passing?
+        end
+
+      end
+    end
+
+    # context 'user does not own list' do
+    #   let(:user) { create(:user) }
+    #   let(:list) { create(:list, user_id: user.id, name: "cake")}
+      
+    #   before(:each) do
+    #     session[:user_id] = 1
+    #   end
+
+    #   it 'is not successful' do
+    #     patch :update, id: list.id
+    #     expect(response).to_not be_successful
+    #   end
+
+    #   it 'sets flash message' do
+    #     patch :update, id: list.id
+    #     expect(flash[:notice]).to eq "You are not authorized to update this list!"
+    #   end
+    # end
+
+
   end
 
 end
