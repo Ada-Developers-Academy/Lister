@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    @users = User.all
   end
 
   def create
@@ -17,12 +18,13 @@ class UsersController < ApplicationController
     end
   end 
 
-  def show
+  def show #should be accessible by other users?
     user = User.find(params[:id])
     @lists = user.lists
   end
 
   private
+
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
