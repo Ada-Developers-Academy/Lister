@@ -1,13 +1,14 @@
 <br><br><br><br>
-  <%= javascript_include_tag "signin" %>
+
 
 <div class="row row-offcanvas row-offcanvas-right">
   <% if @current_user.nil? %>
   <div class="col-xs-12 col-sm-9">
     <div class="jumbotron">
       <%= "Welcome to Lister!" %>
-      <p><a href="/signin">Sign in</a> or <a href="/signup">sign up</a> for Lister & start making your first lists!</p>
-    <div id="sign-up-area" class="hide"><%= render "users/form" %>
+      <p><a class="signin">Sign in</a> or <a class="signup">sign up</a> for Lister & start making your first lists!</p>
+    <div id="sign-up-area"><%= render "users/form" %>
+    <div id="sign-in-area"><%= render "sessions/new" %>
     </div>
   </div>
     <br><br>
@@ -21,4 +22,4 @@
 
 
 
- <div class="col-md-8" style="border: 1px dashed"> <%= render "users/form" %></div>
+<!--  <div class="col-md-8" style="border: 1px dashed"> <%= render "users/form" %></div> -->

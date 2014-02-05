@@ -1,10 +1,9 @@
 $(function() {
-    $('#sign-up-area').hide();
-});
+    $('#sign-in-area').hide();
 
-$('body').on('click','signin', function(e) {
-    $('#sign-up-area').show();
+  $(".signin").click(function(e){
     $('#sign-up-area').hide();
-    $($(this).attr('href')).show();
+    $('#sign-in-area').toggle();
     e.preventDefault();
+  });
 });
