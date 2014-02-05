@@ -12,7 +12,12 @@ FactoryGirl.define do
   end
 
   factory :list do
-    title "Tech Jobs"
-    user_id "1"
+    title "Books"
+    user_id 1
+  end
+
+  factory :blank_list do
+    title nil
+    user_id 1
   end
 end
