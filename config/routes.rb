@@ -6,6 +6,9 @@ Lister::Application.routes.draw do
   get '/sign_up', to: 'users#new', as: :new_user
   post '/users/create', to: 'users#create'  
 
+  get '/lists/new', to: 'lists#new', as: :new_list
+  
+
   
 
   root to: 'users#show'
