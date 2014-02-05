@@ -11,3 +11,6 @@
  *= require_self
  *= require_tree .
  */
+.main-bits {
+  margin-top: 70px;
+}
