@@ -15,4 +15,5 @@ FactoryGirl.define do
     user_id 1
     title "List of Awesomeness"
   end
+
 end
