@@ -7,6 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="wrapper">
+    <div id="header">
+      <div id="user_header">
+        <% if current_user %>
+        <%= link_to "#{current_user.username}'s account", user_path(current_user) %> |
+        <%= link_to "Sign out", sign_out_path %>
+        <% else %>
+        <%= link_to "Sign Up", sign_up_path %> |
+        <%= link_to "Sign In", sign_in_path %>
+        <% end %>
+      </div>
+      <div id="nav_bar">
+        <%= link_to "Home", root_path %> |
+      </div>
+    </div>
 
 <%= yield %>
 
