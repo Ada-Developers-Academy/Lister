@@ -2,7 +2,6 @@ Lister::Application.routes.draw do
   
   require 'resque/server'
   Lister::Application.routes.draw do 
-    resources :lists
     mount Resque::Server, :at => '/resque'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -10,7 +9,7 @@ Lister::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-
+  resources :lists
   get  'sessions/new'    => 'sessions#new'
   post 'sessions/create' => 'sessions#create'
   get  'users/new'       => 'users#new',        as: 'new_user'

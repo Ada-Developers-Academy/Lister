@@ -32,8 +32,8 @@ Lister::Application.configure do
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'example.com',
-    user_name:            'email@email.email'
-    password:             'so password'
+    user_name:            'email@email.email',
+    password:             'so password',
     authentication:       'plain',
     enable_starttls_auto: true  }
 end
