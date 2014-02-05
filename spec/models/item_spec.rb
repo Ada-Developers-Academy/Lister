@@ -16,6 +16,11 @@ describe "Item" do
       item.update(list_id: nil)
       expect(item).to be_invalid
     end
-
   end
+
+    describe "methods" do
+      it "belongs to a list" do
+        expect(item.list).to_not be_nil
+      end
+    end
 end

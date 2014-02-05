@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Lister</title>
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <title><%= content_for?(:title) ? yield(:title) : "Lister" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "a place to make lists" %>"
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+<!--     <%= favicon_link_tag %> -->
+  </head>
+  <body>
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
 
-<%= yield %>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 text-center">
+           <main role="main">
+              <%= render 'layouts/messages' %>
+              <%= yield %>
+        </main>
+        </div>
+      </div>
+    </div>
 
-</body>
+  </body>
 </html>
