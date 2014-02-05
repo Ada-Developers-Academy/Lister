@@ -24,6 +24,11 @@ describe UsersController do
         post :create, user: valid_attributes
         expect(flash[:notice]).to_not be_blank
       end
+
+      it "sends an email" do
+        post :create, user: valid_attributes
+        ActionMailer::Base.deliveries.last.to.should == [assigns(:user).email]
+      end
     end
   
     context "with invalid attributes" do
