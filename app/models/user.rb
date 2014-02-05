@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :lists
   has_secure_password
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, format: {with: /@/, message: "is not a valid address"}
