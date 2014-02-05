@@ -22,21 +22,21 @@ describe ListsController do
   describe "POST 'create' " do
 
     context 'with valid attributes' do 
-      let(:valid_list) { List.new(name: 'To do')}
+      let(:valid_list) { { name: 'To do'} }
 
       it 'is a redirect' do 
         post :create, list: valid_list
-        expect(response.status).to eq 302
+        expect(assigns(:valid_list)).to redirect_to(lists_path)
       end
 
       it 'assigns user as instance of User' do 
         post :create, list: valid_list
-        expect(assigns(:list)).to be_an_instance_of(User)
+        expect(assigns(:list)).to be_an_instance_of(List)
       end 
     end
 
     context 'with invalid attributes' do
-      let(:invalid_list) { List.new(name: '')}
+      let(:invalid_list) { { name: ' '} }
 
       it 'renders the new template' do 
         post :create, list: invalid_list

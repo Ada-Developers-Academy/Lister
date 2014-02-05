@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Welcome #{@user.username}!"
       redirect_to users_path
     else
-      render 'new', notice: 'User not saved'
+      render 'new', notice: 'Username or email is invalid'
     end
   end
 
