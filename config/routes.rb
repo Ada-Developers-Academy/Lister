@@ -1,5 +1,11 @@
 Lister::Application.routes.draw do
 
+  get "items/new"
+  get "items/create"
+  get "items/show"
+  get "items/index"
+  get "items/delete"
+  get "items/update"
   get "lists/new"
   get "lists/create"
   get "lists/delete"

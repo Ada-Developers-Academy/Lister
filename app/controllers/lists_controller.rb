@@ -16,6 +16,7 @@ class ListsController < ApplicationController
   end
 
   def index
+    List.all
   end
 
   def show

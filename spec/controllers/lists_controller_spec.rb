@@ -47,4 +47,17 @@ describe ListsController do
       expect(response).to be_successful
     end
   end
+
+  # describe 'GET #index' do
+  #   context "with valid attributes" do
+  #     let(:valid_attributes) { {title: "Dogs", description: "This is a list of dogs", user_id: "1"} }
+
+  #     it "collects list into @list" do
+  #       user = create(:list)      
+  #       get :index
+  #       expect(assigns(:list)).to match_array [@list,user]
+  #     end
+  #   end
+  # end
+
 end
