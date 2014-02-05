@@ -1,13 +1,17 @@
 require 'spec_helper'
 
 describe ListsController do
+  let(:user) { create(:user) }
+      
+  before(:each) do
+    session[:user_id] = user.id
+  end
   describe 'GET new' do
     it 'is successful' do 
       get :new
       expect(response).to be_successful
     end
 
-    # rendering partials?
     it 'renders new' do
       get :new
       expect(response).to render_template :new
@@ -38,11 +42,11 @@ describe ListsController do
 
   describe 'POST create' do
     context 'with valid user' do
-      let(:user) { create(:user) }
+      # let(:user) { create(:user) }
       
-      before(:each) do
-        session[:user_id] = user.id
-      end
+      # before(:each) do
+      #   session[:user_id] = user.id
+      # end
 
       context 'with valid fields' do
         let(:valid_attributes) { { name:"cake", user_id: session[:user_id] } }
@@ -139,7 +143,7 @@ describe ListsController do
 
       it 'sets flash message' do
         get :edit, id: list.id
-        expect(flash[:notice]).to eq "You are not authorized to edit this list!"
+        expect(flash[:notice]).to_not be_blank
       end
     end
   end
@@ -199,7 +203,7 @@ describe ListsController do
 
       it 'sets flash message' do
         patch :update, id: list.id
-        expect(flash[:notice]).to eq "You are not authorized to update this list!"
+        expect(flash[:notice]).to_not be_blank
       end
     end
 

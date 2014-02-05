@@ -1,50 +1,32 @@
 class ListsController < ApplicationController
-  # before_action :set_list, only: [:edit, :update ] #:destroy
-  # before_action :current_user, only: [:edit, :update] #:create
+  before_action :set_list, only: [:edit, :update ] #:destroy
+  before_action :require_login, except: [:show ]
+  before_action :valid_user, only: [:edit, :update] #:create
 
   def new
     @list = List.new
   end
 
   def create
-    if session[:user_id]
-      @list = List.new(list_params)
-      if @list.save
-        flash[:notice] = "List has been successfully created!"
-        redirect_to list_path(@list)
-      else
-        flash[:notice] = "There was a problem saving your list."
-        render :new
-      end
+    @list = List.new(list_params)
+    if @list.save
+      flash[:notice] = "List has been successfully created!"
+      redirect_to list_path(@list)
     else
-      flash[:notice] = "You must be signed in to create a list!"
-      redirect_to lists_path
+      flash[:notice] = "There was a problem saving your list."
+      render :new
     end
   end
 
   def edit
-    @list = List.find(params[:id])
-    if @list.user.id == session[:user_id]
-    else
-      flash[:notice] = "You are not authorized to edit this list!"
-      redirect_to list_path(@list)
-    end
   end
 
   def update
-    @list = List.find(params[:id])
-    if @list.user.id == session[:user_id]
-      if @list.update(list_params)
-        redirect_to list_path(@list)
-      else
-        p @list.errors.full_messages
-        p @list
-        flash[:notice] = "There was a problem editing this list."
-        render :edit
-      end
-    else
-      flash[:notice] = "You are not authorized to update this list!"
+    if @list.update(list_params)
       redirect_to list_path(@list)
+    else
+      flash[:notice] = "There was a problem editing this list."
+      render :edit
     end
   end
 
@@ -62,9 +44,23 @@ class ListsController < ApplicationController
     params.require(:list).permit(:name, :user_id)
   end
 
-  private
   def set_list
     @list = List.find(params[:id])
   end
+
+  def require_login
+    unless session[:user_id]
+      flash[:notice] = "You must be signed in!"
+      redirect_to lists_path
+    end
+  end
+
+  def valid_user
+    unless session[:user_id] == @list.user.id
+      flash[:notice] = "You are not authorized to edit this list!"
+      redirect_to list_path(@list)
+    end
+  end
+
 
 end
