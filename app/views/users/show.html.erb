@@ -4,3 +4,23 @@
 
 <br><br><br><br>this is the root path
 khasgkasjh
+
+<%= @current_user.inspect %>
+<% raise%>
+
+<% if @current_user.nil? %>
+<div class=".col-md-8">
+<%= render "users/new" %>
+</div>
+<div class = ".col-md-4">
+all lists here</div>
+
+
+<% else %>
+<div class=".col-md-8">
+my lists here</div>
+<div class = ".col-md-4">
+all lists here </div>
+
+
+<%  end %>
