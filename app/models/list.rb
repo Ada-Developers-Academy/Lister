@@ -10,8 +10,9 @@ class List < ActiveRecord::Base
 
   private
 
-  def add_item
+  def add_item 
     if self.item_name
+      p "item?", self.item_name
       item = Item.create(name: item_name)
       self.items << item
     end

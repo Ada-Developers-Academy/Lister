@@ -10,8 +10,7 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     user = User.find(session[:user_id])
-    user.lists << @list #does this rollback the list object if it doesn't attach to user?
-    if @list.save
+    if user.lists << @list #does this rollback the list object if it doesn't attach to user? 
       flash[:notice] = "List has been successfully created!"
       redirect_to list_path(@list)
     else
