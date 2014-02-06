@@ -1,19 +1,17 @@
-<% unless @session.nil? %>
-  <% if @session.errors.any? %>
-    <% @session.errors.full_messages.each do |msg| %>
-      <%= msg %><br>
-    <% end %>
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |msg| %>
+    <%= msg %><br>
   <% end %>
 <% end %>
 
-<%= form_for(:session, url: create_session_path) do |f| %>
+<%= form_tag(create_session_path) do %>
   <div class="field">
-    <%= f.label :username %>
-    <%= f.text_field :username %>
+    <%= label_tag :username %>
+    <%= text_field_tag :username %>
   </div>
   <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
   </div>
-  <div class="actions"><%= f.submit %></div>
+  <div class="actions"><%= submit_tag %></div>
 <% end %>

@@ -62,4 +62,17 @@ describe SessionsController do
     
     end
   end
+  describe "DESTROY" do
+    it "should clear the session" do
+      user = create(:user)
+      session[:user_id] = user.id
+      delete :destroy
+      session[:user_id].should be_nil
+    end
+
+    it "should redirect to the home page" do
+      delete :destroy
+      response.should redirect_to root_url
+    end
+  end
 end

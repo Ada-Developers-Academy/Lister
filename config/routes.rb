@@ -8,13 +8,16 @@ Lister::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
-  resources :lists
-  get  'sessions/new'    => 'sessions#new',     as: 'new_session'
-  post 'sessions/create' => 'sessions#create',  as: 'create_session'
-  get  'users/new'       => 'users#new',        as: 'new_user'
-  post 'users/create'    => 'users#create',     as: 'create_user'
-  get  'users/:id'       => 'users#show'
+  root   'welcome#index'
+  get    'sessions/new'    => 'sessions#new',     as: 'new_session'
+  post   'sessions/create' => 'sessions#create',  as: 'create_session'
+  get    'users/new'       => 'users#new',        as: 'new_user'
+  post   'users/create'    => 'users#create',     as: 'create_user'
+  get    'users/:id'       => 'users#show',       as: 'user'
+  get    'lists/new'       => 'lists#new',        as: 'new_list'
+  post   'lists/create'    => 'lists#create',     as: 'create_list'
+  get    'lists/:id'       => 'lists#show',       as: 'list'
+  delete 'destroy'         => 'sessions#destroy', as: 'end_session'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
