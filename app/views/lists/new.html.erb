@@ -1,0 +1,9 @@
+<div id="list-form">
+  <%= form_for @list, url: create_list_path do |f| %>
+    <%= f.label :list_name %>
+    <%= f.text_field :list_name %>
+    <%= hidden_field_tag :id, @current_user.id %>
+
+    <%= f.submit "Create List" %>
+  <% end %> 
+</div>
