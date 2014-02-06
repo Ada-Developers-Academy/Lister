@@ -1,7 +1,13 @@
 require 'spec_helper'
 describe ListsController do
   let(:user) { create(:user) }
+
   describe "GET 'new'" do
+
+    before(:each) do
+      controller.instance_variable_set(:@current_user, user)
+    end
+
     it "is successful" do
       get :new
       expect(response).to be_successful
@@ -54,21 +60,13 @@ describe ListsController do
 
   describe "GET 'new'" do
     context "when not logged in" do
-      let(:invalid_attributes) { { title: "", user_id: current_user} }
-
-      before(:each) do
-        controller.instance_variable_set(:@current_user, current_user)
-      end
-
-      it "does not create a list" do
-        expect { post :create, list: {title: "b"} }.to change(List, :count).by(0)
-      end
-
       it "redirects to log in page" do
-        expect(response).to eq 302
+        get :new 
+        expect(response.status).to eq 302
       end
 
       it "has a flash notice" do
+        get :new 
         expect(flash[:notice]).to_not be_blank
       end
     end
@@ -86,22 +84,23 @@ describe ListsController do
 
   describe "DELETE 'destroy'" do
     let(:current_user) { create(:user)}
-    let(:valid_attributes) { {title: "My Best Pranks", user_id: current_user} }
-    let(:list) { create(:list) }
+    let!(:list) { create(:list) }
+
+    before(:each) do
+      controller.instance_variable_set(:@current_user, current_user)
+    end
+
     it "will redirect" do
-      #Will this syntax work? I don't really know how to call an action on a different controller.
-      delete :destroy, list: valid_attributes
-      expect(response).to redirect_to "user/current_user.id"
+      delete :destroy, id: list.id
+      expect(response).to redirect_to "/user/#{current_user.id}"
     end
 
     it "changes list count by 1" do
-      #Could this number be positive? Is something being one less still changing by 1?
-      expect { delete :destroy, list: valid_attributes }.to change(List, :count).by(-1)
+      expect { delete :destroy, id: list.id }.to change(List, :count).by(-1)
     end
 
-    #Pretty sure this will not work even a little, but I'm so unsure on how to talk about other models/controllers than the one I'm in, that feedback will be helpful.
     it "cannot be destroyed someone who is not the user that created it" do
-      session[:id] = 2
+      #What goes here and how do I not break other tests with it!? Bookis! I need your help! Also, thank you!
       expect { delete :destroy, list: valid_attributes }.to change(List, :count).by(0)
     end
   end
