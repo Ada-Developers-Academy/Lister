@@ -1,9 +1,15 @@
 <strong><%= @list.name %></strong>
+<ul class="items">
+
 <% @list.items.each do |i| %>
-<ul>
-  <li><%= i.name %></li>
-</ul>
+
+  <li>
+    <%= i.name %>
+    <%= link_to "Delete", list_item_path(@list,i), class: "delete", method: :delete %>
+  </li>
+
 <% end %>
+</ul>
 
 <% if current_user && current_user.id == @list.user_id %>
   <p> Add an Item: </p>
@@ -15,7 +21,7 @@
         </div>
       </p>
         <div class="actions">
-          <%= f.submit %>
+          <%= f.submit class: "action"%>
         </div>
       </p>
     <% end %>

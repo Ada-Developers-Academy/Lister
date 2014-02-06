@@ -6,10 +6,21 @@ class ItemsController < ApplicationController
     @list = List.find(params[:list_id])
     @item = @list.items.new(item_params)
     if @item.save
-      redirect_to list_path(@list)
+
+      respond_to do |format|
+        format.html {redirect_to list_path(@list)}
+        format.json {render json: @item.as_json }
+      end
+
     else
       render :new
     end
+  end
+
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    render json: {status: "ok"}
   end
 
   private
