@@ -1,4 +1,4 @@
 
 <% @user.lists.each do |l| %>
-  <%= l.title %>
+  <a href="/lists/<%= l.id %>"><%= l.title %></a>
 <% end %>
