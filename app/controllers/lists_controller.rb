@@ -28,6 +28,10 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id].to_i)
     @item = Item.new
+    respond_to do |format|
+      format.html
+      format.json{ render json: { @list.name => @list.json } }
+    end
   end
 
   def edit

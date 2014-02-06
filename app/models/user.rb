@@ -25,5 +25,6 @@ class User < ActiveRecord::Base
     self.lists.each do |list|
       result[list.id] = {name: list.name, number_of_items: list.items.length, author_name: self.username, id: list.id, created_at: list.created_at}
     end
+    result
   end
 end
