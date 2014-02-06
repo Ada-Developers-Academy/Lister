@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @lists = List.last(10).reverse
-    @users_lists = List.where(user_id: @current_user.id) if @current_user
+    @users_lists = List.where(user_id: @current_user.id).reverse if @current_user
   end
 
   def  new

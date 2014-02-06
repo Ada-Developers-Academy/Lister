@@ -38,8 +38,14 @@
     </div>
 
       <div class="col-xs-10 col-sm-7"style="border: 1px dashed"><h4> Your lists:</h4>
-        <%= @users_lists.inspect %>
-      </div>
+      <table class="table table-striped">
+    <tbody>
+      <% @users_lists.each do |list| %>
+        <tr><td><%= link_to "#{list.name}", list_path(list.id) %></td></tr>
+      <% end %>
+    </tbody>
+    </table>
+
 
 <%  end %>
 </div>
