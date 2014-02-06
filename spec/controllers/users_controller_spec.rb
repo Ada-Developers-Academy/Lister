@@ -33,7 +33,7 @@ describe UsersController do
         post :create, user: valid_attributes
         assigns(:user)
         expect(session[:user_id]).to_not be_nil
-    end
+      end
   end
   
     context "with invalid attributes" do
