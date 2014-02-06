@@ -5,10 +5,11 @@ Lister::Application.routes.draw do
   post 'session', to: 'session#create'
   get '/users/new', to: 'users#new', as: :signup
   post '/users', to: 'users#create', as: :create
-  get '/users/show', to: 'users#show'
+  get '/users/show', to: 'users#show', as: :user 
   get 'lists/new', to: 'lists#new'
   post 'lists', to: 'lists#create'
   get 'lists/show/:id', to: 'lists#show', as: :list
+  get 'items/new', to: 'items#new'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -16,6 +16,7 @@ describe UsersController do
   describe "POST 'create'" do
     context "with valid attributes" do
       let(:valid_attributes) { {username: "bookis", email: "b@c.com", password: "gogo1234", password_confirmation: "gogo1234"} }
+      
       it "is a redirect" do
         post :create, user: valid_attributes
         expect(response.status).to eq 302 # This is a redirect
