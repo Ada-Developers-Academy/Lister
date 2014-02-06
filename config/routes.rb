@@ -6,7 +6,7 @@ Lister::Application.routes.draw do
   get "user/create" => "users#create", :as => "create_user"
   get "user/:id" => "users#show", :as => "user"
   get "lists/new" => "lists#new", :as => "new_list"
-  post "lists/create" => "lists#create", :as => "create_list"
+  post "lists" => "lists#create", :as => "create_list"
   get "lists/:id" => "lists#show", :as => "list"
   delete "list/:id/delete" => "lists#destroy", :as => "destroy_list"
   root 'users#show'

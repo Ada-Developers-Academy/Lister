@@ -80,28 +80,32 @@ describe ListsController do
     end
   end
 
-#Below are tests that aren't mimicking other tests directly. Will they work?
-
   describe "DELETE 'destroy'" do
-    let(:current_user) { create(:user)}
+    let(:current_user) { create(:user) }
     let!(:list) { create(:list) }
 
     before(:each) do
       controller.instance_variable_set(:@current_user, current_user)
+      list.update(user_id: current_user.id)
     end
 
-    it "will redirect" do
-      delete :destroy, id: list.id
-      expect(response).to redirect_to "/user/#{current_user.id}"
+    context "you're trying to destroy your own list" do
+      it "will redirect" do
+        delete :destroy, id: list.id
+        expect(response).to redirect_to "/user/#{current_user.id}"
+      end
+
+      it "changes list count by -1" do
+        expect { delete :destroy, id: list.id }.to change(List, :count).by(-1)
+      end
     end
 
-    it "changes list count by 1" do
-      expect { delete :destroy, id: list.id }.to change(List, :count).by(-1)
-    end
-
-    it "cannot be destroyed someone who is not the user that created it" do
-      #What goes here and how do I not break other tests with it!? Bookis! I need your help! Also, thank you!
-      expect { delete :destroy, list: valid_attributes }.to change(List, :count).by(0)
+    context "you're not signed in as the list's owner" do
+      let(:other_user) { create(:user) }
+      it "cannot be destroyed if you are signed in as other user " do
+        list.update(user_id: other_user.id)
+        expect { delete :destroy, id: list.id }.to change(List, :count).by(0)
+      end
     end
   end
 end

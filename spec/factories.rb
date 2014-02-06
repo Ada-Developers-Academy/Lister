@@ -17,7 +17,7 @@ FactoryGirl.define do
     end
     
     sequence :user_id do |n| 
-      "n"
+      n
     end
   end
 
