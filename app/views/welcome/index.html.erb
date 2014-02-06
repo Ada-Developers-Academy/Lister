@@ -8,6 +8,7 @@
 
 <% if session[:user_id] %>
 <%= link_to "New List", new_list_path %>
+<%= link_to "Sign Out", sign_out_path %>
 <% else %>
 <%= link_to "Sign Up", new_user_path %>
 <%= link_to "Sign In", new_session_path %>

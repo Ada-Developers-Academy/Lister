@@ -45,7 +45,5 @@ describe UsersController do
       get :show, id: user.id
       expect(response).to be_successful
     end
-
-    it "finds the user's lists" 
   end
 end
