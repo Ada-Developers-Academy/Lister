@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   def new
   end
 
-
   def create
      @user = User.find_by(username: params[:username])
      if @user && @user.authenticate(params[:password])
@@ -15,4 +14,9 @@ class SessionsController < ApplicationController
      end
    end
 
+   def destroy
+      @current_user = nil
+      reset_session
+       redirect_to root_path, :notice => "You have been successfully signed out."
+   end
 end

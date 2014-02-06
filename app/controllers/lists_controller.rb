@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_filter :authorize, only: [:new, :create, :edit, :delete, :show]
+  before_action :authorize, only: [:new, :create, :edit, :delete]
   before_action :set_list, except: [:new, :create, :index, :users_lists]
 
   def index
