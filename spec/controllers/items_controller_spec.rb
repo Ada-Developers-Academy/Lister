@@ -27,8 +27,20 @@ describe ItemsController do
     end  
 
     it "should redirect after save" do
-      post :create, item: {name: "to do", list_id: list.id}
+      post :create, item: { name: "to do", list_id: list.id} 
       expect(response.status).to eq(302)
+    end
+
+    context "with invalid attributes" do
+      it "should render new template" do
+        post :create, item: { name: nil, list_id: list.id }
+        expect(response).to render_template :new
+      end
+
+      it "should render new template" do
+        post :create, item: { name: "", list_id: list.id }
+        expect(response).to render_template :new
+      end
     end
   end
 
