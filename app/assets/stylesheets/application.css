@@ -11,28 +11,5 @@
  *= require_self
  *= require_tree .
  */
-/*Navigation Menu*/
-#header {
-  display   : block;
-  height    : 40px;
-  padding   : 5px 20px 5px 20px;
-}
 
-#header a {
-  text-decoration: none;
-}
 
-#header a:hover {
-  color        : #727B84;
-  border-bottom: 3px solid #727B84;
-}
-
-#nav_bar {
-  float: left;
-}
-
-#user_header {
-  font-size: 15px;
-  float    : right;
-  display  : inline-block;
-}

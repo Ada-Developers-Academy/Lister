@@ -1,6 +1,24 @@
-<% @lists.each do |l| %>
-<ul>
-  <li><%= link_to l.name, list_path(l) %></li>
-</ul>
-<% end %>
+
 <%= link_to "Create New List", new_list_path %>
+ <div class="ui center aligned four column grid">
+     <!--  <div class="row"> -->
+        <% @lists.each do |l| %>
+        <div class="column">
+          <div class="ui vertical fluid menu">
+            <div class="header item">
+              <%= link_to l.name, list_path(l) %>
+            </div>
+            <% l.items[0,3].each do |item| %>
+            <div class="item">
+              <%= item.name %>
+            </div>
+            <% end %>
+            <div class="item">
+              <%= link_to "more", list_path(l) %>
+            </div>
+
+          </div>
+        </div>
+        <% end %>
+  <!--   </div> -->
+  </div>

@@ -1,6 +1,8 @@
-<% current_user.lists.each do |l| %>
-<ul>
-  <li><%= link_to l.name, list_path(l) %></li>
-</ul>
+<% if current_user %>
+  <% current_user.lists.each do |l| %>
+  <ul>
+    <li><%= link_to l.name, list_path(l) %></li>
+  </ul>
+  <% end %>
 <% end %>
 <%= link_to "Create New List", new_list_path %>

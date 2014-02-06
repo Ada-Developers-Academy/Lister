@@ -15,3 +15,5 @@
 /log/*.log
 /tmp
 /coverage
+/.DS_Store
+/app/assets/stylesheets/.DS_Store

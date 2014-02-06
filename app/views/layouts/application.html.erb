@@ -2,28 +2,28 @@
 <html>
 <head>
   <title>Lister</title>
+  <%= stylesheet_link_tag    "semantic.css", media: "all" %>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "semantic" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="wrapper">
-    <div id="header">
-      <div id="user_header">
-        <% if current_user %>
-        <%= link_to "#{current_user.username}'s lists", user_path(current_user) %> |
-        <%= link_to "Sign out", sign_out_path %>
-        <% else %>
-        <%= link_to "Sign Up", sign_up_path %> |
-        <%= link_to "Sign In", sign_in_path %>
-        <% end %>
-      </div>
-      <div id="nav_bar">
-        <%= link_to "Lists", root_path %> |
-      </div>
+  <div class="ui black inverted menu">
+    <div class="right menu">
+      <% if current_user %>
+      <%= link_to "#{current_user.username}'s lists", user_path(current_user), class: "item" %>
+      <%= link_to "Sign out", sign_out_path, class: "item" %>
+      <% else %>
+      <%= link_to "Sign Up", sign_up_path, class: "item"%> |
+      <%= link_to "Sign In", sign_in_path, class: "item" %>
+      <% end %>
     </div>
+    <%= link_to "Lists",root_path , class: "item"%> |
+  </div>
+  <div class="main container">
 
 <%= yield %>
-
+</div>
 </body>
 </html>
