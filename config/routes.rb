@@ -1,7 +1,9 @@
 Lister::Application.routes.draw do
   
-  get '/login' => 'session#new'
+  get '/login' => 'session#new', as: :login
   post '/login' => 'session#create'
+  delete '/signout' => 'session#destroy'
+
   get '/users/new' => 'users#new'
 
   get '/users' => 'users#index'
