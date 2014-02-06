@@ -10,13 +10,7 @@
       <div id="sign-in-area" ><%= render "sessions/new" %></div>
     </div>
   </div>
-
-<br><br>
-  <div class="col-xs-4 col-sm-3 sidebar-offcanvas" style="border: 1px dashed">
-    <% @lists.each do |list| %>
-    <div class="row"><%= link_to "#{list.name}", list_path(list.id) %></div>
-    <% end %>
-  </div>
+  <div>
 
 <% else %>
 
@@ -26,16 +20,6 @@
       <p>You have <%= "#{@users_lists.count}" %> <%= link_to "lists.", my_lists_path %> Create a <%= link_to "new list", new_list_path %> today.</p>
     </div>
   </div>
-
-  <div class="col-xs-4 col-sm-3 sidebar-offcanvas" style="border: 1px dashed">
-  <table class="table table-striped"><h3> Explore the latest lists: </h3><br>
-    <tbody>
-      <% @lists.each do |list| %>
-        <tr><td><%= link_to "#{list.name}", list_path(list.id) %></td></tr>
-      <% end %>
-    </tbody>
-    </table>
-    </div>
 
       <div class="col-xs-10 col-sm-7"style="border: 1px dashed"><h4> Your lists:</h4>
       <table class="table table-striped">
@@ -48,4 +32,14 @@
 
 
 <%  end %>
+
 </div>
+<div class="col-xs-4 col-sm-3 sidebar-offcanvas" style="border: 1px dashed">
+  <table class="table table-striped"><h3> Explore the latest lists: </h3><br>
+    <tbody>
+      <% @lists.each do |list| %>
+        <tr><td><%= link_to "#{list.name}", list_path(list.id) %></td></tr>
+      <% end %>
+    </tbody>
+    </table>
+    </div>

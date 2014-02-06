@@ -1,6 +1,6 @@
-<li><a href="/">home</a></li>
-<li><a href="/lists">all lists</a></li>
-<li><a href="/lists/new">new list</a></li>
+  <li><a href="/">home</a></li>
+  <li><a href="/lists">all lists</a></li>
+  <li><a href="/lists/new">new list</a></li>
 <% if @current_user %>
   <li><a href="/mylists">my lists</a></li>
   <li><%= link_to "sign out", signout_path, method: "delete" %></li>
