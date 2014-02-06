@@ -12,7 +12,7 @@ Lister::Application.configure do
     user_name:            ENV["MANDRILL_USERNAME"],
     password:             ENV["MANDRILL_KEY"],
     authentication:       'login',
-    domain:               'yourdomain.com' #put in wahtever.herokuappcom
+    domain:               'listlister.herokuapp.com'
   }
 
   config.cache_classes = false
