@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
      redirect_to "/"
   end
   helper_method :current_user
+
+  def authorize
+    redirect_to sign_in_path, notice: ' Sign in!' if current_user.nil?
+  end
 end

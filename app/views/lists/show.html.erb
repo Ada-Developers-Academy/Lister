@@ -1,1 +1,25 @@
-this is the show view
+<strong><%= @list.name %></strong>
+<% @list.items.each do |i| %>
+<ul>
+  <li><%= i.name %></li>
+</ul>
+<% end %>
+
+<% if current_user && current_user.id == @list.user_id %>
+  <p> Add an Item: </p>
+    <%= form_for([@list, Item.new]) do |f| %>
+      <p>
+        <div class="field">
+          <%= f.label :name %><br>
+          <%= f.text_field :name %>
+        </div>
+      </p>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      </p>
+    <% end %>
+    <%= link_to "Edit", edit_list_path(@list) %>
+<% end %>
+
+

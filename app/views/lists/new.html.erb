@@ -1,7 +1,29 @@
-<br><br><br><br>
+<%= form_for(@list) do |f| %>
+  <% if @list.errors.any? %>
+    <div id="error_messages">
+      <h2><%= pluralize(@list.errors.count, "error") %> prohibited this list from being saved:</h2>
+      <ul>
+        <% @list.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<% if @current_user  %>
-  <%= "here is a signed in user view?" %>
-<% else %>
-  <%= "here is a ling to sign in" %>
+  <p>
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </div>
+  </p>
+
+  <p>
+    <div class="field">
+      <%= f.hidden_field :user_id, :value => current_user.id %>
+    </div>
+  </p>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  </p>
 <% end %>
