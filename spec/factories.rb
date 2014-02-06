@@ -16,8 +16,5 @@ FactoryGirl.define do
     user_id 1
   end
 
-  factory :blank_list do
-    title nil
-    user_id 1
-  end
+
 end

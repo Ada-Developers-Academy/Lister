@@ -15,6 +15,8 @@ group :development, :test do
   gem "terminal-notifier-guard"
   gem "factory_girl_rails"
   gem 'simplecov', :require => false
+  gem 'better_errors'
+  gem "binding_of_caller"
 end
 
 gem 'rails_12factor', group: :production

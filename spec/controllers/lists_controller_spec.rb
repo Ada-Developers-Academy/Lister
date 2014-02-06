@@ -46,23 +46,47 @@ describe ListsController do
   end
 
   describe "GET show" do
+    before :each do
+      @list = create(:list) 
+    end
+
     it "is successful" do
-      get :show
+      get :show, id: @list.id
       expect(response).to be_successful
+    end
+
+    it "locates the requested list" do
+      get :show, id: @list.id
+      expect(assigns(:list).id).to eq(@list.id)
     end
   end
 
   describe "GET index" do
-    it "is successful" do
+    it "populates the lists array" do
+      list = create(:list)
       get :index
-      expect(response).to be_successful
+      expect(assigns(:lists)).to eq([list])
+    end
+
+    it "renders the index view" do
+      get :index
+      expect(response).to render_template :index
     end
   end
 
   describe "GET edit" do
+    before :each do
+      @list = create(:list) 
+    end
+
     it "is successful" do
-      get :edit
+      get :edit, id: @list.id
       expect(response).to be_successful
+    end
+
+    it "locates the requested list" do
+      get :edit, id: @list.id
+      expect(assigns(:list).id).to eq(@list.id)
     end
   end
 
@@ -91,7 +115,7 @@ describe ListsController do
 
     context "with invalid attributes" do
       it "locates the requested list" do
-        put :update, id: @list.id, list: attributes_for(:blank_list)
+        put :update, id: @list.id, list: {title: nil, user_id: 1}
         expect(assigns(:list)).to eq(@list)
       end
 
@@ -102,7 +126,7 @@ describe ListsController do
       end
 
       it "re-renders the list's show page" do
-        put :update, id: @list.id, contact: attributes_for(:blank_list) 
+        put :update, id: @list.id, list: {title: nil, user_id: 1}
         expect(response).to render_template :edit
       end
     end
@@ -114,7 +138,6 @@ describe ListsController do
     end
 
     it "decreases the list count by 1" do
-      delete :destroy, id: @list.id
       expect{delete :destroy, id: @list.id}.to change(List, :count).by(-1)
     end
 
