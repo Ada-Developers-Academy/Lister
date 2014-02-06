@@ -9,5 +9,12 @@ FactoryGirl.define do
     sequence :email do |n| 
       "#{n}@example.com"
     end
+
+    factory :list do 
+      @list1 = Factory(:list)
+
+    end
   end
+
+
 end
