@@ -20,3 +20,6 @@ group :development, :test do
   gem "better_errors" # These two are just for debugging
   gem "binding_of_caller"
 end
+
+
+# rails 12 factor gem
