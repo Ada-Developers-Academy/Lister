@@ -1,1 +1,7 @@
-this is the new view
+<br><br><br><br><% if @current_user  %>
+<% render "form"or whatever %>
+<%= "here is a signed in user view?" %>
+
+<% else %>
+<%= render  sign in or whatever %>
+<% end %>

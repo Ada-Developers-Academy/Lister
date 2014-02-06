@@ -1,6 +1,6 @@
 Lister::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  ENV["REDISTOGO_URL"] = 'redis://username:password@my.host:6389'
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -77,4 +77,5 @@ Lister::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
 end
