@@ -9,7 +9,8 @@
 <body>
   <header>
    <% if @current_user %>
-    <%= link_to 'Sign out!', sign_out_path %>
+    <%= link_to 'Sign out!', sign_out_path %><br>
+    <%= link_to 'My lists!', user_path(@current_user.id) %>
   <% else %>
     <%= link_to 'Log in!', sign_in_path %>
     <% end %>
