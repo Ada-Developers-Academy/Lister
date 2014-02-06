@@ -4,10 +4,10 @@ Lister::Application.routes.draw do
   get "/session/new", to: 'session#new'
   post 'session', to: 'session#create'
   get '/users/new', to: 'users#new', as: :signup
-  post '/users', to: 'users#create', as: :create
+  post '/users', to: 'users#create', as: :create_user
   get '/users/show', to: 'users#show', as: :user 
   get 'lists/new', to: 'lists#new'
-  post 'lists', to: 'lists#create'
+  post 'lists', to: 'lists#create', as: :create_list
   get 'lists/show/:id', to: 'lists#show', as: :list
   get 'items/new', to: 'items#new'
   post 'items', to: 'items#create'
