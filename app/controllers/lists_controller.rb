@@ -44,7 +44,11 @@ class ListsController < ApplicationController
 
   def destroy
     @list.destroy
-    redirect_to lists_path
+    # render json: { status:'deleted' } #this works too
+    respond_to do |format|
+      format.html { redirect_to clubs_url }
+      format.json { head :no_content }
+    end
   end
 
   private
