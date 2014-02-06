@@ -5,11 +5,11 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @list = List.find(params[:id])
+    @list = List.find(params[:item][:list_id])
     @item = @list.items.new(name: params[:item][:name])
-    # if @item.save
-    #   redirect_to list_path(@item.id)
-    # end
+    if @item.save
+      redirect_to list_path(@item.list.id)
+    end
   end
 
 end
