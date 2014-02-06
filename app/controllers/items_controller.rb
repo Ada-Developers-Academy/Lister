@@ -9,6 +9,8 @@ class ItemsController < ApplicationController
     @item = @list.items.new(name: params[:item][:name])
     if @item.save
       redirect_to list_path(@item.list.id)
+    else
+      render :new
     end
   end
 
