@@ -1,0 +1,10 @@
+
+<div class="user_info">
+<ul>
+  <li><%= current_user.username %></li>
+  <li><%= current_user.email %></li>
+</ul>
+</div>
+
+<div class="button">
+  <%= link_to "Create a List", list_new_path %>

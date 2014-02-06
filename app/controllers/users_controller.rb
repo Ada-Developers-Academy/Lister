@@ -1,20 +1,27 @@
 class UsersController < ApplicationController
 
   def new
-    User.new
+    @user = User.new
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       flash[:notice] = "List a list"
-      redirect_to "/"
+      redirect_to "/profile"
     else
       render :new
     end
   end
 
   def show
+  end
+
+  def login
+  end
+
+  def logout
   end
 
   def user_params

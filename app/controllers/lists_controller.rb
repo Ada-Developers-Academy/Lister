@@ -14,7 +14,7 @@ class ListsController < ApplicationController
     @list.user_id = current_user.id
     if @list.save
       flash[:notice] = "You have created a new list."
-      redirect_to all_lists_path
+      redirect_to current_list_path(@list.id)
     else
       render :new
     end  
@@ -27,7 +27,12 @@ class ListsController < ApplicationController
     @lists = List.all
   end
 
+  def delete
+    @list.destroy
+  end
+
   def list_params
     params.require(:list).permit(:name, :user_id)
   end
+
 end
