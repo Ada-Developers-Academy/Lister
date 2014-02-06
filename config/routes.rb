@@ -9,8 +9,7 @@ Lister::Application.routes.draw do
   post 'users/create'    => 'users#create',   as: 'users'
   get 'users/show'       => 'users#show'  
 
-  post 'items/create'    => 'items#create',   as: 'new_item'
-
+  post 'items/create'    => 'items#create',   as: 'items'
   resources :lists
 
 end

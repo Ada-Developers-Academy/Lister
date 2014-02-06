@@ -2,11 +2,17 @@ class ItemsController < ApplicationController
   
   def create
     unless session[:user_id].nil?
-      item = Item.create(name: params[:name], list_id: params[:list_id])
-      redirect_to :back
+      item = Item.create(item_params)
+      redirect_to list_path(params[:list_id])
     else
       redirect_to sign_in_path, notice: "Sign in to create an item"
     end
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:name, :list_id)
   end
 
 end

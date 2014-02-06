@@ -25,7 +25,10 @@ describe UsersController do
         expect(flash[:notice]).to_not be_blank
       end
 
-      it "creates a new session"
+      it "creates a new session" do
+        post :create, user: valid_attributes
+        expect(session[:user_id]).to eq(assigns(:user).id)
+      end
     end
   
     context "with invalid attributes" do

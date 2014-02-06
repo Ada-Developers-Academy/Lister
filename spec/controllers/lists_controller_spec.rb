@@ -37,7 +37,7 @@ describe ListsController do
     context "when user is signed in" do
       before do
         session[:user_id] = 1
-        post :create, name: "Another List"
+        post :create, list: { name: "Another List" }
       end
 
       let(:list) { List.last }

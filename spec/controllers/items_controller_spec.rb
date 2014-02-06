@@ -23,7 +23,7 @@ describe ItemsController do
       before do
         session[:user_id] = 1
         request.env["HTTP_REFERER"] = "where_i_came_from"
-        post :create, name: "Fate-free yogurt", list_id: "1"
+        post :create, item: { name: "Fate-free yogurt", list_id: "1" }
       end
 
       it "creates an item" do
