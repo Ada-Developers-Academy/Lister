@@ -20,7 +20,10 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    render json: {status: "ok"}
+    respond_to do |format|
+        format.html {redirect_to :back}
+        format.json {head :no_content  }
+      end
   end
 
   private
