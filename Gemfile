@@ -10,6 +10,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'bcrypt-ruby'
 gem 'figaro'
 gem 'resque'
+gem 'redis'
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem "rspec-rails"
@@ -22,4 +24,3 @@ group :development, :test do
 end
 
 
-# rails 12 factor gem
