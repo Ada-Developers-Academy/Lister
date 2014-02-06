@@ -17,6 +17,7 @@ Lister::Application.routes.draw do
   post 'items'      => 'items#create',    as: 'items'
 
   resources :lists
+  get 'my_lists'    => 'lists#my_lists',  as: 'my_lists'
 
   if Rails.env == "test"
     get 'dummy/test_current_user' => 'dummy#test_current_user'

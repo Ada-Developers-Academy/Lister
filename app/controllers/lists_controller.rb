@@ -22,6 +22,9 @@ class ListsController < ApplicationController
     @item = Item.new
   end
 
+  def my_lists
+  end
+
   private
 
   def list_params

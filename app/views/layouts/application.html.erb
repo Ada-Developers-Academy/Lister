@@ -12,6 +12,7 @@
     <% if @current_user %>
       <p>Signed in as <%= @current_user.username %></p>
       <p><%= link_to "Log OUT", sign_out_path, :class => "btn btn-default" %></p>
+      <p><%= link_to "MY Lists", my_lists_path, :class => "btn btn-default" %></p>
     <% else %>
       <p><%= link_to "Log IN", sign_in_path, :class => "btn btn-default" %> <%= link_to "Sign UP", sign_up_path, :class => "btn btn-default" %></p>
     <% end %>
