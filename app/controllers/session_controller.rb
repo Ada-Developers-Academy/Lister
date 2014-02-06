@@ -19,5 +19,4 @@ class SessionController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path, :notice => "You have been successfully signed out."
   end
-  end
 end

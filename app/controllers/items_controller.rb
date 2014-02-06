@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   
   def create
-    unless session[:user_id].nil?
+    if @current_user
       @item = Item.create(item_params)
       redirect_to list_path(@item.list_id)
     else

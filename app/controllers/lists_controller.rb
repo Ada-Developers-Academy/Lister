@@ -9,7 +9,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    unless session[:user_id].nil?
+    if @current_user
       list = List.create(list_params)
       redirect_to list_path(list.id)
     else
