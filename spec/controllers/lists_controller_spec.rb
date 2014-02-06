@@ -92,7 +92,6 @@ describe ListsController do
       context 'with valid user' do
         context 'with valid fields' do
           let(:valid_attributes) { { name:"cake", user_id: session[:user_id], item_name: 'chocolate' } }
-          
           it 'redirects to user show' do 
             post :create, list: valid_attributes
             expect(response).to redirect_to list_path(List.last.id)
@@ -138,6 +137,15 @@ describe ListsController do
             expect(flash[:notice]).to_not be_blank
           end
         end
+        context 'with no item name' do
+          let(:no_item){ { name:"cake", user_id: session[:user_id], item_name: "" } }
+
+          it 'does not add item' do
+            expect { post :create, list: no_item }.to change(Item, :count).by(0)
+          end
+
+        end
+
       end
       # context 'with invalid user' do
       #   let(:user)
