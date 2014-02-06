@@ -9,7 +9,9 @@
 
   <body>
     <h1><%= link_to "List Yo Lists", root_path %></h1>
-    <p><%= link_to "Log IN", sign_in_path, :class => "btn btn-default" %> <%= link_to "Sign UP", sign_up_path, :class => "btn btn-default" %></p>
+    <% if session[:user_id] = 
+      
+    end<p><%= link_to "Log IN", sign_in_path, :class => "btn btn-default" %> <%= link_to "Sign UP", sign_up_path, :class => "btn btn-default" %></p>
 
     <%= notice %>
 
