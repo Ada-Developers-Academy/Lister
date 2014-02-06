@@ -15,10 +15,14 @@ describe ItemsController do
   end
 
   describe "POST 'create'"
-    it "assigns a item instance to @item" do
+    it "assigns an item instance to @item" do
       post :create, item: { name: "laundry" }
       expect(assigns(item)).to be_an_instance_of(Item)
     end
 
+    let(:valid_attributes) { { name: "laundry"} }
+    it "should increase the item count by 1" do
+      expect { post :create, item: valid_attributes}.to change(Item, :count).by(1)  
+    end  
 
 end
