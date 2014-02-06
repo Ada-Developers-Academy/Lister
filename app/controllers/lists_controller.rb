@@ -10,7 +10,7 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     user = User.find(session[:user_id])
-    user.lists << @list
+    user.lists << @list #does this rollback the list object if it doesn't attach to user?
     if @list.save
       flash[:notice] = "List has been successfully created!"
       redirect_to list_path(@list)
@@ -46,7 +46,7 @@ class ListsController < ApplicationController
     @list.destroy
     # render json: { status:'deleted' } #this works too
     respond_to do |format|
-      format.html { redirect_to clubs_url }
+      format.html { redirect_to lists_path }
       format.json { head :no_content }
     end
   end

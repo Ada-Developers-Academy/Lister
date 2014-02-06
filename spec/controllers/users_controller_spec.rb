@@ -10,7 +10,6 @@ describe UsersController do
 
   describe "POST 'create'" do
     context "with valid attributes" do
-
       before(:each) do
         ActionMailer::Base.delivery_method = :test
         ActionMailer::Base.perform_deliveries = true
@@ -58,6 +57,7 @@ describe UsersController do
         expect { post :create, user: {username: "b"} }.to change(User, :count).by(0)
       end
     end
+    
   end
 
   describe "GET 'show'" do

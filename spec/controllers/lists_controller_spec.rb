@@ -90,7 +90,6 @@ describe ListsController do
   describe 'POST create' do
     context 'if logged in' do
       context 'with valid user' do
-
         context 'with valid fields' do
           let(:valid_attributes) { { name:"cake", user_id: session[:user_id] } }
           
@@ -136,6 +135,9 @@ describe ListsController do
           end
         end
       end
+      # context 'with invalid user' do
+      #   let(:user)
+      # end
     end
 
     context 'if not logged in' do      
