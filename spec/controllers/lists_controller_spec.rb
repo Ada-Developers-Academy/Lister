@@ -37,7 +37,7 @@ describe ListsController do
     context "when user is signed in" do
       before do
         session[:user_id] = 1
-        post :create, list: { name: "Another List" }
+        post :create, list: { name: "Another List", user_id: "1" }
       end
 
       let(:list) { List.last }
@@ -47,7 +47,7 @@ describe ListsController do
       end
 
       it "redirects to list show page" do
-        expect(response).to redirect_to list_path(List.last.id)
+        expect(response).to redirect_to list_path(list.id)
       end
     end
   end
