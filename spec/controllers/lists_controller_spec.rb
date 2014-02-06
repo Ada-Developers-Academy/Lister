@@ -233,14 +233,20 @@ describe ListsController do
         end
 
         context 'with valid attributes' do
-          let(:valid_attributes) { { name:"cake", user_id: session[:user_id] } }
+          let(:valid_attributes) { { name:"cake", user_id: session[:user_id], item_name: "eggs" } }
           
           it 'redirects to list show page' do
             patch :update, id: list.id, list: valid_attributes
             expect(response).to redirect_to list_path(list)
           end
 
-          #add items to list test would be in item controller?
+          it 'adds item to database' do
+            expect {patch :update, id: list.id, list: valid_attributes }.to change(Item, :count).by(1)
+          end
+
+          it 'adds item to list' do
+            expect {patch :update, id: list.id, list: valid_attributes }.to change(list.items, :count).by(1)
+          end
         end
 
         context 'with invalid attributes' do
@@ -280,6 +286,8 @@ describe ListsController do
           patch :update, id: list.id
           expect(flash[:notice]).to_not be_blank
         end
+
+        #does not allow items to be added
       end
     end
     

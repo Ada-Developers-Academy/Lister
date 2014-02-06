@@ -23,8 +23,14 @@ class ListsController < ApplicationController
   end
 
   def update
+    # render text: 'todd was here' and return
     if @list.update(list_params)
-      redirect_to list_path(@list)
+      p Item.last
+      p @list.items
+      respond_to do |format|
+        format.html { redirect_to list_path(@list) }
+        format.json { render json: @list }
+      end
     else
       flash[:notice] = "There was a problem editing this list."
       render :edit

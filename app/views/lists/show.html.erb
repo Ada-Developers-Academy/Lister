@@ -10,14 +10,19 @@
 </div>
 
 COUNT: <%= @list.items.count %>
+<div class= 'form'>
+  <%= form_for @list, url: list_path, method: :patch do |f| %>
+    <div class = 'add-item'>
+      <%= f.label :item_name, "Add item!" %>
+      <%= f.text_field :item_name %> 
+      <!-- this worked without the submit button...? -->
+      <span class= 'add-button'>
+        <%= f.submit "Add to list!" %>
+      </span>
+    </div>
+  <% end %>
+</div>
 
-<%= form_for @list, url: list_path, method: :patch do |f| %>
-  <div class = 'field'>
-    <%= f.label :item_name, "Add item!" %>
-    <%= f.text_field :item_name %> 
-    <!-- this worked without the submit button...? -->
-    <%= f.submit "Add to list!" %>
-  </div>
-<% end %>
-
-<%= link_to "See all #{@name}'s lists", user_path(@list.user) %>
+<div>
+  <%= link_to "See all #{@name}'s lists", user_path(@list.user) %>
+</div>
