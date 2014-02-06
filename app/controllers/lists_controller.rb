@@ -10,8 +10,8 @@ class ListsController < ApplicationController
 
   def create
     if @current_user
-      list = List.create(list_params)
-      redirect_to list_path(list.id)
+      @list = List.create(list_params)
+      redirect_to list_path(@list.id)
     else
       redirect_to sign_in_path, notice: "Sign in to create a list"
     end

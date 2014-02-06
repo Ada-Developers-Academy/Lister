@@ -5,6 +5,7 @@ describe ItemsController do
   let(:item) { create(:item) }
 
   describe "POST 'create'" do
+
     context "when user is not signed in" do
       before do
         post :create
@@ -20,8 +21,11 @@ describe ItemsController do
     end
 
     context "when user is signed in" do
-      before do
-        session[:user_id] = 1
+
+      let(:current_user) { create(:user)}
+
+      before(:each) do
+        controller.instance_variable_set(:@current_user, current_user)
         post :create, item: { name: "Fate-free yogurt", list_id: "1" }
       end
 

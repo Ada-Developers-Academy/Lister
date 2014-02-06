@@ -62,4 +62,22 @@ describe SessionController do
     
     end
   end
+
+  describe "GET 'destroy'" do
+    let(:current_user) { create(:user)}
+
+    before(:each) do
+      controller.instance_variable_set(:@current_user, current_user)
+    end
+
+    it "redirects to root_path" do
+      get :destroy
+      expect(response).to redirect_to root_path
+    end
+
+    it "resets the session" do
+      # get :destroy
+      # expect(assigns(@current_user)).to be_nil
+    end
+  end
 end

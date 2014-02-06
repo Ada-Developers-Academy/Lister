@@ -35,12 +35,15 @@ describe ListsController do
     end
 
     context "when user is signed in" do
-      before do
-        session[:user_id] = 1
+
+      let(:current_user) { create(:user)}
+
+      before(:each) do
+        controller.instance_variable_set(:@current_user, current_user)
         post :create, list: { name: "Another List", user_id: "1" }
       end
 
-      let(:list) { List.last }
+      let(:list) { assigns(:list) }
 
       it "creates a list" do
         expect(list.name).to eq "Another List"
@@ -48,6 +51,26 @@ describe ListsController do
 
       it "redirects to list show page" do
         expect(response).to redirect_to list_path(list.id)
+      end
+    end
+
+    context "when user doesn't exist in database" do
+
+      before(:each) do
+        session[:user_id] = "A"
+        post :create, list: { name: "Another List", user_id: "1" }
+      end
+
+      it "redirects to root path" do
+        expect(response).to redirect_to root_path
+      end
+
+      it "sets a flash notice" do
+        expect(flash[:notice]).to_not be_blank
+      end
+
+      it "resets session" do
+        
       end
     end
   end
