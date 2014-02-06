@@ -8,18 +8,7 @@ describe ListsController do
   end
 
   describe 'GET new' do
-    context 'if logged in' do      
-      before(:each) do
-        session[:user_id] = nil
-      end
-
-      it 'redirects to list index' do
-        get :new
-        expect(response).to redirect_to lists_path
-      end
-    end
-
-    context 'if not logged in' do
+    context 'if logged in' do
       it 'is successful' do 
         get :new
         expect(response).to be_successful
@@ -30,6 +19,18 @@ describe ListsController do
         expect(response).to render_template :new
       end
     end
+
+    context 'if not logged in' do      
+      before(:each) do
+        session[:user_id] = nil
+      end
+
+      it 'redirects to list index' do
+        get :new
+        expect(response).to redirect_to lists_path
+      end
+    end
+
   end
 
   describe 'GET index' do 
@@ -56,15 +57,16 @@ describe ListsController do
   end
 
   describe 'GET show' do
+    let(:list) { create(:list) }
     context 'if logged in' do
+
+
       it 'is successful' do
-        create(:list)
-        get :show, id: List.last.id
+        get :show, id: list.id
         expect(response).to be_successful
       end
 
       it 'displays list' do
-        list = create(:list)
         get :show, id: list.id
         expect(assigns(:list).id).to eq list.id
       end
@@ -77,13 +79,13 @@ describe ListsController do
       end
 
       it 'is successful' do
-        create(:list)
-        get :show, id: List.last.id
+        # create(:list)
+        get :show, id: list.id
         expect(response).to be_successful
       end
 
       it 'displays list' do
-        list = create(:list)
+        # list = create(:list)
         get :show, id: list.id
         expect(assigns(:list).id).to eq list.id
       end

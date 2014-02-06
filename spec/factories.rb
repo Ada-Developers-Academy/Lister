@@ -13,6 +13,6 @@ FactoryGirl.define do
 
   factory :list do
     name "cake"
-    user_id 1
+    user #only works bc has_many association is set up
   end
 end
