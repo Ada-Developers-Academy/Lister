@@ -2,12 +2,11 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @lists = List.all
-    @users_lists = List.where(user_id: @current_user.id) if @current_user
   end
 
   def show
-    @users = User.all
+    @lists = List.last(10).reverse
+    @users_lists = List.where(user_id: @current_user.id) if @current_user
   end
 
   def  new

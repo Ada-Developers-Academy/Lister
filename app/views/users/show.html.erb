@@ -2,24 +2,38 @@
 
 
 <div class="row row-offcanvas row-offcanvas-right">
+
   <% if @current_user.nil? %>
+
   <div class="col-xs-12 col-sm-9">
     <div class="jumbotron">
       <%= "Welcome to Lister!" %>
       <p><a class="signin">Sign in</a> or <a class="signup">sign up</a> for Lister & start making your first lists!</p>
-    <div id="sign-up-area"><%= render "users/form" %></div>
-    <div id="sign-in-area" ><%= render "sessions/new" %>
+      <div id="sign-up-area"><%= render "users/form" %></div>
+      <div id="sign-in-area" ><%= render "sessions/new" %>
     </div>
   </div>
-    <br><br>
-  <div class="col-xs-4 col-sm-3 sidebar-offcanvas" style="border: 1px dashed"> <%= 'most recent lists here'  %></div>
+
+<br><br>
+  <div class="col-xs-4 col-sm-3 sidebar-offcanvas" style="border: 1px dashed">
+    <% @lists.each do |list| %>
+    <div class="row"><%= link_to "#{list.name}", list_path(list.id) %></div>
+    <% end %>
+  </div>
 
 <% else %>
+
   <div class="col-md-8" style="border: 1px dashed"> <%= @users_lists.inspect %></div>
-  <div class="col-xs-4 col-sm-3 sidebar-offcanvas" style="border: 1px dashed"><%= 'most recent lists here' %> </div>
+  <div class="col-xs-4 col-sm-3 sidebar-offcanvas" style="border: 1px dashed">
+  <table class="table table-striped"><h2> Explore the latest lists: </h2><br>
+    <tbody>
+    <% @lists.each do |list| %>
+      <tr>
+      <td><%= link_to "#{list.name}", list_path(list.id) %></td>
+      </tr>
+
+    <% end %></tbody></div>
+
+
 <%  end %>
 </div>
-
-
-
-<!--  <div class="col-md-8" style="border: 1px dashed"> <%= render "users/form" %></div> -->
