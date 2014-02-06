@@ -2,7 +2,7 @@ Lister::Application.routes.draw do
 
   root to: "welcome#index"
   get "/session/new", to: 'session#new'
-  post 'session', to: 'session#create'
+  post 'session', to: 'session#create', as: :signin
   get '/users/new', to: 'users#new', as: :signup
   post '/users', to: 'users#create', as: :create_user
   get '/users/show/:id', to: 'users#show', as: :user 
