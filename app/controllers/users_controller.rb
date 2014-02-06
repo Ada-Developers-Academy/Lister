@@ -8,8 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
 
-      # Eventually use Resque for this
-      ListMailer.welcome(@user.id).deliver
+      Resque.enqueue(EmailJob, @user.id)
       
       redirect_to root_path, notice: "User created!"
     else
