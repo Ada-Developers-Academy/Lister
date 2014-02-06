@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   rescue ActiveRecord::RecordNotFound
     reset_session
-    redirect_to root_path, notice: "User does not exist. Sorry!"
+    redirect_to root_path, notice: "You do not exist. Sorry!"
   end
   helper_method :current_user
 end

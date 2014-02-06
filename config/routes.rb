@@ -18,4 +18,8 @@ Lister::Application.routes.draw do
 
   resources :lists
 
+  if Rails.env == "test"
+    get 'dummy/test_current_user' => 'dummy#test_current_user'
+  end
+
 end
