@@ -1,5 +1,9 @@
 <h1>Hi name<%#= current_user.username %>,</h1>
 
-<p>
-  create a list
-</p>
+if user's list == 0
+  <h2>Create your first list</h2>
+else
+  iterate over user's list object do |list|
+    link_to list.name, list_path(user.list.id)
+
+
