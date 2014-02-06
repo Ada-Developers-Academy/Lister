@@ -91,7 +91,7 @@ describe ListsController do
     context 'if logged in' do
       context 'with valid user' do
         context 'with valid fields' do
-          let(:valid_attributes) { { name:"cake", user_id: session[:user_id] } }
+          let(:valid_attributes) { { name:"cake", user_id: session[:user_id], item_name: 'chocolate' } }
           
           it 'redirects to user show' do 
             post :create, list: valid_attributes
@@ -105,6 +105,10 @@ describe ListsController do
 
           it 'changes list count by 1' do
             expect {post :create, list: valid_attributes }.to change(List, :count).by(1)
+          end
+
+          it 'changes item count by 1' do
+            expect {post :create, list: valid_attributes }.to change(Item, :count).by(1)
           end
 
           it "sets a flash message" do
