@@ -1,0 +1,6 @@
+<h2><%= @current_user.username %>'s Lists:</h2>
+<% @current_users_lists.each do |list| %>
+<ul>
+  <li><%= link_to "#{list.name}", list_path(list.id)  %></li>
+</ul>
+<% end %>

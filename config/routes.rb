@@ -11,6 +11,7 @@ Lister::Application.routes.draw do
   post "/signup" => "users#create"
   get "/users" => "users#show", as: :users
   get "/user/:id" => "users#show", as: :user
+  get "/mylists" => "lists#users_lists", as: :my_lists
 
   resources :lists do
      resources :items

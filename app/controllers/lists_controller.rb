@@ -1,12 +1,16 @@
 class ListsController < ApplicationController
   before_filter :authorize, only: [:new, :create, :edit, :delete, :show]
-  before_action :set_list, except: [:new, :create, :index]
+  before_action :set_list, except: [:new, :create, :index, :users_lists]
 
   def index
     @lists = List.all
   end
 
   def show
+  end
+
+  def users_lists
+    @current_users_lists = List.where(user_id: @current_user.id).reverse
   end
 
   def new
