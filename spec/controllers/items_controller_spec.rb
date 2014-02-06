@@ -25,7 +25,7 @@ describe ItemsController do
       let(:current_user) { create(:user)}
 
       before(:each) do
-        controller.instance_variable_set(:@current_user, current_user)
+        session[:user_id] = current_user.id
         post :create, item: { name: "Fate-free yogurt", list_id: "1" }
       end
 

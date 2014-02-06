@@ -67,7 +67,7 @@ describe SessionController do
     let(:current_user) { create(:user)}
 
     before(:each) do
-      controller.instance_variable_set(:@current_user, current_user)
+      session[:user_id] = current_user.id
     end
 
     it "redirects to root_path" do
@@ -76,8 +76,9 @@ describe SessionController do
     end
 
     it "resets the session" do
-      # get :destroy
-      # expect(assigns(@current_user)).to be_nil
+      expect(session[:user_id]).to_not be_nil
+      get :destroy
+      expect(session[:user_id]).to be_nil
     end
   end
 end
