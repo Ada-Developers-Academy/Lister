@@ -1,6 +1,12 @@
 class ListsController < ApplicationController
+  before_action :set_list, only: [:show, :destroy, :add_item]
 
-  def new  
+  def new
+    @list = List.new  
+  end
+
+  def index
+    @lists = List.all
   end
 
   def create
@@ -14,8 +20,20 @@ class ListsController < ApplicationController
     end
   end
 
+  def show
+
+  end
+
+  def add_item(name)
+    @list.add_item(name)
+  end 
+
 
   private
+  def set_list
+    @list = List.find(params[:id])
+  end
+
   def list_params
     params.require(:list).permit(:name)
   end

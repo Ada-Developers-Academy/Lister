@@ -1,1 +1,20 @@
-<%= render form %>
+<h2>Create a list</h2>
+
+<%= form_for(@list) do |f| %>
+  <% if @list.errors.any? %>
+    <div class="error_messages">
+        <% @list.errors.full_messages.each do |message| %>
+          <%= message %> 
+        <% end %> 
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
