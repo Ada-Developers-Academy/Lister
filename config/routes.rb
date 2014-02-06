@@ -7,7 +7,7 @@ Lister::Application.routes.draw do
   get "/sign-up", to: "users#new"
 
   get '/login', to: "sessions#new"
-  post "/login", to: "sessions#create"
+  post "/login", to: "sessions#create", as: :sessions
 
   get "/lists/new", to: "lists#new", as: :list_new
   post "/lists/new", to: "lists#create", as: :lists

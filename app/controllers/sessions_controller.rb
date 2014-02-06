@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    @user= User.new
   end
 
   def create
@@ -13,5 +14,10 @@ class SessionsController < ApplicationController
       flash[:notice] = "Invalid username or password"
       render :new
     end
+  end
+
+  def destroy
+    session.destroy
+    session[:user_id] = nil
   end
 end

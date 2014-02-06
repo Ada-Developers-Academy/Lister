@@ -17,7 +17,6 @@ describe ListsController do
     describe "create" do
       context "with valid attributes" do
       let(:valid_attributes) { {name: "groceries"} }
-
           
         it "successfully redirects on creation" do
           post :create, list: valid_attributes
@@ -27,7 +26,7 @@ describe ListsController do
         it "does create a list" do
           list_count = List.count
           post :create, list: valid_attributes
-          expect(List.count).to eq(list_count + 1)
+          expect(List.count).to eq(list_count + 1) 
         end
 
         it "flashes a notice" do
@@ -68,6 +67,11 @@ describe ListsController do
   end
 
   context "when a user is NOT signed in" do
+    let(:other_user) { create(:user) }
+    before(:each) do 
+      @current_user = create(:user)
+      session[:user_id] = nil
+    end
 
     describe "get new" do
       it "is a redirect" do
