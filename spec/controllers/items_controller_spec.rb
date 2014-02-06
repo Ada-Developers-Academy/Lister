@@ -25,4 +25,8 @@ describe ItemsController do
       expect { post :create, item: valid_attributes}.to change(Item, :count).by(1)  
     end  
 
+    it "should redirect after save" do
+      post :create, item: {name: "to do"}
+      expect(response.status).to eq(302)
+    end
 end

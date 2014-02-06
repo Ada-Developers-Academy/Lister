@@ -10,6 +10,7 @@ Lister::Application.routes.draw do
   post 'lists', to: 'lists#create'
   get 'lists/show/:id', to: 'lists#show', as: :list
   get 'items/new', to: 'items#new'
+  post 'items', to: 'items#create'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

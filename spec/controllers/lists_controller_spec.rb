@@ -18,11 +18,11 @@ describe ListsController do
       end
 
       it "should redirect" do
-        post :create, list: {list_name: "to_do"}
+        post :create, list: {list_name: "to do"}
         expect(response).to redirect_to(list_path(assigns(:list).id))
       end
 
-      let(:valid_attributes) { {list_name: "to_do"} }
+      let(:valid_attributes) { {list_name: "to do"} }
       it "should increase list count by 1" do
         expect { post :create, list: valid_attributes }.to change(List, :count).by(1)
       end
