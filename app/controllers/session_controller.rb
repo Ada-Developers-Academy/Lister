@@ -11,5 +11,10 @@ class SessionController < ApplicationController
     end
   end
 
+  def destroy
+    session[:user_id] = nil
+    redirect_to '/', notice: "You are now logged out. Thanks for listing!"
+  end
+
   
 end

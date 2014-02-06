@@ -4,7 +4,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new(params.require(:list).permit(:title))
+    @list = List.new(params.require(:list).permit(:title, :user_id))
     if @list.save
       redirect_to '/', notice: "Thanks for listing your list!"
     else
@@ -13,9 +13,11 @@ class ListsController < ApplicationController
   end
 
   def index
+    @lists = List.all
   end
 
   def show
+    @list = List.find_by(id: params[:id])
   end
 
   def destroy
