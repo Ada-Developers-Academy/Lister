@@ -1,0 +1,6 @@
+<%= form_for @list_item do |f| %>
+  <%= f.label :new_list_item %>
+  <%= f.text_field :description %>
+   <%= f.hidden_field :list_id, value: @list.id %>
+  <%= f.submit %>
+<% end %>

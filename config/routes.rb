@@ -4,15 +4,17 @@ Lister::Application.routes.draw do
   root 'welcome#index'
   resources :users
 
-  get '/signin'           => 'session#new', as: :sign_in
-  post '/signin'          => 'session#create'
-  get '/signout'          => 'session#destroy', as: :sign_out
+  get '/signin'             => 'session#new', as: :sign_in
+  post '/signin'            => 'session#create'
+  get '/signout'            => 'session#destroy', as: :sign_out
 
-  get '/lists/new'        => 'lists#new', as: :new_list
-  post '/lists/new'       => 'lists#create', as: :lists
-  get 'lists/show'        => 'lists#show'
+  get '/lists/new'          => 'lists#new', as: :new_list
+  post '/lists/new'         => 'lists#create', as: :lists
+  get '/lists/:id'          => 'lists#show', as: :list
+  post '/lists/:id'         => 'list_items#create', as: :list_items
+  delete '/lists_items/:id' => 'list_items#destroy', as: :list_item
 
-  get '/list_items/new'   => 'list_items#new'
+  get '/list_items/new'     => 'list_items#new', as: :new_items
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

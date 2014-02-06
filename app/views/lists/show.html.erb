@@ -1,0 +1,10 @@
+<div class = 'ui red center aligned huge header'>LOOK AT THIS LIST. </div>
+  <div class = 'ui blue header'><%= @list.title %></div>
+  <p><%= @list.description %></p>
+  <% if @list.list_items %>
+    <% @list.list_items.each_with_index do |item, n| %>
+      <div class='item'><%= item.description %> <%= link_to 'Get rid of it.', item, method: :delete, class: "ajax-destroy", data: { confirm: 'Are you sure?' } %></div>
+    <% end %>
+  <% end %>
+
+  <%= render 'list_items' %>

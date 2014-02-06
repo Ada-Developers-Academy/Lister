@@ -11,6 +11,12 @@ gem "bcrypt-ruby"
 gem 'figaro'
 gem "resque"
 
+# to make it look less like garbage!
+gem 'therubyracer', platforms: :ruby # or any other runtime
+gem 'less-rails'
+gem 'autoprefixer-rails'
+gem 'semantic-ui-rails'
+
 group :development, :test do
   gem "rspec-rails"
   gem "guard-rspec"
