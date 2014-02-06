@@ -1,12 +1,12 @@
 require 'spec_helper' 
 
 describe 'List' do 
-  let(:list) { create(:list)}
+  let(:list) { List.new(name: 'Groceries')}
 
   describe 'validations' do 
     it' must have a name' do 
-      list = List.create
-      expect(book.errors[:name]).to include 'can\'t be blank'
+      new_list = List.create
+      expect(new_list.errors[:name]).to include 'can\'t be blank'
     end
 
     it 'has a unique name' do 

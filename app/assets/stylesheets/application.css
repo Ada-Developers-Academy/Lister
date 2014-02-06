@@ -11,3 +11,25 @@
  *= require_self
  *= require_tree .
  */
+
+.jumbo {
+  margin-right: 50px;
+}
+
+.woman {
+  position: relative;
+  margin-right: 100px;
+  float: right;
+}
+
+.right-container {
+  margin-top: 100px;
+}
+
+.left-container {
+  margin-left: 50px;
+}
+
+.lists-are-fun {
+  font-size: 50px;
+}
