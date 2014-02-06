@@ -21,6 +21,6 @@ Lister::Application.routes.draw do
   get '/signup',     to: 'users#new'        
   get '/signin',     to: 'session#new', as: :signin
   post '/signin',    to: 'session#create'
-  delete '/signout', to: 'session#destroy', as: :signout
+  get '/signout', to: 'session#destroy', as: :signout
 
 end

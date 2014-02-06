@@ -1,7 +1,4 @@
 <h1>Sign Up</h1>
-<% @user.errors.full_messages.each do |error| %>
- <%= error %><br>
-<% end %>
 
 <%= form_for @user do |f| %>
  <div class='field'
@@ -16,7 +13,7 @@
    <%= f.label :password %>
    <%= f.text_field :password %>
  </div>
- <div class='field'
+ <div class='field'>
    <%= f.label :password_confirmation %>
    <%= f.text_field :password_confirmation %>
  </div>
@@ -24,3 +21,6 @@
  <%= f.submit %>
  </div>
 <% end %>
+
+<h1>Sign In</h1>
+<%= render "session/signin" %>
