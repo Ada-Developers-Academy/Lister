@@ -23,6 +23,8 @@
 
 <h1>Hi <%= current_user.username %>,</h1>
 
+<%= link_to "Create a list", new_list_path(@user.id) %>
+
 <!-- if user's list == 0
   <h2>Create your first list</h2>
 else

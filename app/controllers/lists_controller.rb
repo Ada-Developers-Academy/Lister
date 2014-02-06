@@ -1,7 +1,8 @@
 class ListsController < ApplicationController
 
   def new
-    
+    @list = List.new
+    @user = current_user
   end
 
   def create
@@ -13,6 +14,7 @@ class ListsController < ApplicationController
     if @list.save
       redirect_to list_path(@list.id)
     else
+      @list = List.new
       render :new
     end
   end
