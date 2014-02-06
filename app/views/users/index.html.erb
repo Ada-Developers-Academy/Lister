@@ -4,7 +4,8 @@
     <h1>Not signed in</h1>
 <% end %>
 
-
+<div class="debug">
+<p>This is for debugging</p>
 <p>
 <table class="table table-striped">
     <thead>
@@ -20,6 +21,7 @@
         <tr>
             <td><%= user.id %></td>
             <td><%= user.username %></td>
+            <td><%= link_to 'Lists', '/list/index' %></td>
             <td><%= link_to 'Edit', edit_user_path(user) %></td>
             <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
@@ -27,5 +29,4 @@
     </tbody>
 </table>
 </p>
-
-<%= link_to 'Edit', edit_user_path(@users) %> |
+</div>

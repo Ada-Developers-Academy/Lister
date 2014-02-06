@@ -1,12 +1,13 @@
 class User < ActiveRecord::Base
-  has_secure_password
+  #has_secure_password_digest(options = {validations: false})
+  #has_many :lists
 
   SALT = '$2a$10$D1OPM3oiaDlfkW0vU1sfbvlq.'
 
   before_save { self.email = self.email.downcase }
   before_create :create_remember_token
   before_create :encrypt_password
-  after_save :clear_password
+  after_save    :clear_password
 
 # Validations
   validates :username, presence: true,
@@ -45,17 +46,15 @@ class User < ActiveRecord::Base
     end
   end
 
-    private
-    def create_remember_token
-      self.remember_token = User.encrypt(User.new_remember_token)
-    end
+  private
 
-    def encrypt_password
-      self.password = BCrypt::Engine.hash_secret(password, SALT)
-    end
-
-    def clear_password
-      self.password = nil
-    end
-
+  def create_remember_token
+    self.remember_token = User.encrypt(User.new_remember_token)
+  end
+   def encrypt_password
+    self.password = BCrypt::Engine.hash_secret(password, SALT)
+  end
+   def clear_password
+    self.password = nil
+   end
 end

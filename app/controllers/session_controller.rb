@@ -10,13 +10,12 @@ class SessionController < ApplicationController
 
   def create
     @current_user = User.find_by(email: params[:email].downcase)
-    raise()
     if @current_user && User.authenticate(params[:email], params[:password])
       sign_in(@current_user)
       # redirect to the browse view.
       redirect_to root_path
     else
-      #raise "Password not authenticated"
+      raise "Password not authenticated"
       render 'new'
     end
   end

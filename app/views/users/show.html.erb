@@ -13,12 +13,11 @@
     <tr>
         <td><% @current_user = User.find_by(id: cookies[:user_id]) %></td>
         <td><%= @current_user.username %></td>
+        <td><%= link_to 'My Lists', list_path(@current_user) %></td>
+        <td><%= link_to 'Add a List', new_list_path %></td>
         <td><%= link_to 'Edit', edit_user_path(@current_user) %></td>
         <td><%= link_to 'Destroy', @current_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
     </tbody>
 </table>
 </p>
-
-<%= link_to 'Edit', edit_user_path(@users) %> |
-<%= link_to 'Back', users_path %>

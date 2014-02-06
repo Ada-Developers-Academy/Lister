@@ -1,0 +1,12 @@
+<h1>New List</h1>
+
+<%= form_tag list_path %>
+    <div class="field">
+        <%= label_tag :title %><br>
+        <%= text_field_tag :title %>
+    </div>
+    <div class="field">
+        <%= label_tag :body %><br>
+        <%= text_field_tag :body %>
+        <p class="button"><%= submit_tag "Go" %></p>
+    </div>
