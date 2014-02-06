@@ -1,7 +1,7 @@
 class ListsController < ApplicationController
   before_action :require_login, except: [:show, :index ]
-  before_action :set_list, only: [:edit, :update ] #:destroy
-  before_action :valid_user, only: [:edit, :update] #:create
+  before_action :set_list, only: [:edit, :update, :destroy] 
+  before_action :valid_user, only: [:edit, :update, :destroy] #:create
 
   def new
     @list = List.new
@@ -39,7 +39,12 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @name = @list.user.username 
-    p @list
+    # p @list
+  end
+
+  def destroy
+    @list.destroy
+    redirect_to lists_path
   end
 
   private
@@ -62,7 +67,7 @@ class ListsController < ApplicationController
 
   def valid_user
     unless session[:user_id] == @list.user.id
-      flash[:notice] = "You are not authorized to edit this list!"
+      flash[:notice] = "You are not authorized to edit or delete this list!"
       redirect_to list_path(@list)
     end
   end

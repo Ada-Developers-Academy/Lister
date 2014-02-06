@@ -7,7 +7,11 @@
 <% else %>
   <ul>
     <% @lists.each do |list| %>
-      <li><%= link_to "#{list.name}", list_path(list) %></li>
+      <li>
+        <%= link_to "#{list.name}", list_path(list) %>
+        <%= link_to "Delete", list_path(list), method: :delete %>
+      </li>
+
     <% end %>
   </ul>
 <% end %>

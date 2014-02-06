@@ -59,8 +59,6 @@ describe ListsController do
   describe 'GET show' do
     let(:list) { create(:list) }
     context 'if logged in' do
-
-
       it 'is successful' do
         get :show, id: list.id
         expect(response).to be_successful
@@ -73,19 +71,16 @@ describe ListsController do
     end
 
     context 'if not logged in' do
-      
       before(:each) do
         session[:user_id] = nil
       end
 
       it 'is successful' do
-        # create(:list)
         get :show, id: list.id
         expect(response).to be_successful
       end
 
       it 'displays list' do
-        # list = create(:list)
         get :show, id: list.id
         expect(assigns(:list).id).to eq list.id
       end
@@ -95,6 +90,7 @@ describe ListsController do
   describe 'POST create' do
     context 'if logged in' do
       context 'with valid user' do
+
         context 'with valid fields' do
           let(:valid_attributes) { { name:"cake", user_id: session[:user_id] } }
           
@@ -288,7 +284,44 @@ describe ListsController do
         expect(flash[:notice]).to_not be_blank
       end
     end
+  end
 
+  describe 'DELETE destroy' do
+    let(:list){ create(:list, user_id: user.id) }
+
+    context 'if logged in' do
+      context 'if valid user' do
+        it 'redirects to lists index' do 
+          delete :destroy, id: list.id
+          expect(response).to redirect_to lists_path
+        end
+      end
+
+      context 'if not valid user' do
+        before(:each) do
+          session[:user_id] = 1
+        end
+        it 'redirects to lists index' do
+          delete :destroy, id: list.id
+          expect(response).to redirect_to list_path(list.id)
+        end
+
+        it 'sets flash message' do
+          delete :destroy, id: list.id
+          expect(flash[:notice]).to_not be_blank
+        end
+      end
+    end
+
+    context 'if not logged in ' do
+      before(:each) do
+        session[:user_id] = nil
+      end
+      it 'redirects to lists_path' do
+        delete :destroy, id: list.id
+        expect(response).to redirect_to lists_path
+      end
+    end
   end
 
 end
