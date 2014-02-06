@@ -47,4 +47,10 @@ describe ListsController do
     end
   end
 
+  describe "GET 'show'" do
+    it "is successful" do
+      get(:show, {'id' => "1"})
+      expect(response).to be_successful
+    end
+  end
 end
