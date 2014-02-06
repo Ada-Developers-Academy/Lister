@@ -1,3 +1,5 @@
+<h2>My Lists:</h2>
+<!-- TODO: Add some javascript which collapses lists -->
 <p><% @lists.each do |list| %>
-        <%= list %><br></p>
+        <%= link_to "#{list.title}", list_path(list) %><br></p>
 <% end %>

@@ -1,5 +1,5 @@
 class ListController < ApplicationController
-  #before_action :set_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   def index
     @lists = List.all
@@ -10,11 +10,12 @@ class ListController < ApplicationController
   end
 
   def create
-    @list = List.new
-    redirect_to @list
+    @list = List.create(list_params)
+    redirect_to '/list'
   end
 
   def show
+    #list gets set in before action
   end
 
   def update
@@ -26,7 +27,7 @@ class ListController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:title, :body)
+    params.permit(:body, :title)
   end
 
   def set_list

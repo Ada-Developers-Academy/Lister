@@ -2,6 +2,7 @@ Lister::Application.routes.draw do
 
   resources :users
   resources :list
+  match '/create', to: 'list#create', via: 'post'
 
   #resources :session, only: [:new, :create]
   match '/signup',  to: 'users#new',       via: 'get'
