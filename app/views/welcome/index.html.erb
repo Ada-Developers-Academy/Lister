@@ -1,0 +1,6 @@
+<h2> Welcome to the lists. Lists upon lists upon lists.</h2>
+<%= link_to 'Wanna be a user? Then you can make lists, too!', new_user_path %>
+<% @lists.each do |list| %>
+  <h3><%= list.title %></h3>
+  <p><%= list.description %></p>
+  <% end %>
