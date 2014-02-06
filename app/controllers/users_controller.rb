@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       Resque.enqueue(EmailJob, @user.id)
         redirect_to root_path, notice: "Successfully created new user"
       else
-        render :new
+        redirect_to root_path
       end
   end
 
