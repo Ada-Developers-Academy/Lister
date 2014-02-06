@@ -12,10 +12,8 @@ Lister::Application.routes.draw do
   get "/users" => "users#show", as: :users
   get "/user/:id" => "users#show", as: :user
 
-  post 'items/new'       => 'items#new',      as: 'new_item'
-  patch 'items/update'   => 'items#update',   as: 'update_item'
-  delete 'items/destroy' => 'items#destroy',  as: 'destroy_item'
-
-  resources :lists
+  resources :lists do
+     resources :items
+  end
 
 end
