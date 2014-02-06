@@ -14,6 +14,15 @@ class UsersController < ApplicationController
   end
 
   def show
+    if params[:id].nil?
+      @user = @current_user
+    else
+      @user = User.find(params[:id])
+    end
+    respond_to do |format|
+      format.html
+      format.json{ render json: { @user.name => @user.json } }
+    end
   end
 
   private

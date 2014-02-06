@@ -33,7 +33,7 @@ class ListsController < ApplicationController
   def edit
     @list = List.find(params[:id].to_i)
   end
-
+  
   private
   def list_params
     params.require(:list).permit(:title, :user_id)

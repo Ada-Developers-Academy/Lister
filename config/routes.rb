@@ -16,6 +16,7 @@ Lister::Application.routes.draw do
   get    'users/new'       => 'users#new',        as: 'new_user'
   post   'users/create'    => 'users#create',     as: 'create_user'
   get    'users/:id'       => 'users#show',       as: 'user'
+  get    'users/:id/lists' => 'users#show',       to: 'user'
 
   get    'lists/new'       => 'lists#new',        as: 'new_list'
   post   'lists/create'    => 'lists#create',     as: 'create_list'

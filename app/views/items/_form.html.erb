@@ -4,7 +4,7 @@
   <% end %>
 <% end %>
 
-<%= form_for(@item, url: create_item_path) do |f| %>
+<%= form_for(@item, url: create_item_path, id: 'new_item') do |f| %>
   <div class="field">
     <%= f.label 'Add an item!' %>
     <%= f.text_field :name %>

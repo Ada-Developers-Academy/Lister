@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id])
+    @item_id = params[:id]
     @item.destroy
     respond_to do |format|
       format.html{ redirect_to :back }

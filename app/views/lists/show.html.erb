@@ -10,10 +10,12 @@
 
 <div class='listitems'>
   <% @list.items.each do |item| %>
-    <%= item.name %></td>
-    <% if this_user %>
-      <%= link_to 'Delete', destroy_item_path(item.id), method: :delete, remote: true %>
-    <% end %>
+    <div class="item<%=item.id%>">
+      <span><%= item.name %></span>
+      <% if this_user %>
+        <%= link_to 'Delete', destroy_item_path(item.id), method: :delete, remote: true, class: 'delete' %>
+      <% end %>
+    </div>
     <br>
   <% end %>
 </div>

@@ -1,1 +1,2 @@
-$('.listitems').append("<%= j @item.name %> <%= j link_to 'Delete', destroy_item_path(@item.id), method: :delete, remote: true %><br>");
+$('.listitems').append("<div class='item<%=@item.id%>'><span><%= j @item.name %></span> <%= j link_to 'Delete', destroy_item_path(@item.id), method: :delete, remote: true, class: 'delete' %></div><br>");
+$('#new_item')[0].reset();

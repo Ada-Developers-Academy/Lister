@@ -1,4 +1,4 @@
 <h2>Your Lists</h2>
-<% @current_user.lists.each do |list| %>
+<% @user.lists.each do |list| %>
   <%= link_to(list.title, list_path(list.id)) %><br>
 <% end %>
