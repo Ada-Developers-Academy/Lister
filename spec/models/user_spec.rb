@@ -67,4 +67,8 @@ describe "User" do
       expect(user.password_digest).to_not be_nil
     end
   end
+
+  it "responds to #lists" do
+    expect(user).to respond_to(:lists)
+  end
 end
