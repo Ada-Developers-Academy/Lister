@@ -12,7 +12,7 @@ describe ListsController do
 
   describe "POST 'create'" do
     context "with valid attributes" do
-      let(:valid_attributes) { {title: "A List About Tests"} }
+      let(:valid_attributes) { {user_id: "1", title: "A List About Tests"} }
       it "is a redirect" do
         post :create, list: valid_attributes
         expect(response.status).to eq 302

@@ -21,5 +21,10 @@ require 'spec_helper'
       element.update(body: "a")
       expect(element).to be_valid
     end
+
+    it "is not valid without a list_id" do
+      element.update(list_id: nil)
+      expect(element).to_not be_valid
+    end
   end
 end

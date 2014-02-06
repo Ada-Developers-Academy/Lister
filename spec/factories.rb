@@ -12,6 +12,7 @@ FactoryGirl.define do
   end
 
   factory :list do
+    user_id "1"
     title "Example List"
   end
 
