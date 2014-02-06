@@ -39,7 +39,6 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @name = @list.user.username 
-    # p @list
   end
 
   def destroy
@@ -47,14 +46,14 @@ class ListsController < ApplicationController
     # render json: { status:'deleted' } #this works too
     respond_to do |format|
       format.html { redirect_to lists_path }
-      format.json { head :no_content }
+      format.json { render json: @list }
     end
   end
 
   private
 
   def list_params
-    params.require(:list).permit(:name, :user_id)
+    params.require(:list).permit(:name, :user_id, :item_name)
   end
 
   def set_list
