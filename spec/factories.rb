@@ -19,6 +19,12 @@ FactoryGirl.define do
     sequence :title do |n| 
       "Title #{n}" 
     end
+  end
 
+  factory :item do
+    itemname "Go Shopping"
+    sequence :list_id do |n| 
+      n
+    end
   end
 end

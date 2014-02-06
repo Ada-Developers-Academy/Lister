@@ -48,6 +48,19 @@ describe ListsController do
     end
   end
 
+  describe 'DELETE destroy' do
+
+    before :each do
+      @list = create(:list)
+    end
+
+    it "deletes the list" do
+      expect{
+        delete :destroy, id: @list
+      }.to change(List, :count).by(-1)
+    end
+  end
+
   # describe 'GET #index' do
   #   context "with valid attributes" do
   #     let(:valid_attributes) { {title: "Dogs", description: "This is a list of dogs", user_id: "1"} }

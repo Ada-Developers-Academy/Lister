@@ -1,2 +1,19 @@
-<h1>Lists#new</h1>
-<p>Find me in app/views/lists/new.html.erb</p>
+<h1>New List</h1>
+
+<% @list.errors.full_messages.each do |error| %>
+ <%= error %><br>
+<% end %>
+
+<%= form_for @list do |f| %>
+ <div class='field'>
+   <%= f.label :title %>
+   <%= f.text_field :title %>
+ </div>
+ <div class='field'>
+   <%= f.label :description %>
+   <%= f.text_area :description %>
+ </div>
+ <div class='submit'>
+   <%= f.submit %>
+ </div>
+ <% end %>

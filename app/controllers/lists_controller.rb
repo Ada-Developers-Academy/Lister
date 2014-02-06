@@ -4,7 +4,7 @@ class ListsController < ApplicationController
   end
 
   def create
-     @list = List.new(list_params)
+    @list = List.new(list_params)
     if @list.save
         redirect_to root_path, notice: "Successfully created new list"
       else
@@ -12,7 +12,10 @@ class ListsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    list = List.find(params[:id])
+    list.destroy
+    redirect_to "user/show", notice: "Your item has been deleted"
   end
 
   def index
