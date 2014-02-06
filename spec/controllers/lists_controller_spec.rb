@@ -7,7 +7,13 @@ describe ListsController do
       get :new
       expect(response).to be_successful
     end
-  
+
+    #why is this failing?
+    it "assigns @list" do
+      list = List.create
+      get :new
+      expect(assigns(:list)).to eq(list)
+    end
   end
 
   describe "POST 'create'" do
@@ -26,6 +32,12 @@ describe ListsController do
         post :create, list: valid_attributes
         expect(flash[:notice]).to_not be_blank
       end
+
+      # it "assigns @list" do
+      #   list = List.create
+      #   get :create
+      #   expect(assigns(:list)).to eq([list])
+      # end
     end
   
     context "with invalid attributes" do
@@ -36,6 +48,11 @@ describe ListsController do
     
       it "does not create a list" do
         expect { post :create, list: {title: ""} }.to change(List, :count).by(0)
+      end
+
+      it "sets a flash message" do
+        post :create, list: {title: ""}
+        expect(flash[:notice]).to_not be_blank
       end
     end
   end
