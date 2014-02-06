@@ -13,3 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function (){
+     $('#new_item').submit(function (){
+       $.post($(this).attr('action'), $(this).serialize(), null, "script");
+       return false;
+     });
+   });

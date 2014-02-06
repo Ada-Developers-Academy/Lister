@@ -11,11 +11,11 @@
 
 <div id='header'>
   <%= link_to(image_tag('llama.png', :alt => "a llama i found on google", :title => "llama"),"/") %>
-  <h1 class='ui huge header'><%= link_to('Llama Lister', '/') %></h1>
+  <h1><%= link_to('Llama Lister', '/') %></h1>
   <% if @current_user.nil? %>
     <h2><%= link_to('Sign Up', new_user_path) %>   <small>or</small>   <%= link_to('Sign In', new_session_path)%></h2>
   <% else %>
-    <h2><%= link_to 'Your Lists', user_path(@current_user.id) %>   <small>or</small>    <%= link_to 'Add a List', new_list_path %>   <small>or</small>    <%= link_to "Sign Out", end_session_path, method: :delete %>
+    <h3><%= link_to 'Your Lists', user_path(@current_user.id) %>   <small>or</small>    <%= link_to 'Add a List', new_list_path %>   <small>or</small>    <%= link_to "Sign Out", end_session_path, method: :delete %></h3>
   <% end %>
 </div>
 

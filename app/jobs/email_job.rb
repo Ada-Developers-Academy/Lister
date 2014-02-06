@@ -1,6 +1,6 @@
 class EmailJob
   @queue = :email
-  def self.perform(list_id)
-    ListMailer.join_us(list_id).deliver
+  def self.perform
+    ListMailer.welcome.deliver
   end
 end

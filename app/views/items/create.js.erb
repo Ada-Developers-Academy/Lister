@@ -1,0 +1,1 @@
+$('.listitems').append("<%= j @item.name %> <%= j link_to 'Delete', destroy_item_path(@item.id), method: :delete, remote: true %><br>");

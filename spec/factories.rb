@@ -16,4 +16,9 @@ FactoryGirl.define do
     title "List of Awesomeness"
   end
 
+  factory :item do
+    list_id 1
+    name "A really important item"
+  end
+
 end
