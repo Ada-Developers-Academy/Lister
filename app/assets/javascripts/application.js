@@ -36,10 +36,10 @@ $(document).ready(function() {
     });
     return false;
   });
-});
 
-$(document).ready(function() {
-  $(".delete").click(function() {
+
+
+  $(".items").on( "click", ".delete", function() {
     var item = $(this).parents('tr')
     $.ajax({
       url: $(this).attr("href"),
