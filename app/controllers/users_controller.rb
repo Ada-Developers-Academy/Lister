@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      RegistrationMailer.confirm_registration(@user.id)
       redirect_to root_path, notice: "Welcome to CueQueue"
     else
       render :new

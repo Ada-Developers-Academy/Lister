@@ -1,4 +1,16 @@
 Lister::Application.configure do
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              "smtp.mandrillapp.com",
+    port:                 587,
+    enable_starttls_auto: true,
+    user_name:            "ms.whitney.levis@gmail.com", # YOUR MANDRILL USERNAME
+    password:             ENV["MANDRILL_API_KEY"], # A MANDRILL API KEY
+    authentication:       'login',
+    domain:               'yourdomain.com'
+  }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
