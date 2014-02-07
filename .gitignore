@@ -16,5 +16,5 @@
 /tmp
 /coverage
 
-# Don't send my key to the internet
-/config/environments/development.rb
+# Ignore application configuration
+/config/application.yml

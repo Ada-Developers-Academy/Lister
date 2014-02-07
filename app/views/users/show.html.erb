@@ -1,1 +1,7 @@
-<p>Hi User!</p>
+<p>Hi #{@user.username}!</p>
+
+Here are your lists:
+
+<% @user.lists.each do |list| %>
+  <% link_to list.title, list_path(list.id) %>
+<% end %>

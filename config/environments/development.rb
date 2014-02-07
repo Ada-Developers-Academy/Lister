@@ -4,8 +4,8 @@ Lister::Application.configure do
     address:              "smtp.mandrillapp.com",
     port:                 587,
     enable_starttls_auto: true,
-    user_name:            "elizabeth.uselton@gmail.com", # YOUR MANDRILL USERNAME
-    password:             "XwnbNHRHpExagdJTtBWvYA", # A MANDRILL API KEY
+    user_name:            ENV["EMAIL"], # YOUR MANDRILL USERNAME
+    password:             ENV["MANDRILL_KEY"], # A MANDRILL API KEY
     authentication:       'login',
     domain:               'yourdomain.com'
   }

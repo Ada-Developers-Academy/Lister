@@ -2,7 +2,7 @@ Lister::Application.routes.draw do
   
   get "sign_in"          => "session#new",     :as => "sign_in"
   post "session/create" => "session#create", :as => "create_session"
-  get "user/new" => "users#new", :as => "new_user"
+  get "sign_up" => "users#new", :as => "new_user"
   get "user/create" => "users#create", :as => "create_user"
   get "user/:id" => "users#show", :as => "user"
   get "lists/new" => "lists#new", :as => "new_list"
