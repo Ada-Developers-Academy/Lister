@@ -1,15 +1,19 @@
-<strong><%= @list.name %></strong>
-<ul class="items">
+<h3><%= @list.name %></h3>
 
+<!-- <ul class="items"> -->
+<table class="ui collapsing table segment"> <!--ul class "items" -->
+<tbody class="items">
 <% @list.items.each do |i| %>
-
-  <li>
-    <%= i.name %>
-    <%= link_to "Delete", list_item_path(@list,i), class: "delete", method: :delete %>
-  </li>
-
+<tr >
+  <!-- <li> -->
+  <td><%= i.name %></td>
+    <td><%= link_to "Delete", list_item_path(@list,i), class: "delete", method: :delete %></td>
+ <!--  </li> -->
+</tr>
 <% end %>
-</ul>
+</tbody>
+</table>
+<!-- </ul> -->
 
 <% if current_user && current_user.id == @list.user_id %>
   <p> Add an Item: </p>
@@ -21,9 +25,9 @@
         </div>
       </p>
         <div class="actions">
-          <%= f.submit class: "action"%>
+          <%= f.submit("Add Item", class: "action")%>
         </div>
       </p>
     <% end %>
-    <%= link_to "Edit", edit_list_path(@list) %>
+    <%= link_to "Edit List", edit_list_path(@list) %>
 <% end %>

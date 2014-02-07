@@ -6,6 +6,7 @@
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "semantic" %>
+   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -15,13 +16,14 @@
       <%= link_to "#{current_user.username}'s lists", user_path(current_user), class: "item" %>
       <%= link_to "Sign out", sign_out_path, class: "item" %>
       <% else %>
-      <%= link_to "Sign Up", sign_up_path, class: "item"%> |
+      <%= link_to "Sign Up", sign_up_path, class: "item"%>
       <%= link_to "Sign In", sign_in_path, class: "item" %>
       <% end %>
     </div>
-    <%= link_to "Lists",root_path , class: "item"%> |
+    <%= link_to "Lists",root_path , class: "item"%>
+    <%= link_to "New List", new_list_path, class: "item" %>
   </div>
-  <div class="main container">
+  <div class="main_container">
 
 <%= yield %>
 </div>

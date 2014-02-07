@@ -1,6 +1,5 @@
-<div class="form_style">
-  <h1>Log In</h1>
 
+<div class="ui small form segment">
   <%= form_tag session_index_path do %>
     <div class="field">
       <%= label_tag :username %><br />
@@ -10,6 +9,6 @@
       <%= label_tag :password %><br />
       <%= password_field_tag :password %>
     </div>
-    <div class="button"><%= submit_tag "Log In" %></div>
+    <%= submit_tag "Sign In", class: "ui red submit button" %>
   <% end %>
 </div>

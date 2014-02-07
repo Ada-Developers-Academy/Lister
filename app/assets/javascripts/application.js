@@ -28,7 +28,7 @@ $(document).ready(function() {
       data: {item: {name: $("#item_name").val() }},
       success: function(data, textStatus, xhr) {
         var delete_button = '<a class="delete" data-method="delete" href="/lists/'+ data.list_id +'/items/' + data.id + '" rel="nofollow">Delete</a>'
-        items.append("<li>"+ data.name + delete_button + "</li>");
+        items.append("<tr><td>"+ data.name + "</td><td>" + delete_button + "</td></tr>");
       },
       error: function(xhr, textStatus, errorThrown) {
         alert("There was a problem adding this item");
@@ -40,7 +40,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
   $(".delete").click(function() {
-    var item = $(this).parents('li')
+    var item = $(this).parents('tr')
     $.ajax({
       url: $(this).attr("href"),
       type: 'DELETE',
@@ -55,3 +55,4 @@ $(document).ready(function() {
     return false
   });
 });
+

@@ -4168,6 +4168,7 @@ body > .ui.grid {
 
 .ui.collapsing.table {
   width: auto;
+  margin: 0 auto;
 }
 
 /*--------------
