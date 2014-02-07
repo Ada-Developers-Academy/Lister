@@ -17,6 +17,9 @@ describe "List" do
       list.update(user_id: nil)
       expect(list.errors[:user_id]).to include "can't be blank"
     end
+  end
 
+  it "responds to #items" do
+    expect(list).to respond_to(:items)
   end
 end

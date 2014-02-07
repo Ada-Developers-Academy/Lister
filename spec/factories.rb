@@ -16,5 +16,9 @@ FactoryGirl.define do
     user_id 1
   end
 
+  factory :item do
+    name "David Copperfield"
+    list_id 1
+  end
 
 end
