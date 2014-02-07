@@ -27,7 +27,7 @@ describe SessionController do
       
         it "sets a flash message" do
           post :create, username: user.username, password: user.password
-          expect(flash[:notice]).to eq 'Successfully signed in'
+          expect(flash[:notice]).to eq 'Welcome back! We missed you!'
         end
       end
   
@@ -44,7 +44,7 @@ describe SessionController do
       
         it "sets a flash message" do
           post :create, username: user.username, password: "wrong"
-          expect(flash[:notice]).to eq "Invalid username or password"
+          expect(flash[:notice]).to eq "What?! You definitely typed something in wrong there."
         end
       end
     end
@@ -57,7 +57,7 @@ describe SessionController do
     
       it "sets a flash message" do
         post :create, username: "I don't exist", password: "wrong"
-        expect(flash[:notice]).to eq "Invalid username or password"
+        expect(flash[:notice]).to eq "What?! You definitely typed something in wrong there."
       end
     
     end

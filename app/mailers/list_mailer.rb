@@ -1,5 +1,5 @@
 class ListMailer < ActionMailer::Base
-  default from: "lister@example.com"
+  default from: "audreycarlsen@gmail..com"
 
   def welcome(user_id)
     @user = User.find(user_id)
