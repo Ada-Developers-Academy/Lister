@@ -1,17 +1,21 @@
  <div class="single">
- <div class="form_style">
-  <h3>Log In</h3>
+  <div class="form_style">
+    <h3>you gotta sign in:</h3>
 
-  <%= form_tag signin_path do %>
-    <div class="field">
-      <%= label_tag :username %><br />
-      <%= text_field_tag :username, params[:username] %>
-    </div>
-    <div class="field">
-      <%= label_tag :password %><br />
-      <%= password_field_tag :password %><br><br>
-    </div>
-    <div class="button"><%= submit_tag "Log In" %></div>
-  <% end %>
+    <%= form_for(:session, url: signin_path) do |f| %>
+      <table>
+        <tbody>
+          <tr>
+            <td><%= label_tag :email %></td>
+            <td><%= text_field_tag :email, params[:email] %></td></tr>
+          <tr>
+            <td><%= label_tag :password %></td>
+            <td><%= password_field_tag :password %></td>
+          </tr>
+          <tr><td></td><td> <p class="button"><%= submit_tag "Log in" %></p></td>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
 </div>
-</div>
+
