@@ -13,7 +13,11 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     list_id = @item.list_id
     @item.destroy
-    redirect_to list_path(list_id)
+
+    respond_to do |format|
+      format.html { redirect_to list_path(list_id) }
+      format.json { head :no_content }
+    end
   end
 
   private
