@@ -1,3 +1,4 @@
+require 'resque/server'
 Lister::Application.routes.draw do
 
   get '/sign_in', to: 'session#new', as: :sign_in
@@ -19,5 +20,7 @@ Lister::Application.routes.draw do
   post 'elements/:id', to: 'elements#destroy'
   
   root to: 'home#index', as: :home
+  
+  mount Resque::Server, :at => "/resque"
   
 end
