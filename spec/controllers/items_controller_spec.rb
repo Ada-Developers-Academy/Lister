@@ -43,14 +43,6 @@ describe ItemsController do
       end
     end
   end
-
-
-  describe "GET 'show'" do
-    it "is successful" do
-      get :show
-      expect(response).to be_successful
-    end
-  end
 end
 
 
