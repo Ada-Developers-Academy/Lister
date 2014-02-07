@@ -43,20 +43,18 @@ describe ItemsController do
     end
 
   describe "GET edit" do
-    # Having issues with let-factorygirl-symbol-thing.
-    # Trying to use let instead of before like I did with lists.
 
-    # let!(:item) { FactoryGirl.create(:item) }
+    let!(:item) { FactoryGirl.create(:item) }
 
-    # it "finds the requested item" do
-    #   get :edit, id: :item.id
-    #   expect(assigns(:item).id).to eq(:item.id)
-    # end
+    it "finds the requested item" do
+      get :edit, id: item.id
+      expect(assigns(:item).id).to eq(item.id)
+    end
 
-    # it "is successful" do
-    #   get :edit, id: :item.id
-    #   expect(response).to be_successful
-    # end
+    it "is successful" do
+      get :edit, id: item.id
+      expect(response).to be_successful
+    end
   end
 
   describe "PATCH update" do
