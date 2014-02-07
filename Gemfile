@@ -25,4 +25,4 @@ group :development, :test do
   gem 'binding_of_caller'
 end
 
-gem 'resque'
+gem 'resque', "~> 1.22.0"
