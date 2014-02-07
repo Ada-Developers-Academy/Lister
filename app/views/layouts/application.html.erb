@@ -14,10 +14,7 @@
           <a href=<%= home_path %> style="color:black">home</a>
         </li>
         <li>
-          <a href="/blog">blog</a>
-            <ul>
-                <li><a href=#></a></li>
-            </ul>
+          <%= link_to "lists", lists_path %>
         </li>
         <li>
           <% if current_user %>
