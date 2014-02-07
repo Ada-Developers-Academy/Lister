@@ -26,8 +26,9 @@
           <div class='item'>
             <div class='content'>
               <div class='ui header'>
-                <%= link_to user.username, user_path(user.id) %>
+                <%= user.username %>
               </div>
+              Lists: <%= user.lists.count %>
             </div>
           </div>
           <% end %>

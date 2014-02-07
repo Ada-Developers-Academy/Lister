@@ -38,6 +38,11 @@ describe ListsController do
     end
   
     context "with invalid attributes" do
+      let(:user) { create(:user) }
+      before do 
+        session[:user_id] = user.id
+      end
+      
       it "renders the new template" do
         post :create, list: { title: nil }
         expect(response).to render_template :new

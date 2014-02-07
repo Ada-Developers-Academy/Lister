@@ -15,11 +15,11 @@ class ListItemsController < ApplicationController
 
   def destroy
     @item = ListItem.find(params[:id])
-    @list = List.find(@item.list)
+    @item_id = params[:id]
     @item.destroy
     respond_to do |format|
       format.json { head :no_content }
-      format.html { redirect_to list_path(@list.id)}
+      format.html { redirect_to :back}
     end
   end
 

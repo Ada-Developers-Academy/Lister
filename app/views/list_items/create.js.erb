@@ -1,2 +1,2 @@
-$('#items_list').append("<li><%= j @list_item.description %> <%= j link_to '<i class="remove icon"></i>'.html_safe, list_item_path(@list_item.id), method: :delete, class: 'ajax-destroy' %></div></li>");
+$('#items_list').append("<li><%= j @list_item.description %> <%= j link_to 'Get rid of it!', list_item_path(@list_item.id), method: :delete, class: 'ajax-destroy' %></div></li>");
 $("input#list_item_description").val('');

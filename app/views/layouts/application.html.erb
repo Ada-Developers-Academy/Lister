@@ -9,6 +9,7 @@
 <body>
   <header>
    <% if @current_user %>
+   <%= link_to 'All lists!', root_path, class: 'ui small red button' %>
     <%= link_to 'My lists!', user_path(@current_user.id), class: 'ui small red button' %>
     <%= link_to 'Get OUTTA here!', sign_out_path, class: 'ui small red button' %>
   <% else %>

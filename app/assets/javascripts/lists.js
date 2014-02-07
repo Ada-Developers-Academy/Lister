@@ -4,7 +4,7 @@ $(document).ready(function (){
     $.post($(this).attr('action'), $(this).serialize(), null, "script");
   });
   $(".ajax-destroy").click(function(event) {
-   var removeItem = $(this).parents('li');
+    var item = $(this).parents('li');
     $.ajax({
       url: $(this).attr("href"),
       type: 'DELETE',
@@ -12,13 +12,13 @@ $(document).ready(function (){
       complete: function(xhr, textStatus) {
       },
       success: function(data, textStatus, xhr) {
-        removeItem.remove();
+        item.remove();
       },
       error: function(xhr, textStatus, errorThrown) {
         alert("There was a problem deleting this item.");
       }
     });
-    return false;
+      return false;
   });
 });
 
