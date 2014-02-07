@@ -10,13 +10,13 @@ describe Item do
     end
 
     it "is associated with a list" do
-      list.update(list_id: nil)
-      expect(list.errors[:list_id]).to include "can't be blank"
+      item.update(list_id: nil)
+      expect(item.errors[:list_id]).to include "can't be blank"
     end
 
     it "has a name" do
-      list.update(name: nil)
-      expect(list.errors[:name]).to include "can't be blank"
+      item.update(name: nil)
+      expect(item.errors[:name]).to include "can't be blank"
     end
   end
 end
