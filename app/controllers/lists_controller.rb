@@ -24,16 +24,23 @@ class ListsController < ApplicationController
 
   def update
     # render text: 'todd was here' and return
-    if @list.update(list_params)
-      p Item.last
-      p @list.items
+    if @list.update(list_params) #this automatically creates a new Item object
+      p @list.class
+      # raise 'one'
+
       respond_to do |format|
         format.html { redirect_to list_path(@list) }
         format.json { render json: @list }
       end
     else
-      flash[:notice] = "There was a problem editing this list."
-      render :edit
+      # raise 'two'
+      respond_to do |format|
+        format.html do 
+          flash[:notice] = "There was a problem editing this list."
+          render :edit
+        end
+        format.json { render status: 400}
+      end 
     end
   end
 

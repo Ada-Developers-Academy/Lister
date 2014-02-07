@@ -13,7 +13,6 @@ class List < ActiveRecord::Base
 
   def add_item 
     if self.item_name != "" && self.item_name
-      # p "item?", self.item_name
       item = Item.new(name: item_name)
       self.items << item
     end

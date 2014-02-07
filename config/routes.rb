@@ -1,4 +1,7 @@
+require 'resque/server'
 Lister::Application.routes.draw do
+  mount Resque::Server, :at => "/resque"
+  
   
   get '/login' => 'session#new', as: :login
   post '/login' => 'session#create'

@@ -147,9 +147,14 @@ describe ListsController do
         end
 
       end
-      # context 'with invalid user' do
-      #   let(:user)
-      # end
+      context 'with invalid user' do
+        let(:hacker){ create(:user)}
+        let(:valid_attributes) { { name:"cake", user_id: hacker.id, item_name: 'chocolate' } }
+
+        it 'does not allow hacking' do 
+          expect{ post :create, list: valid_attributes }.to change(hacker.lists, :count).by(0)
+        end
+      end
     end
 
     context 'if not logged in' do      
