@@ -15,10 +15,9 @@ $(document).ready(function() {
         }
       },
       success: function(data, textStatus, xhr) {
-        console.log("balh")
         var delete_button = "<a class='btn btn-default btn-xs destroy' rel='nofollow' href='/items/" + data.id + "' data-method='delete'>Delete</a>";
         items.append("<li>"+ data.name + " " + delete_button + "</li>");
-        if(emptiness) 
+        if(emptiness)
           emptiness.remove();
 
         // var delete_button = $( "<a/>" );
