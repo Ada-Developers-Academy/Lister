@@ -2,7 +2,7 @@
 <td><%= link_to 'All Users', 'users/show' %></td><br><br>
 <td><%= link_to 'All Lists', all_lists_path %></td><br><br>
 <td><%= link_to 'Create New List', 'lists/new' %></td><br><br>
-<td><%= link_to 'Your User Profile', "users/#{@user.id}" %></td><br><br>
+<td><%= link_to 'Your User Profile', "users/#{@current_user.id}" %></td><br><br>
 <td><%= link_to 'Sign In', sign_in_path %></td><br><br>
 <td><%= link_to 'Sign Out', sign_out_path %></td><br><br>
 <td><%= link_to 'Sign Up', new_user_path %></td><br><br>

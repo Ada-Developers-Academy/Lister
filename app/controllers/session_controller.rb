@@ -4,7 +4,6 @@ class SessionController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      @current_user = @user
       redirect_to '/', notice: 'Successfully signed in'
     else
       flash[:notice] = "Invalid username or password"
@@ -13,6 +12,7 @@ class SessionController < ApplicationController
   end
 
   def destroy
+    @user = nil
     session[:user_id] = nil
     redirect_to '/', notice: "You are now logged out. Thanks for listing!"
   end
