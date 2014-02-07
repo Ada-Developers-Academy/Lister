@@ -23,6 +23,8 @@ class ListsController < ApplicationController
   end
 
   def my_lists
+    # @items = Item.find_by(user_id)
+    # render json: @items
   end
 
   private
