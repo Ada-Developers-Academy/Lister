@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 1.2'
 gem "bcrypt-ruby"
 gem "better_errors"
 gem "binding_of_caller"
+gem "figaro"
 
 group :development, :test do
   gem "rspec-rails"
