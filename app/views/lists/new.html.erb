@@ -2,7 +2,7 @@
   <%= form_for @list do |f| %>
     <%= f.label :list_name %>
     <%= f.text_field :list_name %>
-    <%= hidden_field_tag :user_id, value: @user.id %>
+    <%= f.hidden_field :user_id, value: @user.id %>
 
     <%= f.submit "Create List"%>
   <% end %> 
