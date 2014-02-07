@@ -1,4 +1,5 @@
 <strong><%= @list.name %></strong>
+<%= link_to "Edit", edit_list_path(@list) %>
 <% @list.items.each do |i| %>
 <ul>
   <li><%= i.name %><%= link_to "Delete", list_item_path(@list,i), class: "delete", method: :delete %></li>
@@ -6,23 +7,17 @@
 <% end %>
 
 <% if current_user && current_user.id == @list.user_id %>
-  <p> Add an Item: </p>
-
-
-  <%= link_to "new item",  new_list_item_path(@list), id: "new_item", remote: true %>
-
-    <%= form_for([@list, Item.new], remote: true)  do |f| %>
-      <p>
-        <div class="field">
-          <%= f.label :name %><br>
-          <%= f.text_field :name %>
-        </div>
-      </p>
-        <div class="actions">
-          <%= f.submit "Add to list", class: "action" %>
-        </div>
-      </p>
-    <% end %>
-    <%= link_to "Edit", edit_list_path(@list) %>
+<a class="add-item-link">add an item</a>
+<div id="add-item-area">
+  <%= form_for([@list, Item.new], remote: true)  do |f| %>
+      <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Add to list", class: "action" %>
+      </div>
+  <% end %>
+  </div>
 <% end %>
 
