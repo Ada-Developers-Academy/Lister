@@ -6,4 +6,8 @@ $(function() {
     $('#add-item-area').show();
     e.preventDefault();
   });
+
+  $(".action").click(function(e){
+    $("#add-item-area").hide();
+  });
 });
