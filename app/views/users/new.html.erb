@@ -1,0 +1,30 @@
+<div class= 'container'>
+  <div class= 'jumbotron'>
+    <h1>Sign Up</h1>
+
+    <%= form_for @user do |f| %>
+     <div class='field'
+       <%= f.label :username %>
+       <%= f.text_field :username %>
+     </div>
+     <div class='field'>
+       <%= f.label :email %>
+       <%= f.text_field :email %>
+     </div>
+     <div class='field' type="password">
+       <%= f.label :password %>
+       <%= f.text_field :password %>
+     </div>
+     <div class='field' type="password">
+       <%= f.label :password_confirmation %>
+       <%= f.text_field :password_confirmation %>
+     </div>
+     <div class='submit'>
+      <%= f.submit %>
+     </div>
+    <% end %>
+
+    <h1>Sign In</h1>
+    <%= render "session/signin" %>
+  </div>
+</div>

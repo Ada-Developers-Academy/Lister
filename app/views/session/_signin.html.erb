@@ -1,0 +1,15 @@
+
+    <div class="span6 offset3">
+      <%= form_tag signin_path do%>
+
+        <label>Username</label>
+        <%= text_field_tag(:username) %>
+
+        <label>Password</label>
+        <%= text_field_tag(:password) %>
+        <%= submit_tag "Sign in", class: "btn btn-large btn-primary" %>
+      <% end %>
+
+      <!-- <p>New user? <%= link_to "Sign up now!", new_user_path %></p> -->
+    </div>
+

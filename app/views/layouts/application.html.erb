@@ -8,7 +8,14 @@
 </head>
 <body>
 
+  <a href="/" class="header" role="button"> Home </a>
+<div class= 'container'>
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+</div>
 <%= yield %>
+
 
 </body>
 </html>

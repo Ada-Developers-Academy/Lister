@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="jumbotron">
+    <% if current_user %>
+   <h4> Welcome <%= current_user.username %> </h4>
+   <% end %>
+    <h1>It's Listable</h1>
+    <p>Make lists, find lists, do lists! </p>
+      <% unless current_user %>
+      <p> <a href="/signup" class="btn btn-danger btn-lg" role="button"> Sign in & up </a> </p>
+      <% end %>
+
+      <% if current_user %>
+      <p> 
+        <%= link_to("Make a new list", user_path(current_user), class: "btn btn-danger btn-lg", role: "button") %>
+        <a href="/signout" class="btn btn-danger btn-lg" role="button"> Sign out </a> 
+      </p>
+      <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="table responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Example Lists</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cute Dogs</td>
+            </tr>
+            <tr>
+              <td>Ugly Cats</td>
+            </tr>
+            <tr>
+              <td>Things I don't understand</td>
+            </tr>
+            <tr>
+              <td>What I want to eat</td>
+            </tr>
+            <tr>
+              <td>Cool Cars</td>
+            </tr>
+            <tr>
+              <td>Grocery List</td>
+            </tr>
+            <tr>
+              <td>Things to Buy</td>
+            </tr>
+            <tr>
+              <td>Things to Pin</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="table responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>All Lists</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @lists.each do |list| %>
+            <tr>
+              <td><%= link_to list.title, list_path(list.id) %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-4">
+      
+      <div class="table responsive">
+        <table class="table table-striped">
+          
+          <thead>
+            <% unless current_user %>
+            <%= image_tag("http://kgi.org/sites/default/files/checklist.jpg", :alt => "checklist picture", :width => "293") %>
+            <% end %>
+            <% if current_user %>
+            <tr>
+              <th>Your Lists</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% current_user.lists.each do |list| %>
+            <tr>
+              <td><%= link_to list.title, list_path(list.id) %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+

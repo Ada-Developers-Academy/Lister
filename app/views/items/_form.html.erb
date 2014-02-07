@@ -1,0 +1,10 @@
+<%= form_for @item do |f| %>
+ <div class='field'>
+   <%= f.label :itemname %>
+   <%= f.text_field :itemname %>
+   <%= f.hidden_field :list_id %>
+ </div>
+  <div class='submit'>
+   <%= f.submit %>
+ </div>
+<% end %>

@@ -1,0 +1,9 @@
+<div class= 'container'>
+  <p>Lists Index
+
+  <ul><% @lists.each do |list| %>
+  <li><%= link_to list.title, list_path(list.id) %>
+  <% end %></ul>
+</div>
+
+
