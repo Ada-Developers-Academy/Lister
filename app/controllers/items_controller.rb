@@ -5,15 +5,11 @@ class ItemsController < ApplicationController
       @item = Item.new(item_params)
 
       if @item.save
-
         respond_to do |format|
           format.html { redirect_to list_path(@item.list_id) }
-          format.json { head :no_content }
+          format.json { render :json => @item }
         end
-      else
-        render :new
       end
-      
     else
       redirect_to sign_in_path, notice: "Sign in to create an item"
     end
