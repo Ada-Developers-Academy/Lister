@@ -13,8 +13,9 @@ Lister::Application.routes.draw do
   get '/profile', to: 'users#show', as: :user 
 
   # Lists
+  get 'lists', to: 'lists#index', as: :lists
   get 'lists/new', to: 'lists#new', as: :new_list
-  post 'lists', to: 'lists#create', as: :lists
+  post 'lists', to: 'lists#create'
   get 'lists/:id', to: 'lists#show', as: :list
 
   # Items
