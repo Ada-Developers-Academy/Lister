@@ -1,4 +1,4 @@
-<%= form_for @list_item do |f| %>
+<%= form_for @list_item, remote: true do |f| %>
 <div class='field>'
   <%= f.label :new_list_item %>
   <%= f.text_field :description %>

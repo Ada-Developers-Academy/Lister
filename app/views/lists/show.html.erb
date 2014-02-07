@@ -6,7 +6,7 @@
     <% @list.list_items.each do |item| %>
       <li class='item'><%= item.description %> 
         <% if @current_user && @list.user == @current_user %>
-        <%= link_to 'Get rid of it!', item, method: :delete, class: "ajax-destroy", data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Get rid of it!', item, method: :delete, class: "ajax-destroy", remote: true %>
         <% end %>
       </li>
     <% end %>

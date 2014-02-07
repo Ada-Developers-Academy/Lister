@@ -33,5 +33,6 @@ FactoryGirl.define do
   factory :list_item do
     description 'I am a thing that is cool.'
     list_id 1
+    id 1
   end
 end

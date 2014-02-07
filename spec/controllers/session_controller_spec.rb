@@ -68,12 +68,12 @@ describe SessionController do
       user = create(:user)
       session[:user_id] = user.id
       delete :destroy
-      session[:user_id].should be_nil
+      expect(session[:user_id]).to be_nil
     end
 
     it "should redirect to the home page" do
       delete :destroy
-      response.should redirect_to root_url
+      expect(response).to redirect_to root_url
     end
   end
 
