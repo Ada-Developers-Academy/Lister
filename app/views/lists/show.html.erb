@@ -8,7 +8,10 @@
 <% if current_user && current_user.id == @list.user_id %>
   <p> Add an Item: </p>
 
-    <%= form_for([@list, Item.new]) do |f| %>
+
+  <%= link_to "new item",  new_list_item_path(@list), id: "new_item", remote: true %>
+
+    <%= form_for([@list, Item.new], remote: true)  do |f| %>
       <p>
         <div class="field">
           <%= f.label :name %><br>
