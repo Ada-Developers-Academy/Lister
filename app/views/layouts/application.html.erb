@@ -10,7 +10,7 @@
   <body>
     <h1><%= link_to "List Yo Lists", root_path %></h1>
     <% if @current_user %>
-      <p>Signed in as <%= @current_user.username %></p>
+      <p>According to our records, you are: <span class="red"><%= @current_user.username.upcase %></span></p>
       <ul class="nav nav-tabs">
         <li><%= link_to "All Lists", root_path, :class => "btn btn-default" %></li>
         <li><%= link_to "My Lists", my_lists_path, :class => "btn btn-default" %></li>
@@ -24,7 +24,8 @@
       </ul>
     <% end %>
 
-    <%= notice %>
+<br>
+    <p><span class="notice"><%= notice %></span></p>
 
     <%= yield %>
 

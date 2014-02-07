@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
       Resque.enqueue(EmailJob, @user.id)
       
-      redirect_to root_path, notice: "User created!"
+      redirect_to root_path, notice: "You've been created! Check your email for confirmation that you exist."
     else
       render :new
     end

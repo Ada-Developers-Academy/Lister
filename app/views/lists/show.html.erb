@@ -1,11 +1,21 @@
-<h2><%= @list.name.capitalize %></h2>
+<h2><%= @list.name %></h2>
+
+<% if @list.user.id == @current_user.id %>
+  <p>You have only yourself to blame for this list.</p>
+<% else %>
+  <p>You have <%= @list.user.username %> to blame for this list.</p>
+<% end %>
 
 <% if @list.items.empty? %>
   This list is lonely, emptier than a black hole.
 <% else %>
   <ul>
     <% @list.items.each do |item| %>
-      <li><%= item.name %> <%= link_to "Delete", item_path(item.id), method: :delete, :class => "btn btn-default btn-xs destroy" %></li>
+      <li><%= item.name %> 
+        <% if @current_user && @current_user.id == @list.user.id %>
+          <%= link_to "Delete", item_path(item.id), method: :delete, :class => "btn btn-default btn-xs destroy" %>
+        <% end %>
+      </li>
     <% end %>
   </ul>
 <% end %>
@@ -17,7 +27,7 @@
     </p>
 
     <p>
-      <%= f.label :name, 'Wanna add an item, fool?' %>
+      <%= f.label :name, 'Wanna add an item?' %>
       <br>
       <%= f.text_field :name %>
       <%= f.submit("Yes!", :class => "btn btn-default btn-sm")%>
