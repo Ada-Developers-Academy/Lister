@@ -1,8 +1,4 @@
-<h2>Here You Can See All Of Your Lists</h2>
-
-<%= link_to "Create New List", new_list_path, :class => "btn btn-default" %>
-
-<hr> 
+<h3>Here You Can See All Of Your Lists</h3>
 
 <% @current_user.lists.each do |list| %>
   <p><%= link_to "#{list.name}", list_path(list.id) %></p>

@@ -11,10 +11,17 @@
     <h1><%= link_to "List Yo Lists", root_path %></h1>
     <% if @current_user %>
       <p>Signed in as <%= @current_user.username %></p>
-      <p><%= link_to "Log OUT", sign_out_path, :class => "btn btn-default" %></p>
-      <p><%= link_to "MY Lists", my_lists_path, :class => "btn btn-default" %></p>
+      <ul class="nav nav-tabs">
+        <li><%= link_to "All Lists", root_path, :class => "btn btn-default" %></li>
+        <li><%= link_to "My Lists", my_lists_path, :class => "btn btn-default" %></li>
+        <li><%= link_to "Create New List", new_list_path, :class => "btn btn-default" %></li>
+        <li><%= link_to "Log Out", sign_out_path, :class => "btn btn-default" %></li>
+      </ul>
     <% else %>
-      <p><%= link_to "Log IN", sign_in_path, :class => "btn btn-default" %> <%= link_to "Sign UP", sign_up_path, :class => "btn btn-default" %></p>
+      <ul class="nav nav-tabs">
+        <li><%= link_to "Log In", sign_in_path, :class => "btn btn-default" %></li>
+        <li><%= link_to "Sign Up", sign_up_path, :class => "btn btn-default" %></li>
+      </ul>
     <% end %>
 
     <%= notice %>

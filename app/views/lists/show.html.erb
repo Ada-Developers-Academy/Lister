@@ -10,16 +10,17 @@
   </ul>
 <% end %>
 
-<%= form_for(@item) do |f| %>
-  
-  <p>
-    <%= f.hidden_field :list_id, value: @list.id %>
-  </p>
+<% if @current_user && @current_user.id == @list.user.id %>
+  <%= form_for(@item) do |f| %>
+    <p>
+      <%= f.hidden_field :list_id, value: @list.id %>
+    </p>
 
-  <p>
-    <%= f.label :name, 'Wanna add an item, fool?' %>
-    <br>
-    <%= f.text_field :name %>
-    <%= f.submit("Yes!", :class => "btn btn-default btn-sm")%>
-  </p>
+    <p>
+      <%= f.label :name, 'Wanna add an item, fool?' %>
+      <br>
+      <%= f.text_field :name %>
+      <%= f.submit("Yes!", :class => "btn btn-default btn-sm")%>
+    </p>
+  <% end %>
 <% end %>
