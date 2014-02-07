@@ -1,13 +1,6 @@
 require 'spec_helper'
 
 describe ItemsController do 
-  describe "get new" do
-    it "is successful" do
-      get :new
-      expect(response).to be_success
-    end
-  end
-
   describe "create" do
     let(:current_user) { create(:user) }
     let(:list) { create(:list, user_id: current_user.id) }
@@ -45,13 +38,13 @@ describe ItemsController do
       it "renders the new form if description is blank" do
         valid_attributes[:description] = nil
         post :create, item: valid_attributes
-        expect(response).to render_template(:new)
+        expect(response).to be_redirect
       end
 
-      it "renders the new form if list_id is blank" do
+      it "redirects to root if no list found" do
         valid_attributes[:list_id] = nil
         post :create, item: valid_attributes
-        expect(response).to redirect_to(lists_path)
+        expect(response).to redirect_to(root_path)
       end
 
       it "does not make an item" do
