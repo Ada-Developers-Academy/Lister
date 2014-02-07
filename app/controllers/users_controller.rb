@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
+        Resque.enqueue(EmailJob, @user.id)
         sign_in(@user)
         format.html { redirect_to @user, notice: 'User was successfully created.' }
       else
@@ -29,13 +30,11 @@ class UsersController < ApplicationController
   def destroy
     @users.destroy
     respond_to do |format|
-      format.html { redirect_to users_url }
+      format.html { redirect_to :root_path }
     end
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
-  # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end

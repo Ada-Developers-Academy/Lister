@@ -1,3 +1,18 @@
-<h1>List#show</h1>
-<p><%= @list.title %></p>
-<p><%= @list.body %></p>
+<h1><%= @list.title %></h1>
+
+<ul>
+<% @list.items.each do |item| %>
+    <li class="item"><%= item.body %></li>
+<% end %>
+</ul>
+
+<div class= 'list-form'>
+    <%= form_tag "/list/#{@list.id}", method: :patch, class: "item" %>
+        <div class = 'add-item'>
+            <%= label_tag :item_body, 'Add item' %>:
+            <%= text_field_tag :item_body %>
+      <span class= 'add-item-button'>
+        <%= submit_tag 'Go' %>
+      </span>
+        </div>
+</div>

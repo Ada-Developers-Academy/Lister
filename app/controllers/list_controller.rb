@@ -11,7 +11,7 @@ class ListController < ApplicationController
 
   def create
     @list = List.create(list_params)
-    redirect_to '/list'
+    #redirect_to '/list'
   end
 
   def show
@@ -19,7 +19,23 @@ class ListController < ApplicationController
   end
 
   def update
+    if @list.update(list_params) #this automatically creates a new Item object
+      p @list.class
+      respond_to do |format|
+        format.html { redirect_to list_path(@list) }
+        format.json { render json: @list }
+      end
+    else
+      respond_to do |format|
+        format.html do
+          flash[:notice] = "Couldn't edit list"
+          render :edit
+        end
+        format.json { render status: 400 }
+      end
+    end
   end
+
 
   def destroy
   end

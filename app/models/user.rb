@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
-  #has_secure_password_digest(options = {validations: false})
-  #has_many :lists
+  has_many :lists
 
   SALT = '$2a$10$D1OPM3oiaDlfkW0vU1sfbvlq.'
 
@@ -9,7 +8,6 @@ class User < ActiveRecord::Base
   before_create :encrypt_password
   after_save    :clear_password
 
-# Validations
   validates :username, presence: true,
             uniqueness: true
 
