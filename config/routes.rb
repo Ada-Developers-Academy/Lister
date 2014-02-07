@@ -4,7 +4,7 @@ Lister::Application.routes.draw do
 
   # Session
   get "/session/new", to: 'session#new', as: :signin
-  post 'session', to: 'session#create'
+  post 'session', to: 'session#create', as: :create_session
   get '/signout', to: 'session#sign_out', as: :signout
 
   # Users
