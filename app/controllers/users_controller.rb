@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params.require(:user).permit(:username, :email, :password, :password_confirmation))
     if @user.save
+      SignInMailer.welcome(@user.id).deliver
       session[:user_id] = @user.id
       redirect_to "/", notice: "You have successfully created a user!"
     else
