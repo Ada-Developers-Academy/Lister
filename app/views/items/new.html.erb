@@ -1,1 +1,9 @@
-New item form!
+<div id="item-form">
+  <%= form_for @item do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= hidden_field_tag :list_id, value: @user.id %>
+
+    <%= f.submit "Add item"%>
+  <% end %> 
+</div>

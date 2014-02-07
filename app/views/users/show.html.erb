@@ -23,12 +23,12 @@
 
 <h1>Hi <%= current_user.username %>,</h1>
 
-<%= link_to "Create a list", new_list_path(@user.id) %>
+<%= link_to "Create a list", new_list_path(@user.id), class: "btn btn-primary" %>
 
-<!-- if user's list == 0
-  <h2>Create your first list</h2>
-else
+<!-- if user's list > 0
   iterate over user's list object do |list|
-    link_to list.name, list_path(user.list.id) -->
+    link_to list.name, list_path(user.list.id)
+else
+  <h2>Create your first list</h2> -->
 
 
