@@ -9,7 +9,7 @@
 <% if @list.items.empty? %>
   This list is lonely, emptier than a black hole.
 <% else %>
-  <ul>
+  <ul class="items">
     <% @list.items.each do |item| %>
       <li><%= item.name %> 
         <% if @current_user && @current_user.id == @list.user.id %>
@@ -30,7 +30,7 @@
       <%= f.label :name, 'Wanna add an item?' %>
       <br>
       <%= f.text_field :name %>
-      <%= f.submit("Yes!", :class => "btn btn-default btn-sm")%>
+      <%= f.submit("Yes!", :class => "add")%>
     </p>
   <% end %>
 <% end %>

@@ -2,8 +2,18 @@ class ItemsController < ApplicationController
   
   def create
     if @current_user
-      @item = Item.create(item_params)
-      redirect_to list_path(@item.list_id)
+      @item = Item.new(item_params)
+
+      if @item.save
+
+        respond_to do |format|
+          format.html { redirect_to list_path(@item.list_id) }
+          format.json { head :no_content }
+        end
+      else
+        render :new
+      end
+      
     else
       redirect_to sign_in_path, notice: "Sign in to create an item"
     end
@@ -11,11 +21,10 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id])
-    list_id = @item.list_id
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to list_path(list_id) }
+      format.html { redirect_to list_path(@item.list_id) }
       format.json { head :no_content }
     end
   end

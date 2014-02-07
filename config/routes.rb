@@ -14,10 +14,12 @@ Lister::Application.routes.draw do
   post 'users'        => 'users#create',    as: 'users'
   get 'users/show'    => 'users#show'  
 
-  post 'items'        => 'items#create',    as: 'items'
-  delete '/items/:id' => 'items#destroy',   as: 'item'
+  # post 'items'        => 'items#create',    as: 'items'
+  # delete '/items/:id' => 'items#destroy',   as: 'item'
 
   resources :lists
+  resources :items
+
   get 'my_lists'      => 'lists#my_lists',  as: 'my_lists'
 
   if Rails.env == "test"
