@@ -16,7 +16,7 @@ class ListItemsController < ApplicationController
   def destroy
     @item = ListItem.find(params[:id])
     @list = @item.list
-    @item_id = params[:id]
+    # @item_id = params[:id]
     @item.destroy
     respond_to do |format|
       format.json { head :no_content }

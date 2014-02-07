@@ -9,6 +9,7 @@
         <div class='ui medium inverted green header'>LISTS</div>
       <% @lists.each do |list| %>
         <div class="item">
+          <i class="circular green bolt icon"></i>
           <div class="content">
             <div class='ui header'>
               <%= link_to list.title, list_path(list.id) %>
@@ -24,6 +25,7 @@
         <div class='ui medium inverted green header'>USERS</div>
         <% @users.each do |user| %>
           <div class='item'>
+            <i class="circular red bolt icon"></i>
             <div class='content'>
               <div class='ui header'>
                 <%= user.username %>

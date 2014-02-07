@@ -1,20 +1,18 @@
 <div class = 'ui red center aligned huge header'>LOOK AT THIS LIST. </div>
   <div class = 'ui blue header'><%= @list.title %></div>
-  <p><%= @list.description %></p>
-  <% if @list.list_items %>
-    <ul id='items_list'>
-    <% @list.list_items.each do |item| %>
-      <li class='item'><%= item.description %> 
-        <% if @current_user && @list.user == @current_user %>
-        <%= link_to 'Get rid of it!', item, method: :delete, class: "ajax-destroy", remote: true %>
-        <% end %>
-      </li>
+    <%= @list.description %>
+    <% if @list.list_items %>
+      <ul id='items_list'>
+      <% @list.list_items.each do |item| %>
+        <li class='item'><%= item.description %> 
+          <% if @current_user && @list.user == @current_user %>
+          <%= link_to 'Get rid of it!', item, method: :delete, class: "ajax-destroy", remote: true %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
     <% end %>
-  </ul>
-  <% end %>
 
   <% if @current_user && @list.user == @current_user %>
-  <%= link_to 'New Item', new_item_path(@list.id), id: 'new_link', remote: true %>
-  <!--   <#%= render "/list_items/form" %>
-   -->
+    <%= link_to 'New Item', new_item_path(@list.id), id: 'new_link', remote: true %>
   <% end %>

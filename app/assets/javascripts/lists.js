@@ -3,7 +3,8 @@ $(document).ready(function (){
     event.preventDefault();
     $.post($(this).attr('action'), $(this).serialize(), null, "script");
   });
-  $(".ajax-destroy").click(function(event) {
+  //$(".ajax-destroy").click(function(event) {
+  $("#items_list").delegate( "li a", "click", function(event) {
     var item = $(this).parents('li');
     $.ajax({
       url: $(this).attr("href"),
