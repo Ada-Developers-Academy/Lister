@@ -14,15 +14,16 @@
 
 
 .container {
-  background-color: rgba(91, 192, 222, 0.34) !important;
   margin-top: 50px;
 }
 
 body {
-  background-color: lightsteelblue !important;
+  color: blue;
 }
 
 .single-list {
   width: 300px;
   margin: auto;
+  background-color: rgba(30, 144, 255, 0.20);
+  padding: 20px;
 }

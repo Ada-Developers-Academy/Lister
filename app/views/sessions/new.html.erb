@@ -1,5 +1,6 @@
-<div class="form_style">
-  <h1>Log In</h1>
+ <div class="single-list">
+ <div class="form_style">
+  <h3>Log In</h3>
 
   <%= form_tag signin_path do %>
     <div class="field">
@@ -8,8 +9,9 @@
     </div>
     <div class="field">
       <%= label_tag :password %><br />
-      <%= password_field_tag :password %>
+      <%= password_field_tag :password %><br><br>
     </div>
     <div class="button"><%= submit_tag "Log In" %></div>
   <% end %>
+</div>
 </div>

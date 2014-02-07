@@ -1,7 +1,7 @@
 <% if @current_user.nil? %>
 
   <div class="col-xs-8 col-sm-5">
-    <div class="jumbotron">
+    <div class="jumbotron" style="background-color: rgba(30, 144, 255, 0.20)">
       <%= "Welcome to Lister!" %>
       <p><a class="signin">Sign in</a> or <a class="signup">sign up</a> for Lister & start making your first lists!</p>
       <div id="sign-up-area"><%= render "users/form" %></div>
@@ -22,7 +22,7 @@
 <% else %>
 
   <div class="col-xs-8 col-sm-5">
-    <div class="jumbotron">
+     <div class="jumbotron" style="background-color: rgba(30, 144, 255, 0.20)">
       <h2><%= "Welcome to Lister!" %></h2>
       <p>You have <%= "#{@users_lists.count}" %> <%= link_to "lists.", my_lists_path %> Create a <%= link_to "new list", new_list_path %> today.</p>
     </div>
