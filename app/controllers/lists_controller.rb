@@ -37,6 +37,16 @@ class ListsController < ApplicationController
   def edit
     @list = List.find(params[:id].to_i)
   end
+
+  def destroy
+    @list = List.find(params[:id])
+    @list_id = params[:id]
+    @list.destroy
+    respond_to do |format|
+      format.html{ redirect_to :back }
+      format.js
+    end
+  end
   
   private
   def list_params

@@ -1,8 +1,6 @@
-Lister::Application.routes.draw do
-  
-  require 'resque/server'
-  Lister::Application.routes.draw do 
-    mount Resque::Server, :at => '/resque'
+require 'resque/server'
+Lister::Application.routes.draw do 
+  mount Resque::Server, :at => '/resque'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -24,6 +22,7 @@ Lister::Application.routes.draw do
   get    'lists/:id'                => 'lists#show',       as: 'list'
   get    'edit/:id'                 => 'lists#edit',       as: 'edit'
   get    'users/:user_id/lists/:id' => 'lists#show',       to: 'list'
+  delete 'destroy/list/:id'         => 'lists#destroy',    as: 'destroy_list'
 
   get    'items/new'                => 'items#new',        as: 'new_item'
   post   'items/create'             => 'items#create',     as: 'create_item'
@@ -79,5 +78,4 @@ Lister::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  end
 end

@@ -6,8 +6,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      Resque.enqueue(EmailJob)
+      Resque.enqueue(EmailJob, @user.email)
       redirect_to root_url, notice: "Signed up!"
+      raise
     else
       render "new"
     end

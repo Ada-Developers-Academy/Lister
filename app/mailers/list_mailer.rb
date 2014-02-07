@@ -1,8 +1,7 @@
 class ListMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "feedhunter2014@gmail.com"
 
-  def join_us(list_id)
-    # @list = List.find(list_id)
-    mail(to: "shanghaiellen@gmail.com", subject: "Your list looks lonely!")
+  def welcome_email(foo)
+    mail(to: foo, subject: "Welcome!")
   end
 end
