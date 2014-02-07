@@ -3,8 +3,8 @@ Lister::Application.routes.draw do
   root to: "welcome#index"
 
   # Session
-  get "/session/new", to: 'session#new'
-  post 'session', to: 'session#create', as: :signin
+  get "/session/new", to: 'session#new', as: :signin
+  post 'session', to: 'session#create'
   get '/signout', to: 'session#sign_out', as: :signout
 
   # Users
