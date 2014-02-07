@@ -7,10 +7,8 @@ Lister::Application.routes.draw do
   post '/login' => 'session#create'
   delete '/signout' => 'session#destroy'
 
-  get '/users/new' => 'users#new'
-
   get '/users' => 'users#index'
-  get '/users/new' => 'users#new', as: :new_user
+  get '/users/new' => 'users#new', as: :signup
   post '/users' => 'users#create'
 
   get '/users/:id' => 'users#show', as: :user

@@ -11,8 +11,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      Resque.enqueue(EmailJob, @user.id)
       flash[:notice] = "User has been successfully created!"
-      ListMailer.welcome(@user.id).deliver
       redirect_to users_path
     else
       render :new
