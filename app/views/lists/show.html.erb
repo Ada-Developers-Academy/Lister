@@ -7,9 +7,11 @@
 <% end %>
 
 <% if @list.items.empty? %>
-  This list is lonely, emptier than a black hole.
-<% else %>
-  <ul class="items">
+    <span class="emptiness">This list is lonely, emptier than a black hole.</span>
+<% end %>
+
+<ul class="items">
+  <% unless @list.items.empty? %>
     <% @list.items.each do |item| %>
       <li><%= item.name %> 
         <% if @current_user && @current_user.id == @list.user.id %>
@@ -17,8 +19,8 @@
         <% end %>
       </li>
     <% end %>
-  </ul>
-<% end %>
+  <% end %>
+</ul>
 
 <% if @current_user && @current_user.id == @list.user.id %>
   <%= form_for(@item) do |f| %>
