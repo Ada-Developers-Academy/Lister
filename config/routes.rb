@@ -12,7 +12,10 @@ Lister::Application.routes.draw do
   post '/lists', to: 'lists#create'
   get '/lists', to: 'lists#index', as: :all_lists
   get '/lists/:id', to: 'lists#show'
- 
+
+  post '/elements', to: 'elements#create'
+  get '/elements/new', to: 'elements#new', as: :new_element
+  delete '/elements/:id', to: 'elements#destroy'
   
   root to: 'home#index', as: :home
   

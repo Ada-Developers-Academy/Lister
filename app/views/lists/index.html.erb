@@ -1,4 +1,3 @@
 <% @lists.each do |list| %>
-<%#= link_to "#{list.title}", list_show_path %>
-  <%= list.title %><br>
+  <%= link_to "#{list.title}", "/lists/#{list.id}" %><br>
 <% end %>
