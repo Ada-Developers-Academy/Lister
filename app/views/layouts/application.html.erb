@@ -8,7 +8,12 @@
 </head>
 <body>
 <%= flash.notice %><br><br>
-<%= yield %>
+<%= yield %><br><br>
+
+<tr>
+<td><%= link_to 'Home', '/' %></td><br>
+<td><%= link_to 'Back', :back %></td><br>
+<tr>
 
 </body>
 </html>
