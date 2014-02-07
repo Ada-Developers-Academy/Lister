@@ -13,8 +13,13 @@
     <% end %>
   </ul>
 
+
   <% if current_user != nil && @list.user_id.eql?(current_user.id) %>
     <h4> Add an item to your list </h4>
     <%= link_to "Add Item", new_item_path(list_id: @list.id), class: "btn btn-danger btn-xs" %>
+
   <% end %>
+<%= render 'items/form' %>
 </div>
+
+

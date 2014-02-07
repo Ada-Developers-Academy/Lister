@@ -5,8 +5,10 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    
     if @item.save
-        redirect_to list_path(@item.list), notice: "Successfully created new item"
+        redirect_to list_path(@item.list)
+        flash[:notice] = "You have created a new item."
       else
         render :new
     end

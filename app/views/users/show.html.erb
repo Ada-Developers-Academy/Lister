@@ -13,6 +13,8 @@
 
   <h4>Create a new list</h4>
 
-  <%= link_to "Add List", new_list_path(user_id: @user.id), id: 'addlist', remote: true %>
+  <%= render "lists/form" %>
+
+  <%= link_to "Add List", new_list_path(user_id: @user.id), class: "btn btn-danger btn-xs" %>
 </div>
 
