@@ -1,17 +1,21 @@
 $(document).ready(function() {
-  $(".delete").click(function() {
-    var item = $(this).parents('li')
+  $(".action").click(function() {
+
+    var items = $(".items");
+
     $.ajax({
-      url: $(this).attr("href"),
-      type: 'DELETE',
+      url: $(this).parents('form').attr("action"),
+      type: 'POST',
       dataType: 'json',
+      data: {item: {name: $("#item_name").val() }},
       success: function(data, textStatus, xhr) {
-        item.remove()
+        var delete_button = '<a class="delete" data-method="delete" href="/lists/'+ data.list_id +'/items/' + data.id + '" rel="nofollow">Delete</a>'
+        items.append("<tr><td>"+ data.name + "</td><td>" + delete_button + "</td></tr>");
       },
       error: function(xhr, textStatus, errorThrown) {
-        alert("There was a problem deleting this item.")
+        alert("There was a problem adding this item");
       }
     });
-    return false
+    return false;
   });
 });

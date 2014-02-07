@@ -19,12 +19,16 @@
     <% end %>
 </div>
 
-
-<% @list.items.each do |i| %>
-<ul>
-  <li><%= i.name %><%= link_to "Delete", list_item_path(@list,i), class: "delete", method: :delete %></li>
-  </ul>
-<% end %>
+<table class="ui collapsing table segment">
+  <tbody class="items">
+    <% @list.items.each do |i| %>
+    <tr >
+      <td><%= i.name %></td>
+      <td><%= link_to "Delete", list_item_path(@list,i), class: "delete", method: :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 
 <% if current_user && current_user.id == @list.user_id %>
 <a class="add-item-link">add an item</a>
@@ -40,4 +44,3 @@
   <% end %>
   </div>
 <% end %>
-
