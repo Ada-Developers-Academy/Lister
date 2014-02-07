@@ -5,7 +5,7 @@
 <% else %>
   <ul>
     <% @list.items.each do |item| %>
-      <li><%= item.name %>
+      <li><%= item.name %> <%= link_to "Delete", item_path(item.id), method: :delete, :class => "btn btn-default btn-xs" %>
     <% end %>
   </ul>
 <% end %>

@@ -6,18 +6,19 @@ Lister::Application.routes.draw do
   
   root 'lists#index'
 
-  get 'session/new' => 'session#new',     as: 'sign_in'
-  post 'session'    => 'session#create',  as: 'create_session'
-  get 'session'     => 'session#destroy', as: 'sign_out'
+  get 'session/new'   => 'session#new',     as: 'sign_in'
+  post 'session'      => 'session#create',  as: 'create_session'
+  get 'session'       => 'session#destroy', as: 'sign_out'
 
-  get 'users/new'   => 'users#new',       as: 'sign_up'
-  post 'users'      => 'users#create',    as: 'users'
-  get 'users/show'  => 'users#show'  
+  get 'users/new'     => 'users#new',       as: 'sign_up'
+  post 'users'        => 'users#create',    as: 'users'
+  get 'users/show'    => 'users#show'  
 
-  post 'items'      => 'items#create',    as: 'items'
+  post 'items'        => 'items#create',    as: 'items'
+  delete '/items/:id' => 'items#destroy',   as: 'item'
 
   resources :lists
-  get 'my_lists'    => 'lists#my_lists',  as: 'my_lists'
+  get 'my_lists'      => 'lists#my_lists',  as: 'my_lists'
 
   if Rails.env == "test"
     get 'dummy/test_current_user' => 'dummy#test_current_user'
