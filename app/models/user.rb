@@ -5,8 +5,7 @@ class User < ActiveRecord::Base
   validates :email, format: { with: /\w+@\w+\.\w+/, message: "is not a valid address"}
   validates_presence_of :username
   validates_presence_of :email
-  # commenting out for testing
-  # validates_uniqueness_of :email, message: "has already been taken"
+  validates_uniqueness_of :email, message: "has already been taken"
   validates_uniqueness_of :username, message: "has already been taken"
   validates_presence_of :password, message: "can't be blank"
   validates_presence_of :password_confirmation, message: "can't be blank"

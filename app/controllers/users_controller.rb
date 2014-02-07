@@ -8,7 +8,6 @@ class UsersController < ApplicationController
     if @user.save
       Resque.enqueue(EmailJob, @user.email)
       redirect_to root_url, notice: "Signed up!"
-      raise
     else
       render "new"
     end
