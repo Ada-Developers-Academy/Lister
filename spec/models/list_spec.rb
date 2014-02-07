@@ -17,10 +17,11 @@ describe "List" do
       expect(list.errors[:user_id]).to include "can't be blank"
     end
 
-    it "user title combo is unique" do
+    #Look what I figured out!
+    it "two users lists can't have the same title" do
       list2 = build(:list, title: list.title, user_id: list.user_id)
       list2.valid?
-      expect(list2.errors[:title]).to include "another of that user's lists has that title"
+      expect(list2.errors[:title]).to include "another of your lists has that title"
     end
   end
 end

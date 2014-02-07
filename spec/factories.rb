@@ -21,6 +21,13 @@ FactoryGirl.define do
     end
   end
 
-  factory :item do  
+  factory :item do 
+    sequence :content do |n| 
+    "Item #{n}"     
   end
+    
+    sequence :list_id do |n| 
+      n
+    end
+  end 
 end

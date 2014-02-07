@@ -15,3 +15,6 @@
 /log/*.log
 /tmp
 /coverage
+
+# Don't send my key to the internet
+/config/environments/development.rb
