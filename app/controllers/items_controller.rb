@@ -5,10 +5,11 @@ class ItemsController < ApplicationController
   end
 
   def create
-    list = List.find(params[:item][:list_id])
-    if list.user_id != current_user.id 
+    @list = List.find_by(id: params[:item][:list_id])
+
+    if @list.user_id != current_user.id 
       flash[:notice] = "You can only add items to your own list."
-      redirect_to current_list_path(list)
+      redirect_to current_list_path(@list)
       return
     end
     @item = Item.new(item_params)
@@ -18,9 +19,6 @@ class ItemsController < ApplicationController
     else
       render :new
     end
-
-  rescue ActiveRecord::RecordNotFound
-    redirect_to lists_path
   end
 
   def item_params

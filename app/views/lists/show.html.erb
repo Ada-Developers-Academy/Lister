@@ -1,1 +1,9 @@
-<h1>@list.name</h1>
+<h1>Hi, <%= current_user.username %>! </h1>
+
+<h3><%= @list.name %></h3>
+<% @list.items.each do |item| %>
+<%= item.description %>
+<% end %>
+
+<%= render "items/new" %>
+

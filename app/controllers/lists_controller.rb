@@ -21,6 +21,8 @@ class ListsController < ApplicationController
   end
 
   def show
+    @list = List.find(params[:id])
+    @item = Item.new#@list.items
   end
 
   def index
@@ -28,11 +30,12 @@ class ListsController < ApplicationController
   end
 
   def delete
+    @list = List.find(params[:id])
     @list.destroy
   end
 
   def list_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :user_id)
   end
 
 end
