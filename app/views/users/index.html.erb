@@ -1,0 +1,31 @@
+<% if signed_in? %>
+    <h1>Signed in</h1>
+<% else %>
+    <h1>Not signed in</h1>
+<% end %>
+
+<div class="debug">
+<p>This is for debugging</p>
+<p>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th><strong>Id:</strong></th>
+        <th><strong>Name:</strong></th>
+        <th><strong>Options:</strong></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @users.each do |user| %>
+        <tr>
+            <td><%= user.id %></td>
+            <td><%= user.username %></td>
+            <td><%= link_to 'Lists', list_index_path %></td>
+            <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+</p>
+</div>

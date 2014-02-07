@@ -1,0 +1,16 @@
+<h1>New List</h1>
+
+
+<div class= 'list-form'>
+    <%= form_tag list_index_path, method: :post %>
+    <%= label_tag :title %><br>
+    <%= text_field_tag :title %>
+    <%= form_tag "/list/#{@list.id}", method: :patch, class: "item" %>
+    <div class = 'add-item'>
+        <%= label_tag :item_body, 'Add item' %>:
+        <%= text_field_tag :item_body %>
+        <span class= 'add-item-button'>
+        <%= submit_tag 'Go' %>
+      </span>
+    </div>
+</div>
