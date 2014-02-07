@@ -1,2 +1,9 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
+<h4>Lists <%= @list.id %></h4>
+<p><%= @list.title %>
+<p><%= @list.description %>
+<ul><% @list.items.each do |item| %>
+<li><%= link_to item.itemname, item_path(item.id) %>
+<% end %></ul>
+<h4> Add an item to your list </h4>
+<%= link_to "Add Item", new_item_path(list_id: @list.id) %>
+

@@ -17,6 +17,7 @@ class SessionController < ApplicationController
   def destroy
     session.delete(:user_id)
     redirect_to :root
+    flash[:notice] = "Thanks for visiting! See you next time you need to make a list!" 
   end
 
 end

@@ -3,8 +3,77 @@
    <h4> user id <%= @user_id %> </h4>
     <h1>Listable</h1>
     <p>Make lists, find lists, do lists! </p>
-    <% if session[:user_id] == nil %>
-    <p> <a href="/signup" class="btn btn-danger btn-lg" role="button"> Sign in & up </a> </p>
+      <% if session[:user_id] == nil %>
+      <p> <a href="/signup" class="btn btn-danger btn-lg" role="button"> Sign in & up </a> </p>
+      <% end %>
+
+      <% if session[:user_id] %>
+      <p> 
+        <%= link_to("Make a new list", user_path(current_user), class: "btn btn-danger btn-lg", role: "button") %>
+        <a href="/signout" class="btn btn-danger btn-lg" role="button"> Sign out </a> 
+      </p>
       <% end %>
   </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="table responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Example Lists</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cute Dogs</td>
+            </tr>
+            <tr>
+              <td>Ugly Cats</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="table responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Your Lists</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cute Dogs</td>
+            </tr>
+            <tr>
+              <td>Ugly Cats</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="table responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>All Lists</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cute Dogs</td>
+            </tr>
+            <tr>
+              <td>Ugly Cats</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
 </div>
+

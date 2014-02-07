@@ -1,12 +1,12 @@
 class ItemsController < ApplicationController
   def new
-    @item = Item.new
+    @item = Item.new(list_id: params[:list_id])
   end
 
   def create
     @item = Item.new(item_params)
     if @item.save
-        redirect_to "list/show", notice: "Successfully created new list"
+        redirect_to list_path(@item.list), notice: "Successfully created new item"
       else
         render :new
     end
@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
   def destroy
     item = Item.find(params[:id])
     item.destroy
-    redirect_to "list/show", notice: "Your item has been deleted"
+    redirect_to list_path, notice: "Your item has been deleted"
   end
 
   def update

@@ -1,9 +1,5 @@
 <h1>New List</h1>
 
-<% @list.errors.full_messages.each do |error| %>
- <%= error %><br>
-<% end %>
-
 <%= form_for @list do |f| %>
  <div class='field'>
    <%= f.label :title %>

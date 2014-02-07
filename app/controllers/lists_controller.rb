@@ -5,24 +5,29 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
+    @list.user_id = current_user.id
     if @list.save
-        redirect_to root_path, notice: "Successfully created new list"
-      else
-        render :new
-    end
+      flash[:notice] = "You have created a new list."
+      redirect_to user_path(@list.user_id)
+    else
+      render :new
+    end  
   end
+
 
   def destroy
     list = List.find(params[:id])
     list.destroy
-    redirect_to "user/show", notice: "Your item has been deleted"
+    redirect_to "user/show", notice: "Your list has been deleted"
   end
 
   def index
-    List.all
+    @lists = List.all
   end
 
   def show
+    @list = List.find(params[:id])
+    @item = Item.new
   end
 
   def update
@@ -31,6 +36,6 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:title, :description, :user_id)
+    params.require(:list).permit(:title, :description, :user_id, :id)
   end
 end
