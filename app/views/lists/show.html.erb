@@ -1,1 +1,19 @@
-<%= @list.title %>
+<%= @list.title %><br>
+<ul>
+<% @list.elements.each do |element| %>
+<li><%= element.body %></li>
+<% end %>
+</ul>
+
+<%= form_for(@element) do |f| %>
+    <p>
+      <%= f.hidden_field :list_id, value: @list.id %>
+    </p>
+
+    <p>
+      <%= f.label :body, 'Add an element' %>
+      <br>
+      <%= f.text_field :body %>
+      <%= f.submit("Submit", :class => "btn btn-default btn-sm")%>
+    </p>
+<% end %>

@@ -23,6 +23,8 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find_by(id: params[:id])
+    @element = Element.new
+    @elements = Element.all
   end
 
   def destroy
