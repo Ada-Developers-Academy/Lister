@@ -1,0 +1,8 @@
+<%= form_for @list_item do |f| %>
+<div class='field>'
+  <%= f.label :new_list_item %>
+  <%= f.text_field :description %>
+</div>
+   <%= f.hidden_field :list_id, value: params[:id] %>
+  <div class="actions"><%= f.submit %></div>
+<% end %>

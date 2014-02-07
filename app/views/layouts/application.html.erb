@@ -9,10 +9,11 @@
 <body>
   <header>
    <% if @current_user %>
-    <%= link_to 'Sign out!', sign_out_path %><br>
-    <%= link_to 'My lists!', user_path(@current_user.id) %>
+    <%= link_to 'My lists!', user_path(@current_user.id), class: 'ui small red button' %>
+    <%= link_to 'Get OUTTA here!', sign_out_path, class: 'ui small red button' %>
   <% else %>
-    <%= link_to 'Log in!', sign_in_path %>
+    <%= link_to 'User? Log in!', sign_in_path, class: 'ui small blue button' %>
+    <%= link_to 'Become a user: make lists.', new_user_path, class: 'ui small blue button' %>
     <% end %>
     <br><br>
 

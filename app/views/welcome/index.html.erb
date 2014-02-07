@@ -1,6 +1,38 @@
-<h2> Welcome to the lists. Lists upon lists upon lists.</h2>
-<%= link_to 'Wanna be a user? Then you can make lists, too!', new_user_path %>
-<% @lists.each do |list| %>
-  <h3><%= list.title %></h3>
-  <p><%= list.description %></p>
-  <% end %>
+<div class='ui huge center aligned red header'> LISTS UPON LISTS UPON LISTS.</div>
+ <div class="ui horizontal icon divider">
+    <i class="circular heart icon"></i>
+  </div>
+<div class="ui two column divided grid">
+  <div class='row'>
+    <div class='column'>
+      <div class='ui divided list'>
+        <div class='ui medium inverted green header'>LISTS</div>
+      <% @lists.each do |list| %>
+        <div class="item">
+          <div class="content">
+            <div class='ui header'>
+              <%= link_to list.title, list_path(list.id) %>
+            </div>
+            <%= list.description %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class='column'>
+      <div class='ui divided list'>
+        <div class='ui medium inverted green header'>USERS</div>
+        <% @users.each do |user| %>
+          <div class='item'>
+            <div class='content'>
+              <div class='ui header'>
+                <%= link_to user.username, user_path(user.id) %>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,13 +1,14 @@
 class ListItemsController < ApplicationController
   def new
+    @list_item = ListItem.new
   end
 
   def create
     @list_item = ListItem.new(item_params)
     if @list_item.save
       respond_to do |format|
-        format.html { redirect_to list_path(params[:list_item][:list_id]) }
-        format.json { head :no_content}
+        format.js
+        format.html { redirect_to :back }
       end
     end
   end

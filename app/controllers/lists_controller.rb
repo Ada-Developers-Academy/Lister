@@ -4,9 +4,8 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new(list_params)
+    @list = current_user.lists.create(list_params)
     if @list.save
-      @list.update(user_id: current_user.id)
       redirect_to user_path(current_user.id), notice: 'You made a list! Not as good as a handturkey, but I suppose it will do.'
     else
       render :new
@@ -16,6 +15,10 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @list_item = ListItem.new
+    respond_to do |format|
+      format.html
+      format.json{ render json: { @list.title => @list.json } }
+    end
   end
 
   private

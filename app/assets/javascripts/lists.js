@@ -1,4 +1,8 @@
-$(document).ready(function() {
+$(document).ready(function (){
+  $('#new_list_item').submit(function (event){
+    event.preventDefault();
+    $.post($(this).attr('action'), $(this).serialize(), null, "script");
+  });
   $(".ajax-destroy").click(function(event) {
    var removeItem = $(this).parents('li');
     $.ajax({
@@ -18,30 +22,28 @@ $(document).ready(function() {
   });
 });
 
-
-$(document).ready(function() {
-  $('form#new_list_item').submit(function(event) {
-    event.preventDefault();
-    var valuesToSubmit = $('form').serializeArray();
-    console.log(valuesToSubmit)
-    $.ajax({
-      url: this.url,
-      type: 'POST',
-      data: valuesToSubmit,
-      error: function() {
-        alert('There was a problem adding this item.');
-      },
-      success: function() {
-        $('#items_list').each(function(){
-          console.log(valuesToSubmit[2])
-          var $li  = $("<li>").text(valuesToSubmit[2].value);
-          $(this).append($li);
-        });
-        $("input#list_item_description").val('');
-      },
-      complete: function() {
-      }
-    });
-  });
-  return false;
-});
+// I came up with a neater way to do this but I was proud of myself for really brute forcing this out so I'm leaving it as evidence that I can sorta javascript.
+// $(document).ready(function() {
+//   $('form#new_list_item').submit(function(event) {
+//     event.preventDefault();
+//     var valuesToSubmit = $('form').serializeArray();
+//     $.ajax({
+//       url: this.url,
+//       type: 'POST',
+//       data: valuesToSubmit,
+//       error: function() {
+//         alert('There was a problem adding this item.');
+//       },
+//       success: function() {
+//         $('#items_list').each(function(){
+//           var $li  = $("<li>").text(valuesToSubmit[2].value);
+//           $(this).append($li);
+//         });
+//         $("input#list_item_description").val('');
+//       },
+//       complete: function() {
+//       }
+//     });
+//   });
+//   return false;
+// });
