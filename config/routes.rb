@@ -4,8 +4,9 @@ Lister::Application.routes.draw do
   get "/new", to: "users#new"
   post "users/new", to: "users#create", as: :users
   get "/profile", to: "users#show" #instead of :id?
-  get "/sign-up", to: "users#new"
+  get "/signup", to: "users#new"
 
+  get "/signout", to: "sessions#destroy"
   get '/login', to: "sessions#new"
   post "/login", to: "sessions#create", as: :sessions
 

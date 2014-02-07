@@ -1,8 +1,10 @@
 <h1>Hi, <%= current_user.username %>! </h1>
 
 <h3><%= @list.name %></h3>
-<% @list.items.each do |item| %>
-<%= item.description %>
+    <% @list.items.each do |item| %>
+  <ul>
+    <li><%= item.description %></li>
+  </ul>
 <% end %>
 
 <%= render "items/new" %>
