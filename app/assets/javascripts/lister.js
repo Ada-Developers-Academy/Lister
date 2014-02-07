@@ -6,7 +6,9 @@ $(document).ready(function() {
       type: 'DELETE', // The HTTP method (GET POST PATCH DELETE)
       dataType: 'json',
       success: function(data, textStatus, xhr) { // What to do after the request succesfully completes
-        list.remove(); // .remove() removes an element from the DOM
+        list.remove();
+        alert("list removed!"); 
+         // .remove() removes an element from the DOM
       },
       error: function(xhr, textStatus, errorThrown) {
         alert(textStatus)
