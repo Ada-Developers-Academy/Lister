@@ -32,6 +32,24 @@
             <tr>
               <td>Ugly Cats</td>
             </tr>
+            <tr>
+              <td>Things I don't understand</td>
+            </tr>
+            <tr>
+              <td>What I want to eat</td>
+            </tr>
+            <tr>
+              <td>Cool Cars</td>
+            </tr>
+            <tr>
+              <td>Grocery List</td>
+            </tr>
+            <tr>
+              <td>Things to Buy</td>
+            </tr>
+            <tr>
+              <td>Things to Pin</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -55,11 +73,15 @@
       </div>
     </div>
     <div class="col-md-4">
-
-      <% if current_user %>
+      
       <div class="table responsive">
         <table class="table table-striped">
+          
           <thead>
+            <% unless current_user %>
+            <%= image_tag("http://kgi.org/sites/default/files/checklist.jpg", :alt => "checklist picture", :width => "293") %>
+            <% end %>
+            <% if current_user %>
             <tr>
               <th>Your Lists</th>
             </tr>

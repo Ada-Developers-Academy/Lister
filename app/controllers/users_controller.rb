@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
           session[:user_id] = @user.id
+          UserMailer.join_us(@user.id).deliver
           redirect_to root_path, notice: 'Successfully created new user & Successfully signed in'
       else
         render :new
