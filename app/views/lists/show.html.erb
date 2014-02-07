@@ -25,7 +25,7 @@
   <h2> <%= @list.name %></h2>
 <% end %>
 
-<table class="ui collapsing table segment">
+<table class="table table-striped">
   <tbody class="items">
     <% @list.items.each do |i| %>
     <tr >
@@ -39,13 +39,13 @@
 <% if current_user && current_user.id == @list.user_id %>
 <a class="add-item-link">add an item</a>
 <div id="add-item-area">
-  <%= form_for([@list, Item.new], remote: true)  do |f| %>
+  <%= form_for([@list, Item.new], html: {:id => "item-form"} ) do |f| %>
       <div class="field">
         <%= f.label :name %><br>
         <%= f.text_field :name %>
       </div>
       <div class="actions">
-        <%= f.submit "Add to list", class: "action" %>
+        <%= f.submit "Add to list", class: "item-action" %>
       </div>
   <% end %>
   </div>

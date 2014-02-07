@@ -8,7 +8,7 @@ before_filter :authorize, only: [:new, :create, :edit, :delete]
 
       respond_to do |format|
         format.html { redirect_to list_path(@list) }
-        format.json { head :no_content}
+        format.json { render json: @item.as_json }
       end
     else
       render :new
