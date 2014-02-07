@@ -30,7 +30,7 @@
     <% @list.items.each do |i| %>
     <tr >
       <td><%= i.name %></td>
-      <td><%= link_to "Delete", list_item_path(@list,i), class: "delete", method: :delete %></td>
+      <td><%= link_to "delete",  list_item_path(@list,i), class: "delete", method: :delete %></td>
     </tr>
   <% end %>
   </tbody>

@@ -32,7 +32,7 @@ class ListsController < ApplicationController
 
         respond_to do |format|
           format.html { redirect_to :back }
-          format.json { head :no_content }
+          format.json { render json: @list.as_json }
         end
       else
         render :back

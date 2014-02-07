@@ -1,4 +1,5 @@
-<%= form_for(@list) do |f| %>
+<div class="single">
+<% form_for(@list, html: {:id => "list-form"}) do |f| %>
   <p>
     <div class="field">
       <%= f.label :name %><br>
@@ -12,7 +13,8 @@
     </div>
   </p>
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit, class: "list-name" %>
     </div>
   </p>
 <% end %>
+</div>
