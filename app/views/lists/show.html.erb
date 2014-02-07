@@ -1,5 +1,5 @@
 <h1><%=@list.name%></h1>
-<h2>owner: <%=@name%></h2>
+<h3>owner: <%=@name%></h3>
 
 <div class='list'>
   <ul>
@@ -16,7 +16,7 @@ COUNT: <%= @list.items.count %>
       <%= f.label :item_name, "Add item!" %>
       <%= f.text_field :item_name %> 
       <!-- this worked without the submit button...? -->
-      <span class= 'add-button'>
+      <span class= 'add-button btn'>
         <%= f.submit "Add to list!" %>
       </span>
     </div>

@@ -11,7 +11,6 @@ describe UsersController do
   describe "POST 'create'" do
     context "with valid attributes" do
       let(:valid_attributes) { {username: "bookis", email: "b@c.com", password: "gogo1234", password_confirmation: "gogo1234"} }
-      # let(:user){ create(:user) }
       before(:each) do
         ActionMailer::Base.delivery_method = :test
         ActionMailer::Base.perform_deliveries = true
@@ -24,12 +23,11 @@ describe UsersController do
 
       before do
         ResqueSpec.reset!
-        # ListMailer.welcome(user.id).deliver
       end
 
       it "is a redirect" do
         post :create, user: valid_attributes
-        expect(response.status).to eq 302 # This is a redirect
+        expect(response.status).to eq 302
       end
     
       it "changes user count by 1" do
