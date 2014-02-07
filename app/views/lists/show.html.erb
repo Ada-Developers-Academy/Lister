@@ -6,7 +6,7 @@
     <% @list.items.each do |item| %>
       <li id='item'>
         <%= item.name %>
-        <%= link_to "Remove", remove_item_path(@list.id, item.id), method: :delete %>
+        <%= link_to "Remove", remove_item_path(@list.id, item.id), class: 'remove-item', method: :delete %>
       </li>
     <% end %>
   </ul>

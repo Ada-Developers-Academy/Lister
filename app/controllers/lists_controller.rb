@@ -60,7 +60,10 @@ class ListsController < ApplicationController
   def remove_item
     @item = Item.find(params[:item_id])
     @item.destroy
-    redirect_to list_path(@list)
+    respond_to do |format|
+      format.html { redirect_to list_path(@list) }
+      format.json { render json: @list }
+    end
   end
 
   private
