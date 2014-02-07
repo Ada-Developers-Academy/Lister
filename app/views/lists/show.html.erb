@@ -1,21 +1,28 @@
 <%= @list.title %><br>
-<ul>
-<% @list.elements.each do |element| %>
-<li><%= element.body %><%= link_to "Delete", element_path(element.id), method: :destroy, :class => "btn btn-default btn-xs" %></li>
-<% end %>
-</ul>
 
 <% if @current_user && @current_user.id == @list.user_id %>
-  <%= form_for(@element) do |f| %>
-      <p>
-        <%= f.hidden_field :list_id, value: @list.id %>
-      </p>
-
-      <p>
-        <%= f.label :body, 'Add an element' %>
-        <br>
-        <%= f.text_field :body %>
-        <%= f.submit("Submit", :class => "btn btn-default btn-sm")%>
-      </p>
+  <ul>
+  <% @list.elements.each do |element| %>
+  <li><%= element.body %><%= link_to "Delete", element_path(element.id), method: :destroy, :class => "btn btn-default btn-xs" %></li>
   <% end %>
+  </ul>
+  <%= form_for(@element) do |f| %>
+    <p>
+      <%= f.hidden_field :list_id, value: @list.id %>
+    </p>
+
+    <p>
+      <%= f.label :body, 'Add an element' %>
+      <br>
+      <%= f.text_field :body %>
+      <%= f.submit("Submit", :class => "btn btn-default btn-sm")%>
+    </p>
+  <% end %>
+
+<% else %>
+  <ul>
+  <% @list.elements.each do |element| %>
+    <li><%= element.body %></li>
+  <% end %>
+  </ul>
 <% end %>
