@@ -3,7 +3,7 @@
 <% if @current_user && @current_user.id == @list.user_id %>
   <ul>
   <% @list.elements.each do |element| %>
-  <li><%= element.body %><%= link_to "Delete", element_path(element.id), method: :destroy, :class => "btn btn-default btn-xs" %></li>
+  <li><%= element.body %></li><%= link_to "Delete", element, class: "ajax-destroy", method: :delete, :class => "btn btn-default btn-xs" %>
   <% end %>
   </ul>
   <%= form_for(@element) do |f| %>

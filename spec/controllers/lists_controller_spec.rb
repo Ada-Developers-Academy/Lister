@@ -8,7 +8,7 @@ describe ListsController do
       expect(response).to be_successful
     end
 
-    #why is this failing?
+    #test whether the created list is an instance of List
     it "assigns @list" do
       list = List.create
       get :new
