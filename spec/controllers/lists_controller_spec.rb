@@ -364,10 +364,7 @@ describe ListsController do
 
     context 'if valid user' do
       xit 'removes item from list' do
-        count = list.items.count
-        p item.inspect        
-        delete :remove_item, id: item.id  #says id is nil in route??
-        expect(list.items).to eq count - 1
+        expect { delete :remove_item, id: list.id, item_id: item.id }.to change(Item, :count).by(-1)
       end
 
     end

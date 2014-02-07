@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   before_action :require_login, except: [:show, :index ]
-  before_action :set_list, only: [:edit, :update, :destroy] 
+  before_action :set_list, only: [:edit, :update, :destroy, :remove_item] 
   before_action :valid_user, only: [:edit, :update, :destroy] #:create
 
   def new
@@ -58,7 +58,8 @@ class ListsController < ApplicationController
   end
 
   def remove_item
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:item_id])
+    @item.destroy
     redirect_to list_path(@list)
   end
 

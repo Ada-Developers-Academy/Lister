@@ -12,7 +12,7 @@ Lister::Application.routes.draw do
 
   get      '/users/:id'   => 'users#show',        as: :user
 
-  delete   '/remove_item/:id' => 'lists#remove_item', as: :remove_item
+  delete   '/lists/:id/item/:item_id' => 'lists#remove_item', as: :remove_item
 
   resources :lists
 
