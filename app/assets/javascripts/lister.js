@@ -12,7 +12,8 @@ $(".list").on("click", ".remove-item", function(event) {
       success: function(data, textStatus, xhr) { 
         item.remove();
         console.log(data); 
-        console.log("Item removed!"); 
+        console.log("Item removed!");
+        console.log(item); 
       },
       error: function(xhr, textStatus, errorThrown) {
         alert("There was a problem removing the item!")
@@ -59,8 +60,8 @@ $(".list").on("click", ".remove-item", function(event) {
             "data-method": 'delete'
         });
         console.log(data);
-        $('.list').find('ul').append("<li>" + $('#list_item_name').val() + "</li>");
-        $('.list').find('ul').append(btn);
+        $('.list').find('ul').append("<li>" + $('#list_item_name').val() + " " + btn[0].outerHTML + "</li>");
+        //$('.list').find('ul').append(btn);
 
         console.log("Item added!"); 
 
