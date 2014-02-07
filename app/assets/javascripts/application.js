@@ -16,7 +16,7 @@
 
 
 
-$(document).ready(function() {
+$(function() {
   $(".action").click(function() {
 
     var items = $(".items");

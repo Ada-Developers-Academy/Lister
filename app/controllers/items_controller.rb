@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
 
       respond_to do |format|
         format.html {redirect_to list_path(@list)}
-        format.json {render json: @item.as_json }
+        format.json {render json: @item} #same as render json: @item.as_json
       end
 
     else
