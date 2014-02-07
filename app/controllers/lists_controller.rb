@@ -26,7 +26,7 @@ class ListsController < ApplicationController
     if @list.update(list_params) && (params[:list][:item_name]) != ""#this automatically creates a new Item object
       respond_to do |format|
         format.html { redirect_to list_path(@list) }
-        format.json { render json: @list }
+        format.json { render json: @list.items.find_by(name: params[:list][:item_name]) }
       end
     else
       respond_to do |format|
@@ -62,7 +62,7 @@ class ListsController < ApplicationController
     @item.destroy
     respond_to do |format|
       format.html { redirect_to list_path(@list) }
-      format.json { render json: @list }
+      format.json { render json: @item }
     end
   end
 

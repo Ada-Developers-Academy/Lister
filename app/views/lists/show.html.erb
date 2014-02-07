@@ -4,7 +4,7 @@
 <div class='list'>
   <ul>
     <% @list.items.each do |item| %>
-      <li id='item'>
+      <li class='item'>
         <%= item.name %>
         <%= link_to "Remove", remove_item_path(@list.id, item.id), class: 'remove-item', method: :delete %>
       </li>

@@ -1,57 +1,72 @@
 $(document).ready(function() {
   
-$(".remove-item").click(function(event) {
-    var item = $(this).parents('li'); // $(this) represents the element that was clicked.
+// removing an item
+$(".list").on("click", ".remove-item", function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    var item = $(this).parents('li'); 
     $.ajax({
-      url: $('.remove-item').attr("href"), // This gets the attribute 'href' for the clicked element
-      type: 'DELETE', // The HTTP method (GET POST PATCH DELETE)
+      url: $(this).attr("href"), 
+      type: 'DELETE', 
       dataType: 'json',
-      success: function(data, textStatus, xhr) { // What to do after the request succesfully completes
+      success: function(data, textStatus, xhr) { 
         item.remove();
-        alert("item removed!"); 
-         // .remove() removes an element from the DOM
+        console.log(data); 
+        console.log("Item removed!"); 
       },
       error: function(xhr, textStatus, errorThrown) {
-        alert(textStatus)
+        alert("There was a problem removing the item!")
       }
     });
     return false
   });
 
+// removing a list
   $(".destroy-list").click(function(event) {
-    var list = $(this).parents('li'); // $(this) represents the element that was clicked.
+    var list = $(this).parents('li'); 
     $.ajax({
-      url: $('.destroy-list').attr("href"), // This gets the attribute 'href' for the clicked element
-      type: 'DELETE', // The HTTP method (GET POST PATCH DELETE)
+      url: $('.destroy-list').attr("href"), 
+      type: 'DELETE', 
       dataType: 'json',
-      success: function(data, textStatus, xhr) { // What to do after the request succesfully completes
+      success: function(data, textStatus, xhr) { 
         list.remove();
-        alert("list removed!"); 
-         // .remove() removes an element from the DOM
+        console.log("List removed!"); 
       },
       error: function(xhr, textStatus, errorThrown) {
-        alert(textStatus)
+        alert("There was a problem removing the list!")
       }
     });
     return false
   });
+
+// adding an item to a list
 
   $(".add-button").click(function(event) {
-    // var $el = $("<li>hello</li>")
-    // $('#list_item_name').val()
+    event.preventDefault();
+    event.stopPropagation();
+
     $.ajax({
       url: $('.form').find('form').attr('action'),
       data: "list[item_name]=" + $('#list_item_name').val(),
       type: "PATCH",
       dataType: 'json',
       success: function(data, textStatus, xhr) { 
+        var btn = $('<a/>', {
+            class: 'remove-item',
+            href: "/lists/" + data.list_id + "/item/" + data.id,
+            rel: 'nofollow',
+            text: 'Remove',
+            "data-method": 'delete'
+        });
         console.log(data);
         $('.list').find('ul').append("<li>" + $('#list_item_name').val() + "</li>");
-        alert("item added!"); 
+        $('.list').find('ul').append(btn);
+
+        console.log("Item added!"); 
 
       },
       error: function(data, textStatus, xhr) {
-        alert('error!')
+        alert('You didn\'t enter anything!')
       }
     });
     return false
