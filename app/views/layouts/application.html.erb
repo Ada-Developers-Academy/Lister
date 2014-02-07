@@ -7,8 +7,33 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% if request.path != root_path %>
+    <div id='menu'>
+      <ul>
+        <li>
+          <a href="/" style="color:black">home</a>
+        </li>
+        <li>
+          <%= link_to "profile", user_path(current_user.id) %>
+        </li>
+        <li>
+          <a href="/portfolio">portfolio</a>
+        </li>
+        <li>
+          <a href="/blog">blog</a>
+            <ul>
+                <li><a href=#></a></li>
+            </ul>
+        </li>
+        <li>
+          <%= link_to "sign out", signout_path %>
+        </li>
+      </ul>
+    </div>
+  <% end %>
 
-<%= yield %>
+
+  <%= yield %>
 
 </body>
 </html>
