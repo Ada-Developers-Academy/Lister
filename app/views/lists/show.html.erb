@@ -6,17 +6,19 @@
     <li><%= item.name %></li>
   </ul>
 <% end %>
-<p>
-  Add items to your list.
-</p>
-<div id="item-form">
+<% if current_user %>
+  <p>
+    Add items to your list.
+  </p>
+  <div id="item-form">
 
-  <%= form_for @item do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <%= f.hidden_field :list_id, value: @list.id %>
+    <%= form_for @item do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.hidden_field :list_id, value: @list.id %>
 
-    <%= f.submit "Add item"%>
-  <% end %>
+      <%= f.submit "Add item"%>
+    <% end %>
 
-</div>
+  </div>
+<% end %>
