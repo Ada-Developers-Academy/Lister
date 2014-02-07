@@ -12,6 +12,7 @@ gem 'less-rails'
 gem 'autoprefixer-rails'
 gem 'semantic-ui-rails'
 gem 'figaro'
+gem 'foreman' #meant to help run resque on heroku
 
 group :development, :test do
   gem "rspec-rails"
