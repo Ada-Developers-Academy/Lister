@@ -20,8 +20,9 @@ class ItemsController < ApplicationController
 
   def destroy
     item = Item.find(params[:id])
+    list = item.list_id
     item.destroy
-    redirect_to list_path, notice: "Your item has been deleted"
+    redirect_to list_path(list), notice: "Your item has been deleted"
   end
 
   def update

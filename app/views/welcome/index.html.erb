@@ -1,20 +1,21 @@
 <div class="container">
   <div class="jumbotron">
-   <h4> user id <%= @user_id %> </h4>
-    <h1>Listable</h1>
+    <% if current_user %>
+   <h4> Welcome <%= current_user.username %> </h4>
+   <% end %>
+    <h1>It's Listable</h1>
     <p>Make lists, find lists, do lists! </p>
-      <% if session[:user_id] == nil %>
+      <% unless current_user %>
       <p> <a href="/signup" class="btn btn-danger btn-lg" role="button"> Sign in & up </a> </p>
       <% end %>
 
-      <% if session[:user_id] %>
+      <% if current_user %>
       <p> 
         <%= link_to("Make a new list", user_path(current_user), class: "btn btn-danger btn-lg", role: "button") %>
         <a href="/signout" class="btn btn-danger btn-lg" role="button"> Sign out </a> 
       </p>
       <% end %>
   </div>
-
   <div class="row">
     <div class="col-md-4">
       <div class="table responsive">
@@ -40,38 +41,39 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>Your Lists</th>
+              <th>All Lists</th>
             </tr>
           </thead>
           <tbody>
+            <% @lists.each do |list| %>
             <tr>
-              <td>Cute Dogs</td>
+              <td><%= link_to list.title, list_path(list.id) %></td>
             </tr>
-            <tr>
-              <td>Ugly Cats</td>
-            </tr>
+            <% end %>
           </tbody>
         </table>
       </div>
     </div>
     <div class="col-md-4">
+
+      <% if current_user %>
       <div class="table responsive">
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>All Lists</th>
+              <th>Your Lists</th>
             </tr>
           </thead>
           <tbody>
+            <% current_user.lists.each do |list| %>
             <tr>
-              <td>Cute Dogs</td>
+              <td><%= link_to list.title, list_path(list.id) %></td>
             </tr>
-            <tr>
-              <td>Ugly Cats</td>
-            </tr>
+            <% end %>
           </tbody>
         </table>
       </div>
+      <% end %>
     </div>
 
   </div>

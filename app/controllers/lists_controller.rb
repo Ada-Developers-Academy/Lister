@@ -17,8 +17,9 @@ class ListsController < ApplicationController
 
   def destroy
     list = List.find(params[:id])
+    user = list.user_id
     list.destroy
-    redirect_to "user/show", notice: "Your list has been deleted"
+    redirect_to user_path(user), notice: "Your list has been deleted"
   end
 
   def index

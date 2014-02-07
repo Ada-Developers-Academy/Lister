@@ -10,9 +10,14 @@ describe ListsController do
   end
 
   describe "POST 'create'" do
+    before :each do
+      user = create(:user)
+      session[:user_id] = user.id
+    end
+
     context "with valid attributes" do
-      let(:valid_attributes) { {title: "Dogs", description: "This is a list of dogs", user_id: "1"} }
-      
+      let(:valid_attributes) { {title: "Dogs", description: "This is a list of dogs", user_id: session[:user_id] } }
+
       it "is a redirect" do
         post :create, list: valid_attributes
         expect(response.status).to eq 302 # This is a redirect

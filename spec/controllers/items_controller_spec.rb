@@ -48,12 +48,6 @@ describe ItemsController do
     end
   end
 
-  describe "GET 'show'" do
-    it "returns http success" do
-      get 'show'
-      response.should be_success
-    end
-  end
 
   describe "GET 'index'" do
     it "returns http success" do
@@ -70,15 +64,8 @@ describe ItemsController do
 
     it "deletes the item" do
       expect{
-        delete :destroy, id: @item
+        delete :destroy, id: @item.id
       }.to change(Item, :count).by(-1)
-    end
-  end
-
-  describe "GET 'update'" do
-    it "returns http success" do
-      get 'update'
-      response.should be_success
     end
   end
 

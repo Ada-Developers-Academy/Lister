@@ -1,9 +1,19 @@
 <h4>Lists <%= @list.id %></h4>
-<p><%= @list.title %>
-<p><%= @list.description %>
-<ul><% @list.items.each do |item| %>
-<li><%= link_to item.itemname, item_path(item.id) %>
-<% end %></ul>
-<h4> Add an item to your list </h4>
-<%= link_to "Add Item", new_item_path(list_id: @list.id) %>
+
+<p>Title: <%= @list.title %>
+<p>Description: <%= @list.description %>
+
+<ul>
+  <% @list.items.each do |item| %>
+  <li><%= link_to item.itemname, item_path(item.id) %>
+    <% if current_user != nil && @list.user_id.eql?(current_user.id) %>
+    <%= link_to "Delete Item", item_path(item), :method => :delete %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<% if current_user != nil && @list.user_id.eql?(current_user.id) %>
+  <h4> Add an item to your list </h4>
+  <%= link_to "Add Item", new_item_path(list_id: @list.id) %>
+<% end %>
 

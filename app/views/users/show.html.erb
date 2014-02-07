@@ -1,11 +1,11 @@
-<h1>Hi <%= @user.username %></h1> 
+<h3>Hi <%= @user.username %></h3> 
 <h4>Your lists are below:</h4>
 
 <ul>
   <% @user.lists.each do |list| %>
 <li>
   <%= link_to list.title, list_path(list.id) %>
-  
+  <%= link_to "Delete List", list_path(list), :method => :delete %>
   <% end %>
 </ul>
 
