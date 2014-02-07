@@ -1,4 +1,8 @@
+require 'resque/server'
+
 Lister::Application.routes.draw do
+
+  mount Resque::Server, :at => "/resque"
 
   get "/signin", to: "session#new", as: :sign_in
   get "/signout", to: "session#destroy", as: :sign_out
