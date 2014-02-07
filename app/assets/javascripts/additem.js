@@ -11,7 +11,7 @@ $(document).ready(function() {
       success: function(data, textStatus, xhr) {
         console.log("it worked")
         var delete_button = '<a class="delete" data-method="delete" href="/lists/'+ data.list_id +'/items/' + data.id + '" rel="nofollow">delete</a>'
-        items.append("<tr><td>"+ data.name + "</td><td>" + delete_button + "</td></tr>");
+        items.append("<tr><td>"+ data.name + "</td></td>" + delete_button + "</td></tr>");
       },
       error: function(xhr, textStatus, errorThrown) {
         alert("There was a problem adding this item");
