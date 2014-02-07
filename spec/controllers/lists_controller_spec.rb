@@ -97,36 +97,36 @@ describe ListsController do
 
     context "with valid attributes" do
       it "locates the requested list" do
-        put :update, id: @list.id, list: attributes_for(:list)
+        patch :update, id: @list.id, list: attributes_for(:list)
         expect(assigns(:list).id).to eq(@list.id)
       end
 
       it "updates the list's attributes" do
-        put :update, id: @list.id, list: attributes_for(:list, title: "Films", user_id: 1)
+        patch :update, id: @list.id, list: attributes_for(:list, title: "Films", user_id: 1)
         @list.reload
         expect(@list.title).to eq("Films")
       end
 
       it "redirects user to list's show page" do
-        put :update, id: @list.id, list: attributes_for(:list)
+        patch :update, id: @list.id, list: attributes_for(:list)
         expect(response).to redirect_to @list
       end
     end
 
     context "with invalid attributes" do
       it "locates the requested list" do
-        put :update, id: @list.id, list: {title: nil, user_id: 1}
+        patch :update, id: @list.id, list: {title: nil, user_id: 1}
         expect(assigns(:list)).to eq(@list)
       end
 
       it "does NOT update the list's attributes" do
-        put :update, id: @list.id, list: attributes_for(:list, title: nil, user_id: 1)
+        patch :update, id: @list.id, list: attributes_for(:list, title: nil, user_id: 1)
         @list.reload
         expect(@list.title).to eq("Books")
       end
 
       it "re-renders the list's show page" do
-        put :update, id: @list.id, list: {title: nil, user_id: 1}
+        patch :update, id: @list.id, list: {title: nil, user_id: 1}
         expect(response).to render_template :edit
       end
     end

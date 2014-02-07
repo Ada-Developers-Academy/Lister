@@ -58,10 +58,48 @@ describe ItemsController do
   end
 
   describe "PATCH update" do
-    # To be done after I get the edit specs reasonable
+    let!(:item) { FactoryGirl.create(:item) }
+
+    context "with valid attributes" do
+
+      it "finds the requested item" do
+        patch :update, id: item.id, item: attributes_for(:item)
+        expect(assigns(:item).id).to eq(item.id)
+      end
+
+      it "saves updated item" do
+        patch :update, id: item.id, item: attributes_for(:item, name: "Updated Item", list_id: 1)
+        item.reload
+        expect(item.name).to eq("Updated Item")
+      end
+
+      pending "response goes a place and shows a thing"
+    end
+
+    context "with invalid attributes" do
+
+      it "finds the requested item" do
+        patch :update, id: item.id, item: attributes_for(:item, name: nil, list_id: 1)
+        expect(assigns(:item)).to eq(item)
+      end
+
+      it "does NOT update item" do
+        patch :update, id: item.id, item: attributes_for(:item, name: nil, list_id: 1)
+        item.reload
+        expect(item.name).to eq("David Copperfield")
+      end
+
+      pending "response goes to a place and shows a thing"
+    end
   end
 
   describe "DELETE destroy" do
-    # To be done after I get the edit specs reasonable
+    let!(:item) { FactoryGirl.create(:item) }
+
+    it "decreases items count by 1" do
+      expect{delete :destroy, id: list.id}.to change(List, :count).by(-1)
+    end
+
+    pending "response goes to a place and shows a thing"
   end
 end
