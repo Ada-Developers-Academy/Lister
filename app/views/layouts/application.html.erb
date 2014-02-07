@@ -14,16 +14,17 @@
           <a href=<%= home_path %> style="color:black">home</a>
         </li>
         <li>
-          <a href="/portfolio">portfolio</a>
-        </li>
-        <li>
           <a href="/blog">blog</a>
             <ul>
                 <li><a href=#></a></li>
             </ul>
         </li>
         <li>
-          <%= link_to "sign out", signout_path %>
+          <% if current_user %>
+            <%= link_to "sign out", signout_path %>
+          <% else %>
+            <%= link_to "sign in", signin_path %>
+          <% end %>
         </li>
       </ul>
     </div>
