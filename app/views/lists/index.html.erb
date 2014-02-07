@@ -1,5 +1,12 @@
-<% @lists.each do |list| %>
-  <div class="row">
-  <div class="col-xs-4 col-sm-3 "><%= link_to "#{list.name}", list_path(list.id) %></div></div>
-<% end %>
-
+<div class="single-list">
+<h2>All lists: </h2>
+<table class="ui collapsing table segment">
+  <tbody class="items">
+    <% @lists.each do |list| %>
+    <tr >
+      <td><%= link_to "#{list.name}", list_path(list.id) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>

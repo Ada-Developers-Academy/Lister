@@ -21,3 +21,8 @@
 body {
   background-color: lightsteelblue !important;
 }
+
+.single-list {
+  width: 300px;
+  margin: auto;
+}
