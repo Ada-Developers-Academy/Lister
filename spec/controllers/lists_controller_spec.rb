@@ -364,6 +364,7 @@ describe ListsController do
 
     context 'if valid user' do
       xit 'removes item from list' do
+        # same problem as delete list spec
         expect { delete :remove_item, id: list.id, item_id: item.id }.to change(Item, :count).by(-1)
       end
 
