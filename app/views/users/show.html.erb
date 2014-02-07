@@ -4,7 +4,7 @@
       <a href="/" style="color:black">home</a>
     </li>
     <li>
-      <%= link_to "profile", user_path(@user.id) %>
+      <%= link_to "profile", user_path(current_user.id) %>
     </li>
     <li>
       <a href="/portfolio">portfolio</a>
@@ -23,7 +23,12 @@
 
 <h1>Hi <%= current_user.username %>,</h1>
 
-<%= link_to "Create a list", new_list_path(@user.id), class: "btn btn-primary" %>
+<%= link_to "Create a list", new_list_path, class: "btn btn-primary" %>
+<% if current_user.lists.length > 0 %>
+  <% current_user.lists.each do |list| %>
+    <%= link_to list.list_name, list_path(list) %>
+  <% end %>
+<% end %>
 
 <!-- if user's list > 0
   iterate over user's list object do |list|

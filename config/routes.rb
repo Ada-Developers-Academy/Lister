@@ -10,16 +10,16 @@ Lister::Application.routes.draw do
   # Users
   get '/users/new', to: 'users#new', as: :new_user
   post '/users', to: 'users#create', as: :create_user
-  get '/users/:id', to: 'users#show', as: :user 
+  get '/profile', to: 'users#show', as: :user 
 
   # Lists
   get 'lists/new', to: 'lists#new', as: :new_list
-  post 'lists', to: 'lists#create', as: :create_list
+  post 'lists', to: 'lists#create', as: :lists
   get 'lists/:id', to: 'lists#show', as: :list
 
   # Items
   get 'items/new', to: 'items#new', as: :new_item
-  post 'items', to: 'items#create', as: :create_item
+  post 'items', to: 'items#create', as: :items
   get 'items/:id', to: 'items#show', as: :item
   
   # The priority is based upon order of creation: first created -> highest priority.
