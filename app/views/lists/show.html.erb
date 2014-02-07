@@ -1,5 +1,25 @@
-<strong><%= @list.name %></strong>
-<%= link_to "Edit", edit_list_path(@list) %>
+<h2><div class="edit-list-name"><%= @list.name %>  <small><%= link_to "Edit", edit_list_path(@list) %></small></div></h2>
+
+<div id="edit-list-area">
+    <%= form_for(@list) do |f| %>
+
+        <div class="field">
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        </div>
+
+        <div class="field">
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+
+    <% end %>
+</div>
+
+
 <% @list.items.each do |i| %>
 <ul>
   <li><%= i.name %><%= link_to "Delete", list_item_path(@list,i), class: "delete", method: :delete %></li>

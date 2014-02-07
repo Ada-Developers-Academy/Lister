@@ -26,6 +26,19 @@ class ListsController < ApplicationController
     end
   end
 
+    def update
+      @list.update(list_params)
+      if @list.save
+
+        respond_to do |format|
+          format.html { redirect_to :back }
+          format.json { head :no_content }
+        end
+      else
+        render :back
+      end
+    end
+
   private
 
   def list_params
