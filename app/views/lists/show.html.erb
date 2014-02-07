@@ -1,7 +1,7 @@
 <%= @list.title %><br>
 <ul>
 <% @list.elements.each do |element| %>
-<li><%= element.body %></li>
+<li><%= element.body %><%= link_to "Delete", element_path(element.id), method: :destroy, :class => "btn btn-default btn-xs" %></li>
 <% end %>
 </ul>
 

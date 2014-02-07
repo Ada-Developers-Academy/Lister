@@ -11,6 +11,12 @@ class ElementsController < ApplicationController
   end
 
   def destroy
+    @element = Element.find(params[:id])
+    list_id = @element.list_id
+    @element.destroy
+    redirect_to "/lists/#{list_id}"
+
   end
 
 end
+

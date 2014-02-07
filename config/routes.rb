@@ -15,7 +15,8 @@ Lister::Application.routes.draw do
 
   post '/elements', to: 'elements#create'
   get '/elements/new', to: 'elements#new', as: :new_element
-  delete '/elements/:id', to: 'elements#destroy'
+  delete '/elements/:id', to: 'elements#destroy', as: :element
+  post 'elements/:id', to: 'elements#destroy'
   
   root to: 'home#index', as: :home
   
