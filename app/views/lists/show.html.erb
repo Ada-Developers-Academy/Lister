@@ -4,12 +4,15 @@
 <div class='list'>
   <ul>
     <% @list.items.each do |item| %>
-      <li class='item'><%= item.name %></li>
+      <li id='item'>
+        <%= item.name %>
+        <%= link_to "Remove", remove_item_path(item.id), method: :delete %>
+      </li>
     <% end %>
   </ul>
 </div>
 
-COUNT: <%= @list.items.count %>
+<!-- COUNT: <%= @list.items.count %> -->
 <div class= 'form'>
   <%= form_for @list, url: list_path, method: :patch do |f| %>
     <div class = 'add-item'>

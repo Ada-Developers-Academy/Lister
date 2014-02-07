@@ -15,4 +15,9 @@ FactoryGirl.define do
     name "cake"
     user #only works bc has_many association is set up
   end
+
+  factory :item do
+    name "chocolate"
+    list
+  end
 end

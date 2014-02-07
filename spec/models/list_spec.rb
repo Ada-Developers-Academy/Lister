@@ -12,8 +12,6 @@ describe List do
 
     it "has one record" do
       create(:list) #need this, but then what's the point of the let in the beginning of this context scope?
-      # p List.last.inspect
-      # p List.last.user.inspect
       expect(List).to have(1).record
     end
 

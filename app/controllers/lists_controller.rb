@@ -23,17 +23,12 @@ class ListsController < ApplicationController
   end
 
   def update
-    # render text: 'todd was here' and return
     if @list.update(list_params) && (params[:list][:item_name]) != ""#this automatically creates a new Item object
-      p @list.class
-      # raise 'one'
-
       respond_to do |format|
         format.html { redirect_to list_path(@list) }
         format.json { render json: @list }
       end
     else
-      # raise 'two'
       respond_to do |format|
         format.html do 
           flash[:notice] = "There was a problem editing this list."
@@ -60,6 +55,11 @@ class ListsController < ApplicationController
       format.html { redirect_to lists_path }
       format.json { render json: @list }
     end
+  end
+
+  def remove_item
+    @item = Item.find(params[:id])
+    redirect_to list_path(@list)
   end
 
   private

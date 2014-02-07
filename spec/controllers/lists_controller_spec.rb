@@ -322,6 +322,11 @@ describe ListsController do
           delete :destroy, id: list.id
           expect(response).to redirect_to lists_path
         end
+
+        xit 'removes list from db' do
+          # p list.inspect # why does this spec pass only if this line is here?
+          expect { delete :destroy, id: list.id }.to change(List, :count).by(-1)
+        end
       end
 
       context 'if not valid user' do
@@ -348,6 +353,23 @@ describe ListsController do
         delete :destroy, id: list.id
         expect(response).to redirect_to lists_path
       end
+    end
+  end
+
+  describe 'DELETE remove_item' do
+    # context 'if logged in' {}
+    let(:user) { create(:user) }
+    let(:list) { create(:list, user_id: user.id) }
+    let(:item){ create(:item, list_id: list.id) }
+
+    context 'if valid user' do
+      xit 'removes item from list' do
+        count = list.items.count
+        p item.inspect        
+        delete :remove_item, id: item.id  #says id is nil in route??
+        expect(list.items).to eq count - 1
+      end
+
     end
   end
 
