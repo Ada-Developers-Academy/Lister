@@ -7,7 +7,7 @@ $(function() {
     e.preventDefault();
   });
 
-  $(".action").click(function(e){
+  $(".item-action").click(function(e){
     $("#add-item-area").hide();
   });
 });
