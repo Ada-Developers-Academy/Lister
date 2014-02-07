@@ -1,19 +1,19 @@
 $(document).ready(function() {
   $(".list-name").click(function() {
 
-    var items = $(".name");
+    var name = $(".name");
 
     $.ajax({
       url: $(this).parents('#list-form').attr("action"),
       type: 'PATCH',
       dataType: 'json',
-      data: {item: {name: $("#item_name").val() }},
-      success: function(data, textStatus, xhr) {
-        console.log("it worked")},
-      error: function(xhr, textStatus, errorThrown) {
-        alert("There was a problem adding this item");
-      }
-    });
+    })
+    .done(function(){
+      item.remove();
+    })
+  .fail(function(){
+    alert("you are a terrible person and i'm not writing that");
+  });
     return false;
   });
 });

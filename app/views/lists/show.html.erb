@@ -27,10 +27,12 @@
 
 <table class="table table-striped">
   <tbody class="items">
-    <% @list.items.each do |i| %>
+    <% @list.items.each do |item| %>
     <tr >
-      <td><%= i.name %></td>
-      <td><%= link_to "delete",  list_item_path(@list,i), class: "delete", method: :delete %></td>
+      <td><%= item.name %></td>
+      <% if current_user && current_user.id == @list.user_id %>
+      <td><%= link_to "delete",  list_item_path(@list, item), class: "delete", method: :delete %></td>
+      <% end %>
     </tr>
   <% end %>
   </tbody>

@@ -20,7 +20,7 @@ before_filter :authorize, only: [:new, :create, :edit, :delete]
     @item.destroy
     respond_to do |format|
         format.html { redirect_to :back }
-        format.js
+        format.json { head :no_content }
       end
   end
 
