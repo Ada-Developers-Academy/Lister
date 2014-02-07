@@ -7,7 +7,9 @@
 <tr >
   <!-- <li> -->
   <td><%= i.name %></td>
+  <% if current_user && current_user.id == @list.user_id %>
     <td><%= link_to "Delete", list_item_path(@list,i), class: "delete", method: :delete %></td>
+    <% end %>
  <!--  </li> -->
 </tr>
 <% end %>
