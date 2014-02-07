@@ -46,6 +46,17 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @name = @list.user.username
+    list_hash = {
+      id: @list.id,
+      name: @list.name,
+      author: @list.user.username,
+      created_at: @list.created_at,
+      items: @list.items.map {|item| item.name}
+    }
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: list_hash}
+    end
   end
 
   def destroy
