@@ -24,7 +24,7 @@ class ListsController < ApplicationController
 
   def update
     # render text: 'todd was here' and return
-    if @list.update(list_params) #this automatically creates a new Item object
+    if @list.update(list_params) && (params[:list][:item_name]) != ""#this automatically creates a new Item object
       p @list.class
       # raise 'one'
 
