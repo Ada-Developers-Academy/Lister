@@ -1,6 +1,11 @@
-<h2><%= @current_user.username %>'s Lists:</h2>
-<% @current_users_lists.each do |list| %>
-<ul>
-  <li><%= link_to "#{list.name}", list_path(list.id)  %></li>
-</ul>
-<% end %>
+<div class="single">
+<table class="table table-striped"><h3><%= @current_user.username %>'s lists: </h3><br>
+  <tbody class="lists">
+      <% @current_users_lists.each do |list| %>
+      <tr >
+        <td><%= link_to "#{list.name}", list_path(list.id) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

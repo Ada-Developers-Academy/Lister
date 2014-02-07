@@ -1,4 +1,4 @@
-<div class="single-list">
+<div class="single">
 <% if current_user && current_user.id == @list.user_id %>
 <h2><div class="edit-list-name"><%= @list.name %>
   <small><%= link_to "Edit", edit_list_path(@list) %></small></div></h2>
