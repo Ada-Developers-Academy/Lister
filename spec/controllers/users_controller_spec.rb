@@ -91,5 +91,13 @@ describe UsersController do
       get :show, id: user.id
       assigns(:lists).should_not be_nil
     end
+
+    context "when request sets accept => application/json" do
+      it "should return successful response" do
+        request.accept = "application/json"
+        get :show, id: user.id
+        response.should be_success
+      end
+    end
   end
 end

@@ -22,6 +22,18 @@ class UsersController < ApplicationController
   def show #should be accessible by other users?
     @user = User.find(params[:id])
     @lists = @user.lists
+    list_hash = @lists.map do |list|
+      { name: list.name,
+        items: list.items.count,
+        author: list.user.username,
+        id: list.id,
+        created_at: list.created_at
+      }
+    end
+    respond_to do |format|
+      format.html { render :show}
+      format.json { render json: list_hash}
+    end
 
     # List name
     # Number of items
