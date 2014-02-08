@@ -4,6 +4,7 @@
   <title>Llama Lister</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
+  <%= favicon_link_tag 'favicon.ico' %>
   <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=Happy+Monkey|Architects+Daughter' rel='stylesheet' type='text/css'>
 </head>
@@ -12,6 +13,9 @@
 <div id='header'>
   <%= link_to(image_tag('llama.png', :alt => "a llama i found on google", :title => "llama"),"/") %>
   <h1><%= link_to('Llama Lister', '/') %></h1>
+  <div class="ui horizontal icon divider">
+    <i class="circular heart icon"></i>
+  </div>
   <% if @current_user.nil? %>
     <h2><%= link_to('Sign Up', new_user_path) %>   <small>or</small>   <%= link_to('Sign In', new_session_path)%></h2>
   <% else %>
@@ -22,6 +26,9 @@
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "flash_#{name}" %>
 <% end %>
+<div class="ui horizontal icon divider">
+  <i class="circular heart green icon"></i>
+</div>
 
 <%= yield %>
 
