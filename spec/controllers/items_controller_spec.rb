@@ -97,7 +97,7 @@ describe ItemsController do
     let!(:item) { FactoryGirl.create(:item) }
 
     it "decreases items count by 1" do
-      expect{delete :destroy, id: list.id}.to change(List, :count).by(-1)
+      expect{delete :destroy, id: item.id}.to change(Item, :count).by(-1)
     end
 
     pending "response goes to a place and shows a thing"
