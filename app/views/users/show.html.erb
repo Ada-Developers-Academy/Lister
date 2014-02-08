@@ -1,0 +1,19 @@
+<h1>Hi <%= current_user.username %>,</h1>
+
+<%= link_to "Create a list", new_list_path, class: "btn btn-primary" %><br>
+<% if current_user.lists.length > 0 %>
+  <% current_user.lists.each do |list| %>
+  <ul>
+    <li><%= link_to list.list_name, list_path(list) %></li>
+  </ul>
+  <% end %>
+<% end %>
+
+
+<!-- if user's list > 0
+  iterate over user's list object do |list|
+    link_to list.name, list_path(user.list.id)
+else
+  <h2>Create your first list</h2> -->
+
+

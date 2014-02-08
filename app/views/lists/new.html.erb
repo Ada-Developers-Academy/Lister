@@ -1,0 +1,9 @@
+<div id="list-form">
+  <%= form_for @list do |f| %>
+    <%= f.label :list_name %>
+    <%= f.text_field :list_name %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+
+    <%= f.submit "Create List"%>
+  <% end %> 
+</div>
