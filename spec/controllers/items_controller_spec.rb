@@ -43,6 +43,13 @@ describe ItemsController do
       end
     end
   end
+
+  describe "DELETE 'destroy'" do
+    let!(:item) {create :item}
+    it "should decrease the item count by 1" do
+      expect { delete :destroy, id: item.id }.to change(Item, :count).by(-1)
+    end
+  end
 end
 
 
