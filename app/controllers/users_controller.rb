@@ -8,7 +8,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      Resque.enqueue(EmailJob, @user.id)
+      ListMailer.welcome_email(@user.id).deliver
+      # Resque.enqueue(EmailJob, @user.id)
       redirect_to user_path(@user.id) , notice: "Successfully saved"
     else
       render :new
