@@ -14,7 +14,11 @@ class ElementsController < ApplicationController
     @element = Element.find(params[:id])
     list_id = @element.list_id
     @element.destroy
-    redirect_to "/lists/#{list_id}"
+
+    respond_to do |f|
+      f.html {redirect_to "/lists/#{list_id}"}
+      f.json {render :json => @element}
+    end
 
   end
 
