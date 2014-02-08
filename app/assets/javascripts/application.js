@@ -13,3 +13,24 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function (){
+  $('#new_item').submit(function (){
+    $.post($(this).attr('action'), $(this).serialize(), null, "script");
+      return false;
+  });
+  $('.delete').click(function(){
+    item = $(this).attr('href'),
+    $.ajax({
+      url: $(this).parent('div'),
+      type: 'DELETE',
+      dataType: 'json',
+      success: function(data, textStatus, xhr) { // What to do after the request succesfully completes
+        item.remove(); // .remove() removes an element from the DOM
+      }
+      // error: function(xhr, textStatus, errorThrown) {
+      //   alert("There was a problem deleting this club.");
+      // }
+    });
+  });
+});

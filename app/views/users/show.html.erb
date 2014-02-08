@@ -1,0 +1,8 @@
+<h2>Your Lists</h2>
+<% @user.lists.each do |list| %>
+  <div class='list<%=list.id%>'>
+    <%= link_to(list.title, list_path(list.id)) %>
+    <%= link_to 'Delete', destroy_list_path(list.id), method: :delete, remote: true, class: 'delete' %>
+    <br>
+  </div>
+<% end %>

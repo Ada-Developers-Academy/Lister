@@ -11,3 +11,18 @@
  *= require_self
  *= require_tree .
  */
+body{
+  text-align: center;
+  font-family: 'Happy Monkey', cursive;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+.header{
+  font-family: 'Architects Daughter', cursive;
+}
+table{
+  margin: auto;
+  padding: auto;
+}

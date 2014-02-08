@@ -1,0 +1,15 @@
+<% if @list.errors.any? %>
+  <% @list.errors.full_messages.each do |msg| %>
+    <%= msg %><br>
+  <% end %>
+<% end %>
+
+<%= form_for(@list, url: create_list_path) do |f| %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <%= hidden_field_tag :user_id, @current_user.id %>
+  <%= hidden_field_tag :id, params[:id] %>
+  <div class="actions"><%= f.submit %></div>
+<% end %>

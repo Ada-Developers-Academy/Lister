@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SessionController do
+describe SessionsController do
   describe "GET 'new'" do
   
     it "is successful" do
@@ -60,6 +60,19 @@ describe SessionController do
         expect(flash[:notice]).to eq "Invalid username or password"
       end
     
+    end
+  end
+  describe "DESTROY" do
+    it "should clear the session" do
+      user = create(:user)
+      session[:user_id] = user.id
+      delete :destroy
+      session[:user_id].should be_nil
+    end
+
+    it "should redirect to the home page" do
+      delete :destroy
+      response.should redirect_to root_url
     end
   end
 end

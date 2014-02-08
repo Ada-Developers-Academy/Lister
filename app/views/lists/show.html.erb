@@ -1,0 +1,28 @@
+<% if @current_user.nil? %>
+  <% this_user = false %>
+<% else %>
+  <% this_user = @current_user.id == @list.user_id %>
+<% end %>
+<h2><%= @list.title %></h2>
+<% if this_user %>
+  <%= link_to('Edit', edit_path(@list.id)) %>
+<% end %>
+
+<div class='listitems'>
+  <% @list.items.each do |item| %>
+    <div class="item<%=item.id%>">
+      <span><%= item.name %></span>
+      <% if this_user %>
+        <%= link_to 'Delete', destroy_item_path(item.id), method: :delete, remote: true, class: 'delete' %>
+      <% end %>
+    </div>
+    <br>
+  <% end %>
+</div>
+
+    <% if this_user %>
+      <tr><td><%= render '/items/form'%></td></tr>
+    <% end %>
+
+  </tbody>
+</table>
