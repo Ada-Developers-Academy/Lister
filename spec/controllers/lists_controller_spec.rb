@@ -322,7 +322,7 @@ describe ListsController do
   end
 
   describe 'DELETE destroy' do
-    let(:list){ create(:list, user_id: user.id) }
+    let!(:list){ create(:list, user_id: user.id) }
 
     context 'if logged in' do
       context 'if valid user' do
@@ -331,7 +331,7 @@ describe ListsController do
           expect(response).to redirect_to lists_path
         end
 
-        xit 'removes list from db' do
+        it 'removes list from db' do
           # p list.inspect # why does this spec pass only if this line is here?
           expect { delete :destroy, id: list.id }.to change(List, :count).by(-1)
         end
@@ -366,12 +366,12 @@ describe ListsController do
 
   describe 'DELETE remove_item' do
     # context 'if logged in' {}
-    let(:user) { create(:user) }
-    let(:list) { create(:list, user_id: user.id) }
-    let(:item){ create(:item, list_id: list.id) }
+    let!(:user) { create(:user) }
+    let!(:list) { create(:list, user_id: user.id) }
+    let!(:item){ create(:item, list_id: list.id) }
 
     context 'if valid user' do
-      xit 'removes item from list' do
+      it 'removes item from list' do
         # same problem as delete list spec
         expect { delete :remove_item, id: list.id, item_id: item.id }.to change(Item, :count).by(-1)
       end
