@@ -22,6 +22,12 @@ class UsersController < ApplicationController
   def show #should be accessible by other users?
     @user = User.find(params[:id])
     @lists = @user.lists
+
+    # List name
+    # Number of items
+    # Author name
+    # ID
+    # Created_at
   end
 
   private

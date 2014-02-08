@@ -85,6 +85,14 @@ describe ListsController do
         expect(assigns(:list).id).to eq list.id
       end
     end
+
+    context "when request sets accept => application/json" do
+      it "should return successful response" do
+        request.accept = "application/json"
+        get :show, id: list.id
+        response.should be_success
+      end
+    end
   end
 
   describe 'POST create' do
