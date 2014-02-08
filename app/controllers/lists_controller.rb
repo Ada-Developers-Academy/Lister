@@ -1,7 +1,8 @@
 class ListsController < ApplicationController
 
   def new
-    if @current_user == nil
+    @list = List.new
+    if current_user == nil
       redirect_to sign_in_path
       flash[:notice] = "Log in before making lists!"
     else
@@ -20,6 +21,8 @@ class ListsController < ApplicationController
   end
 
   def show
+    @list = List.find(params[:id])
+    @item = Item.new
   end
 
   def destroy

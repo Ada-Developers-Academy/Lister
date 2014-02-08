@@ -1,7 +1,7 @@
-<p>Hi #{@user.username}!</p>
-
-Here are your lists:
+<h2>Here are <%= @user.username %>'s lists:</h2>
 
 <% @user.lists.each do |list| %>
-  <% link_to list.title, list_path(list.id) %>
+  <%= link_to list.title, list_path(list.id) %><br>
 <% end %>
+<br>
+<%= link_to "Add a new list", new_list_path %>

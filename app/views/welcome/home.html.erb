@@ -1,0 +1,9 @@
+<h1>It's Lists all the Way Down</h1>
+
+<% User.all.each do |user| %>
+  <%= link_to user.username, user_path(user.id) %> has lists:
+  <br>
+  <% user.lists.all.each do |list| %>
+    <%= link_to list.title, list_path(list.id) %><br>
+  <% end %>
+<% end %>

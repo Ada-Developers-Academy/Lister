@@ -1,0 +1,35 @@
+<h3><%= @list.title %></h3>
+
+<ol class="item-list">
+<% @list.items.each do |item| %>
+  <li>
+    <%= item.content %> <%= link_to 'Destroy', destroy_item_path(item.id), method: :delete, class: "destroy", data: { confirm: 'Are you sure?' } %>
+  </li>
+<% end %>
+</ol>
+
+<%= form_for(@item) do |f| %>
+  <% if @item.errors.any? %>
+    <div class="error_messages">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+      <ul>
+        <% @item.errors.full_messages.each do |message| %>
+          <li> <%= message %> </li>
+        <% end %> 
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.hidden_field :list_id, value: @list.id %>
+  </div>
+  <br>
+  <div class="actions">
+    <%= f.submit :Submit, id: "add-item" %>
+  </div>
+<% end %>
