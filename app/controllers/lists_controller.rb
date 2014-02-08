@@ -20,11 +20,22 @@ class ListsController < ApplicationController
   def show
     @list = List.find_by(id: params[:id])
     @item = Item.new
+
+    list_hash = {
+      id: @list.id,
+      name: @list.name,
+      author: @list.user.username,
+      created_at: @list.created_at,
+      items: @list.items.map {|item| item.name}
+    }
+
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: list_hash }
+    end
   end
 
   def my_lists
-    # @items = Item.find_by(user_id)
-    # render json: @items
   end
 
   private
