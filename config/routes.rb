@@ -20,6 +20,7 @@ Lister::Application.routes.draw do
 
   get "/items/new", to: "items#new", as: :item_new
   post "/items/new", to: "items#create", as: :items
+  delete "/items/:id", to: "items#delete", as: :destroy_item
 
   # resources :lists
 

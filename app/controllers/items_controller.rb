@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :check_list
+  before_action :check_list, except: :delete
   
   def new
     @item = Item.new
@@ -20,6 +20,14 @@ class ItemsController < ApplicationController
     
     redirect_to current_list_path(@item.list_id)
   end
+
+  def delete
+    @item = Item.find_by(id: params[:id])
+    @item.destroy
+    redirect_to current_list_path(@item.list_id)
+  end
+
+  private
 
   def item_params
     params.require(:item).permit(:description, :list_id)

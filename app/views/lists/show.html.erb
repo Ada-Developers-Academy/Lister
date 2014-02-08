@@ -4,6 +4,7 @@
     <% @list.items.each do |item| %>
   <ul>
     <li><%= item.description %></li>
+      <%= link_to "Delete Item", destroy_item_path(item), method: :delete, class: "btn-primary btn" %>
   </ul>
 <% end %>
 

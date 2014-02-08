@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  before_action :check_current_user, except: :index
 
   def new
     @list = List.new
