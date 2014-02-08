@@ -11,6 +11,7 @@ gem "bcrypt-ruby"
 gem "better_errors"
 gem "binding_of_caller"
 gem "figaro"
+gem "resque"
 
 group :development, :test do
   gem "rspec-rails"
