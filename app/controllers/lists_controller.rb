@@ -1,12 +1,7 @@
 class ListsController < ApplicationController
 
   def new
-    if current_user
-      @list = List.new
-    else
-      flash[:notice] = "Please sign-in first."
-      redirect_to root_url
-    end
+    @list = List.new
   end
 
   def create
