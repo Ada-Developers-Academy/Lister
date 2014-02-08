@@ -1,0 +1,5 @@
+<h3>Here You Can See All Of The Lists</h3>
+
+<% @lists.each do |list| %>
+  <p><%= link_to "#{list.name}", list_path(list.id) %></p>
+<% end %>

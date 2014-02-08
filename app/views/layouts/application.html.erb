@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Lister</title>
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Lister</title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
 
-<%= yield %>
+  <body>
+    <h1><%= link_to "List Yo Lists", root_path %></h1>
+    <% if @current_user %>
+      <p>According to our records, you are: <span class="red"><%= @current_user.username.upcase %></span></p>
+      <ul class="nav nav-tabs">
+        <li><%= link_to "All Lists", root_path, :class => "btn btn-default" %></li>
+        <li><%= link_to "My Lists", my_lists_path, :class => "btn btn-default" %></li>
+        <li><%= link_to "Create New List", new_list_path, :class => "btn btn-default" %></li>
+        <li><%= link_to "Log Out", sign_out_path, :class => "btn btn-default" %></li>
+      </ul>
+    <% else %>
+      <ul class="nav nav-tabs">
+        <li><%= link_to "Log In", sign_in_path, :class => "btn btn-default" %></li>
+        <li><%= link_to "Sign Up", sign_up_path, :class => "btn btn-default" %></li>
+      </ul>
+    <% end %>
 
-</body>
+<br>
+    <p><span class="notice"><%= notice %></span></p>
+
+    <%= yield %>
+
+  </body>
 </html>

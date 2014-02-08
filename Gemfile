@@ -16,3 +16,12 @@ group :development, :test do
   gem "factory_girl_rails"
   gem 'simplecov', :require => false
 end
+
+group :development do
+  gem "better_errors" # These two are just for debugging
+  gem "binding_of_caller"
+end
+
+gem 'figaro'
+
+gem "resque"
