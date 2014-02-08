@@ -2,7 +2,7 @@ require 'spec_helper'
 
 class DummyController < ApplicationController
   def test_current_user
-    redirect_to users_show_path(@current_user)
+    redirect_to user_path(@current_user)
   end
 end
 
