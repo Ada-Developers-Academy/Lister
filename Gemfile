@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem "bcrypt-ruby"
 gem 'figaro'
+gem 'resque'
 
 group :development, :test do
   gem "rspec-rails"

@@ -16,18 +16,6 @@ Lister::Application.configure do
         authentication:       'login',  
         domain:               'yourdomain.com'}
 
-  # config.action_mailer.raise_delivery_errors = true
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   address:              "smtp.mandrillapp.com",
-  #   port:                 587,
-  #   enable_starttls_auto: true,
-  #   user_name:            "blake.jennings@gmail.com", # YOUR MANDRILL USERNAME
-  #   password:             "NOXWBa97NB47g8gI6nXM1g", # A MANDRILL API KEY
-  #   authentication:       'login',
-  #   domain:               'yourdomain.com'
-  # }
-
   config.cache_classes = false
 
   # Do not eager load code on boot.

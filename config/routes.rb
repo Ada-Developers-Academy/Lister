@@ -1,4 +1,7 @@
+require 'resque/server'
 Lister::Application.routes.draw do
+
+  mount Resque::Server, :at => "/resque" 
   
   root "lists#index"
   get "/new", to: "users#new"
