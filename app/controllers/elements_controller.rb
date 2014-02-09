@@ -6,7 +6,10 @@ class ElementsController < ApplicationController
   def create
     @element = Element.new(params.require(:element).permit(:body, :list_id))
     if @element.save
-      redirect_to "/lists/#{@element.list_id}"
+      respond_to do |f|
+        f.html { redirect_to "/lists/#{@element.list_id}" }
+        f.json {render :json => @element}
+      end
     end
   end
 

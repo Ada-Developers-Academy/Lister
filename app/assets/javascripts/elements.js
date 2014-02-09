@@ -14,4 +14,26 @@ jQuery(document).ready(function() {
     });
     return false
   });
+
+  $(".ajax-create").click(function(){
+    var text = $(".list-field").val()
+    var id = $("#element_list_id").val()
+    var list = $(".main-list")
+    console.log(list)
+    $.ajax({
+      url: "/elements",
+      type: 'POST',
+      dataType: 'json',
+      data: {element: { body: text, list_id: id } },
+      success: function(data, textStatus, xhr) {
+        list.append('<li>' + data.body + '<a class="btn btn-default btn-xs ajax-destroy" data-method="delete" href="/elements/'+ data.id +'" rel="nofollow">Delete</a></li>')
+        $(".list-field").val("")
+      },
+      error: function(xhr, textStatus, errorThrown) {
+        alert(":(");
+      }
+    })
+
+    return false
+  });
 });
