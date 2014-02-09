@@ -1,0 +1,4 @@
+<% @lists.each do |list| %>
+  <%= link_to "#{list.title}", "/lists/#{list.id}" %>
+  <%= link_to "   Author #{list.user_id}", "/users/#{list.user_id}" %><br><br>
+<% end %>

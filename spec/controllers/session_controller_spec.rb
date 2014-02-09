@@ -62,4 +62,22 @@ describe SessionController do
     
     end
   end
+
+  describe "GET 'sign-out'" do
+    it "sets the session id to nil" do
+      get :destroy
+      expect(session[:user_id]).to eq nil
+    end
+
+    it "redirects" do
+      get :destroy
+      expect(response.status).to eq 302
+    end
+
+    it "sets a flash message upon redirect" do
+      get :destroy
+      expect(flash[:notice]).to eq "You are now logged out. Thanks for listing!"
+    end
+  end
+
 end

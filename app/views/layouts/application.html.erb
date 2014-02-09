@@ -7,8 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%= flash.notice %><br><br>
+<%= yield %><br><br>
 
-<%= yield %>
+<tr>
+<td><%= link_to 'Home', '/' %></td><br>
+<td><%= link_to 'Back', :back %></td><br>
+<tr>
 
 </body>
 </html>
