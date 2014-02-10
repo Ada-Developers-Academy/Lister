@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
     respond_to do |format|
-      format.html {redirect_to :back}
+      format.html {redirect_to list_path(@item.list_id)}
       format.json {render :json => @item}
     end
   end
