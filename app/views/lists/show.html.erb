@@ -1,0 +1,35 @@
+<h3><%= @list.name %></h3>
+
+<!-- <ul class="items"> -->
+<table class="ui collapsing table segment"> <!--ul class "items" -->
+<tbody class="items">
+<% @list.items.each do |i| %>
+<tr >
+  <!-- <li> -->
+  <td><%= i.name %></td>
+  <% if current_user && current_user.id == @list.user_id %>
+    <td><%= link_to "Delete", list_item_path(@list,i), class: "delete", method: :delete %></td>
+    <% end %>
+ <!--  </li> -->
+</tr>
+<% end %>
+</tbody>
+</table>
+<!-- </ul> -->
+
+<% if current_user && current_user.id == @list.user_id %>
+  <p> Add an Item: </p>
+    <%= form_for([@list, Item.new]) do |f| %>
+      <p>
+        <div class="field">
+          <%= f.label :name %><br>
+          <%= f.text_field :name %>
+        </div>
+      </p>
+        <div class="actions">
+          <%= f.submit("Add Item", class: "action")%>
+        </div>
+      </p>
+    <% end %>
+    <%= link_to "Edit List", edit_list_path(@list) %>
+<% end %>

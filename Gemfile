@@ -8,6 +8,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem "bcrypt-ruby"
+gem "resque"
 
 group :development, :test do
   gem "rspec-rails"
@@ -15,4 +16,6 @@ group :development, :test do
   gem "terminal-notifier-guard"
   gem "factory_girl_rails"
   gem 'simplecov', :require => false
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end

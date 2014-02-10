@@ -1,0 +1,19 @@
+<div class="ui center aligned four column grid">
+  <% @lists.each do |l| %>
+  <div class="column">
+    <div class="ui vertical fluid menu">
+      <div class="header item">
+        <h3 class="ui red header"><%= l.name %></h3>
+      </div>
+      <% l.items[0,3].each do |item| %>
+      <div class="item">
+        <%= item.name %>
+      </div>
+      <% end %>
+      <div class="item">
+        <%= link_to "see all", list_path(l) %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
