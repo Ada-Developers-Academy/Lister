@@ -7,8 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+   <% if @current_user %>
+   <%= link_to 'All lists!', root_path, class: 'ui small red button' %>
+    <%= link_to 'My lists!', user_path(@current_user.id), class: 'ui small red button' %>
+    <%= link_to 'Get OUTTA here!', sign_out_path, class: 'ui small red button' %>
+  <% else %>
+    <%= link_to 'User? Log in!', sign_in_path, class: 'ui small blue button' %>
+    <%= link_to 'Become a user: make lists.', new_user_path, class: 'ui small blue button' %>
+    <% end %>
+    <br><br>
+
+    <%= flash[:notice] %>
+    
 
 <%= yield %>
-
+<div class='footer'
 </body>
 </html>

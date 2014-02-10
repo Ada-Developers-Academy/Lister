@@ -7,7 +7,6 @@ describe SessionController do
       get :new
       expect(response).to be_successful
     end
-  
   end
 
   describe "POST 'create'" do
@@ -58,8 +57,24 @@ describe SessionController do
       it "sets a flash message" do
         post :create, username: "I don't exist", password: "wrong"
         expect(flash[:notice]).to eq "Invalid username or password"
-      end
+      end 
     
     end
   end
+
+  describe "#destroy" do
+
+    it "should clear the session" do
+      user = create(:user)
+      session[:user_id] = user.id
+      delete :destroy
+      expect(session[:user_id]).to be_nil
+    end
+
+    it "should redirect to the home page" do
+      delete :destroy
+      expect(response).to redirect_to root_url
+    end
+  end
+
 end
