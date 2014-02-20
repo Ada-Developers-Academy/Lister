@@ -10,4 +10,14 @@ FactoryGirl.define do
       "#{n}@example.com"
     end
   end
+
+  factory :list do
+    name "dogs"
+    user_id 4
+  end
+
+  factory :item do
+    description "milk"
+    :list #sets list_id to factory of :list above
+  end
 end

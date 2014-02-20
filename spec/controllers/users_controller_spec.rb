@@ -24,6 +24,11 @@ describe UsersController do
         post :create, user: valid_attributes
         expect(flash[:notice]).to_not be_blank
       end
+
+      it "signs the user in" do
+        post :create, user: valid_attributes
+        expect(session[:user_id]).to eq(assigns(:user).id)
+      end
     end
   
     context "with invalid attributes" do

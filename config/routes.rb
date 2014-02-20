@@ -1,5 +1,30 @@
+require 'resque/server'
 Lister::Application.routes.draw do
+
+  mount Resque::Server, :at => "/resque" 
   
+  root "lists#index"
+  get "/new", to: "users#new"
+  post "users/new", to: "users#create", as: :users
+  get "/profile", to: "users#show" #instead of :id?
+  get "/signup", to: "users#new"
+
+  get "/signout", to: "sessions#destroy"
+  get '/login', to: "sessions#new"
+  post "/login", to: "sessions#create", as: :sessions
+
+  get "/lists/new", to: "lists#new", as: :list_new
+  post "/lists/new", to: "lists#create", as: :lists
+  get "/lists", to: "lists#index", as: :all_lists
+  get "/lists/:id", to: "lists#show", as: :current_list
+
+  get "/items/new", to: "items#new", as: :item_new
+  post "/items/new", to: "items#create", as: :items
+  delete "/items/:id", to: "items#delete", as: :destroy_item
+
+  # resources :lists
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
