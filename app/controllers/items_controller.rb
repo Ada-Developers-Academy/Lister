@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
   def delete
     @item = Item.find_by(id: params[:id])
     @item.destroy
+
     redirect_to current_list_path(@item.list_id)
   end
 

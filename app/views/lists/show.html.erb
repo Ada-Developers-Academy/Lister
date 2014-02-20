@@ -2,9 +2,9 @@
 
 <h3><%= @list.name %></h3>
     <% @list.items.each do |item| %>
-  <ul>
+  <ul class="list-item">
     <li><%= item.description %></li>
-      <%= link_to "Delete Item", destroy_item_path(item), method: :delete, class: "btn-primary btn" %>
+    <li><%= link_to "Delete Item", destroy_item_path(item), method: :delete, class: "btn-primary btn ajax-destroy", data: { confirm: 'Are you sure?' } %></li>
   </ul>
 <% end %>
 
