@@ -9,9 +9,10 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'bcrypt-ruby'
 gem 'figaro'
-gem 'resque'
+gem 'resque', '= 1.23.0'
 gem 'redis'
 gem 'rails_12factor', group: :production
+gem 'heroku_resque_autoscaler'
 
 group :development, :test do
   gem "rspec-rails"
