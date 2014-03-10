@@ -1,6 +1,10 @@
 # Lister
 
-Lister will be an application where users can sign up, create new lists, and add items to those lists. Additionally Lister will have the ability to send emails using Resque.
+Lister is an application where users can sign up, create new lists, and add items to those lists. Additionally Lister has the ability to send emails using Resque.
+
+This app can be viewed live at [http://listlister.herokuapp.com](http://listlister.herokuapp.com).
+
+
 
 ## Goals
 + Build a basic rails app.
@@ -9,7 +13,7 @@ Lister will be an application where users can sign up, create new lists, and add
 + Use Javascript to manipulate objects on the page
 + Use AJAX to add/remove list items without a page refresh
 + Build a basic API to access a users lists
-+ Accumulate experience points in Rails 
++ Accumulate experience points in Rails
 
 ## Guidelines
 
@@ -28,13 +32,13 @@ Build an application where users can sign in to create lists, each list should b
 The first stage of Lister will be implemented by following specs that have already been written for the basic user and session functionality. To get started fork and pull the following repo:
 
  [https://github.com/Ada-Developers-Academy/Lister](https://github.com/Ada-Developers-Academy/Lister)
- 
- 
+
+
 This is the project you will be working out of. After pulling bundle and run your tests using guard:
 
     bundle
     guard
-    
+
 Use these errors to drive the development of the basic user and session functionality.
 
 #### Important Notes
@@ -47,15 +51,15 @@ To pass the specs you will need to use the same class names and attributes that 
     - `username`
     - `email`
     - `password_digest`
-    
+
 If you want to use different attributes and you feel comfortable with the specs, you can change the specs to reflect the naming choices of your own.
-    
+
 -----
 
 When using generators, when you see a question like:
 
     Overwrite lister/spec/controllers/session_controller_spec.rb? [Ynaqdh]
-    
+
 Type `n` for no.
 
 ## Requirements
@@ -131,7 +135,7 @@ After getting all green specs, use TDD (referring to the previous specs) to deve
 ### **When accessing the site via the JSON API**
 
 - When I GET "/users/:user_id/lists" with the :json format
-- I should get a JSON response that has an array of all lists belonging to the respective user, each including: 
+- I should get a JSON response that has an array of all lists belonging to the respective user, each including:
     - List name
     - Number of items
     - Author name
