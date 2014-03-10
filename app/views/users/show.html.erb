@@ -1,0 +1,53 @@
+<div class="row row-offcanvas row-offcanvas-right">
+<% if @current_user.nil? %>
+  <div class="col-xs-12 col-sm-9">
+
+    <div class="jumbotron" style="background-color: rgba(30, 144, 255, 0.20)">
+      <%= "welcome to lister!" %>
+      <p><a class="signin">sign in</a> or <a class="signup">sign up</a> for Lister & start making your first lists!</p>
+      <div id="sign-up-area"><%= render "users/form" %></div>
+      <div id="sign-in-area" ><%= render "sessions/new" %></div>
+    </div>
+
+<% else %>
+
+  <div class="col-xs-12 col-sm-9">
+     <div class="jumbotron" style="background-color: rgba(30, 144, 255, 0.20)">
+      <h2><%= "Welcome to Lister!" %></h2>
+        <p>you have <%= "#{@users_lists.count}" %> <%= link_to "lists.", my_lists_path %> create a <%= link_to "new list", new_list_path %> today.</p>
+      </div>
+
+      <div class="row" >
+      <h4> your lists:</h4>
+      <% @users_lists.each do |list| %>
+        <div class="col-6 col-sm-6 col-lg-4" style="background-color: rgba(30, 144, 255,      0.20);border-color: rgba(30, 144, 255, 0.20);
+        border-style: solid;
+        border-width: 10px;
+        border-radius: 15px;
+        -moz-border-radius: 15px;
+        -webkit-border-radius: 15px;
+        color: #428bca;" id="user-lists" >
+          <%= link_to list.name, list_url(list) %>
+          </div>
+        <% end %>
+      </div>
+
+<% end %>
+</div>
+
+<!-- sidebar -->
+<div class="col-xs-4 col-sm-3 sidebar-offcanvas"  style="background-color: rgba(30, 144, 255, 0.20);border-color: rgba(30, 144, 255, 0.20);
+     border-style: solid;
+     border-width: 10px;
+     border-radius: 15px;
+     -moz-border-radius: 15px;
+     -webkit-border-radius: 15px;
+     color: #428bca;" id= "sidebar">
+  <table class="table table-striped"><h3> explore the latest lists: </h3><br>
+   <tbody>
+     <% @lists.each do |list| %>
+       <tr><td><%= link_to "#{list.name}", list_path(list.id) %></td></tr>
+     <% end %>
+   </tbody>
+   </table>
+</div>

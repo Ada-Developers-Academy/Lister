@@ -1,0 +1,11 @@
+<div class="single">
+<table class="table table-striped"><h3> all lists: </h3><br>
+  <tbody class="items">
+    <% @lists.each do |list| %>
+    <tr >
+      <td><%= link_to "#{list.name}", list_path(list.id) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>

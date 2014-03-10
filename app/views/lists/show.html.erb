@@ -1,0 +1,55 @@
+<div class="single">
+<% if current_user && current_user.id == @list.user_id %>
+<h2><div class="edit-list-name"><%= @list.name %>
+  <small><%= link_to "Edit", edit_list_path(@list) %></small></div></h2>
+
+  <div id="edit-list-area">
+    <%= form_for(@list) do |f| %>
+
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+
+      <div class="field">
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+
+      <% end %>
+  </div>
+  <% else %>
+  <h2> <%= @list.name %></h2>
+<% end %>
+
+<table class="table table-striped">
+  <tbody class="items">
+    <% @list.items.each do |item| %>
+    <tr >
+      <td><%= item.name %></td>
+      <% if current_user && current_user.id == @list.user_id %>
+      <td><%= link_to "delete",  list_item_path(@list, item), class: "delete", method: :delete %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<% if current_user && current_user.id == @list.user_id %>
+<a class="add-item-link">add an item</a>
+<div id="add-item-area">
+  <%= form_for([@list, Item.new], html: {:id => "item-form"} ) do |f| %>
+      <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Add to list", class: "item-action" %>
+      </div>
+  <% end %>
+  </div>
+<% end %>
+</div>

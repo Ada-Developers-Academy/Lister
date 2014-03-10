@@ -7,7 +7,12 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
-gem "bcrypt-ruby"
+gem 'bcrypt-ruby'
+gem 'figaro'
+gem 'resque', '= 1.23.0'
+gem 'redis'
+gem 'rails_12factor', group: :production
+gem 'heroku_resque_autoscaler'
 
 group :development, :test do
   gem "rspec-rails"
@@ -15,4 +20,8 @@ group :development, :test do
   gem "terminal-notifier-guard"
   gem "factory_girl_rails"
   gem 'simplecov', :require => false
+  gem "better_errors" # These two are just for debugging
+  gem "binding_of_caller"
 end
+
+

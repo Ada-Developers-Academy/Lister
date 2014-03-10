@@ -1,5 +1,6 @@
 Lister::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.action_mailer.delivery_method = :smtp
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -29,6 +30,7 @@ Lister::Application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
+  config.assets.initialize_on_precompile = false
   # Generate digests for assets URLs.
   config.assets.digest = true
 
@@ -77,4 +79,5 @@ Lister::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
 end

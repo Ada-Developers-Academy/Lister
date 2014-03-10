@@ -11,3 +11,70 @@
  *= require_self
  *= require_tree .
  */
+
+
+.container {
+  margin-top: 50px;
+}
+
+.single {
+  width: 300px;
+  margin: auto;
+  background-color: rgba(30, 144, 255, 0.20);
+  padding: 20px;
+  border-color: rgba(30, 144, 255, 0.20);
+  border-style: solid;
+  border-width: 10px;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  color: #428bca;
+}
+
+.jumbotron {
+  margin-bottom: 5px;
+  border-color: rgba(30, 144, 255, 0.20);
+  border-style: solid;
+  border-width: 10px;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  color: #428bca;
+}
+
+#sign-up-area {
+  font-size: 12px;
+  line-height: .5;
+}
+
+#sign-in-area {
+  font-size: 12px;
+  line-height: .5;
+  display: inline-block;
+}
+
+#roundthis {
+  border-color: rgba(30, 144, 255, 0.20);
+  border-style: solid;
+  border-width: 10px;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  color: #428bca;
+}
+
+.sidebar {
+  float: right;
+  border-color: rgba(30, 144, 255, 0.20);
+  border-style: solid;
+  border-width: 10px;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  color: #428bca;
+}
+
+#user-lists{
+  width: 200px;
+  margin: 5px;
+}

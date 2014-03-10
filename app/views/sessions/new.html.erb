@@ -1,0 +1,21 @@
+ <div class="single">
+  <div class="form_style">
+    <h3>you gotta sign in:</h3>
+
+    <%= form_for(:session, url: signin_path) do |f| %>
+      <table>
+        <tbody>
+          <tr>
+            <td><%= label_tag :username %></td>
+            <td><%= text_field_tag :username, params[:username] %></td></tr>
+          <tr>
+            <td><%= label_tag :password %></td>
+            <td><%= password_field_tag :password %></td>
+          </tr>
+          <tr><td></td><td> <p class="button"><%= submit_tag "Log in" %></p></td>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
+
