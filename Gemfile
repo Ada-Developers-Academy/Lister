@@ -8,11 +8,16 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem "bcrypt-ruby"
+gem 'figaro'
+gem 'resque'
 
 group :development, :test do
   gem "rspec-rails"
   gem "guard-rspec"
   gem "terminal-notifier-guard"
   gem "factory_girl_rails"
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'simplecov', :require => false
+  gem 'resque_spec'
 end

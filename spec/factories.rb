@@ -10,4 +10,14 @@ FactoryGirl.define do
       "#{n}@example.com"
     end
   end
+
+  factory :list do
+    name "cake"
+    user #only works bc has_many association is set up
+  end
+
+  factory :item do
+    name "chocolate"
+    list
+  end
 end

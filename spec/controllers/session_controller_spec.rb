@@ -15,6 +15,7 @@ describe SessionController do
     context "when an existing user submits" do
       let(:user) { create(:user) }
       context "valid attributes" do
+        
         it "redirects" do
           post :create, username: user.username, password: user.password
           expect(response.status).to eq 302
@@ -59,7 +60,18 @@ describe SessionController do
         post :create, username: "I don't exist", password: "wrong"
         expect(flash[:notice]).to eq "Invalid username or password"
       end
-    
+    end
+  end
+
+  describe 'DELETE destroy' do
+    it 'sets the session id to nil' do
+      delete :destroy
+      expect(session[:user_id]).to be_nil
+    end
+
+    it 'redirects to root path' do
+      delete :destroy
+      expect(response).to redirect_to root_path
     end
   end
 end
