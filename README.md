@@ -1,5 +1,5 @@
 # Lister
-## ADA Week 13 Project
+##[ADA Week 13 Project](https://github.com/Ada-Developers-Academy/Lister)
 
 Lister will be an application where users can sign up, create new lists, and add items to those lists. Additionally Lister will have the ability to send emails using Resque.
 
