@@ -12,6 +12,7 @@ describe ListsController do
   describe "POST create" do
     context "with valid attributes" do
       let(:valid_attributes) { {id: 1, title: "Books to Read", user_id: 1} }
+      
       it "changes count of lists by 1" do
         expect { post :create, list: valid_attributes }.to change(List, :count).by(1)
       end
@@ -29,6 +30,7 @@ describe ListsController do
 
     context "with invalid attributes" do
       let(:no_title) { {title: nil, user_id: 1}}
+      
       it "does not save to the database" do
         expect { post :create, list: no_title}.to_not change(List, :count).by(1)
       end
