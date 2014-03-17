@@ -1,0 +1,20 @@
+<div class="container"><h1>Welcome to CueQueue!</h1></div>
+<div class="container"><%= image_tag "cue-tip3 copy.png" %></div>
+<div class="container">
+	<p>Cue: a thing said or done that serves as a signal to someone to begin their task.</p>
+	<p>Queue: a line or sequence of things awaiting their turn to be attended to.</p>
+	<p>CueQueue: A place to keep your list items in order for execution. Also colloquially writte as QQ.</p>
+</div>
+
+<% if session[:user_id] %>
+<%= link_to "New List", new_list_path %>
+<%= link_to "Sign Out", sign_out_path %>
+<% else %>
+<%= link_to "Sign Up", new_user_path %>
+<%= link_to "Sign In", new_session_path %>
+<% end %>
+<br>
+<% @lists = List.all %>
+<% @lists.each do |l| %>
+  <a href="/lists/<%= l.id %>"><%= l.title %></a>
+<% end %>

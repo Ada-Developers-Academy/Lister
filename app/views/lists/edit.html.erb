@@ -1,0 +1,6 @@
+<%= form_for @list do |f| %>
+  <%= f.label :title %>:
+  <%= f.text_field :title %>
+  <%= f.hidden_field :user_id, value: session[:user_id] %>
+  <%= f.submit %>
+<% end %>
